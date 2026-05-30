@@ -6,6 +6,7 @@ import TopBar from './components/TopBar'
 function App() {
   return (
     <div className="min-h-screen bg-[#F7F6F4] text-slate-400 ">
+      <div className='h-100 w-full border border-blue-300'> navbar</div>
       <div className="mx-auto max-w-screen  py-6 sm:px-6">
         <div className="grid gap-6 lg:grid-cols-[260px_1fr]">
           <Sidebar />
