@@ -6,7 +6,7 @@ const cards = [
 
 export default function TopBar() {
   return (
-    <header className="rounded-[32px] border border-slate-800/70 bg-slate-900/80 p-6 shadow-2xl/20 backdrop-blur-xl">
+    <header className="border bg-[#F7F6F4] p-6 shadow-2xl/20 backdrop-blur-xl">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div>
           <p className="text-sm uppercase tracking-[0.24em] text-orange-300/80">Dashboard</p>
