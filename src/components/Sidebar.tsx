@@ -10,7 +10,7 @@ const nav = [
 
 export default function Sidebar() {
   return (
-    <aside className="border border-indigo-800 p-6">
+    <aside className="bg-gray-200 p-6">
       <div className="mb-8 flex items-center gap-3 border">
         <div className="flex h-12 w-12 items-center justify-center rounded-3xl bg-orange-500/20 text-orange-300">
           L

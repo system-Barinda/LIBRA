@@ -45,7 +45,7 @@ export default function ActivityPanel() {
       </div>
 
       <div className="space-y-6">
-        <div className="rounded-[32px] border border-slate-800/70 bg-slate-900/80 p-6 shadow-2xl/20 backdrop-blur-xl">
+        <div className="border bg-[#F7F6F4] p-6 shadow-2xl/20 backdrop-blur-xl">
           <div className="flex items-center justify-between gap-4">
             <div>
               <p className="text-sm text-slate-400">Top Authors</p>
@@ -78,7 +78,7 @@ export default function ActivityPanel() {
           </ul>
         </div>
 
-        <div className="rounded-[32px] border border-slate-800/70 bg-slate-900/80 p-6 shadow-2xl/20 backdrop-blur-xl">
+        <div className="border bg-[#F7F6F4] p-6 shadow-2xl/20 backdrop-blur-xl">
           <div>
             <p className="text-sm text-slate-400">Recent Activities</p>
             <h3 className="mt-2 text-2xl font-semibold text-white">This week</h3>

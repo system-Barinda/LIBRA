@@ -44,7 +44,7 @@ export default function OverviewCards() {
       </div>
 
       <div className="space-y-6">
-        <div className="border bg-[#F7F6F4] p-6 shadow-2xl/20 backdrop-blur-xl">
+        <div className="bg-[#F7F6F4] p-6 shadow-2xl/20 backdrop-blur-xl">
           <div className="flex items-center justify-between gap-4">
             <h3 className="text-2xl font-semibold text-white">Book Categories</h3>
             <span className="text-sm text-slate-400">Last week</span>
