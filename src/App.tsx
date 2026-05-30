@@ -5,8 +5,8 @@ import TopBar from './components/TopBar'
 
 function App() {
   return (
-    <div className="min-h-screen bg-white text-slate-400 ">
-      <div className="mx-auto max-w-screen-2xl px-4 py-6 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#F7F6F4] text-slate-400 ">
+      <div className="mx-auto max-w-screen  py-6 sm:px-6">
         <div className="grid gap-6 lg:grid-cols-[260px_1fr]">
           <Sidebar />
           <main className="space-y-6">
