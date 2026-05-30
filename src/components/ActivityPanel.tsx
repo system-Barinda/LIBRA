@@ -14,7 +14,7 @@ const recent = [
 export default function ActivityPanel() {
   return (
     <section className="grid gap-6 xl:grid-cols-[1.2fr_0.8fr]">
-      <div className="rounded-[32px] border border-slate-800/70 bg-slate-900/80 p-6 shadow-2xl/20 backdrop-blur-xl">
+      <div className="border bg-[#F7F6F4] p-6 shadow-2xl/20 backdrop-blur-xl">
         <div className="flex items-center justify-between gap-4">
           <div>
             <p className="text-sm text-slate-400">Library Activity</p>
