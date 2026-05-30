@@ -44,14 +44,14 @@ export default function OverviewCards() {
       </div>
 
       <div className="space-y-6">
-        <div className="rounded-[32px] border border-slate-800/70 bg-slate-900/80 p-6 shadow-2xl/20 backdrop-blur-xl">
+        <div className="border bg-[#F7F6F4] p-6 shadow-2xl/20 backdrop-blur-xl">
           <div className="flex items-center justify-between gap-4">
             <h3 className="text-2xl font-semibold text-white">Book Categories</h3>
             <span className="text-sm text-slate-400">Last week</span>
           </div>
           <div className="mt-6 space-y-3">
             {categories.map((item) => (
-              <div key={item.label} className="rounded-3xl border border-slate-800/70 bg-slate-950/70 p-4">
+              <div key={item.label} className="border bg-[#F7F6F4] p-4">
                 <p className="text-sm text-slate-400">{item.label}</p>
                 <p className="mt-1 font-semibold text-white">{item.detail}</p>
               </div>
@@ -59,13 +59,13 @@ export default function OverviewCards() {
           </div>
         </div>
 
-        <div className="rounded-[32px] border border-slate-800/70 bg-slate-900/80 p-6 shadow-2xl/20 backdrop-blur-xl">
+        <div className="border bg-[#F7F6F4] p-6 shadow-2xl/20 backdrop-blur-xl">
           <div className="flex items-center justify-between gap-4">
             <div>
               <p className="text-sm text-slate-400">Revenue Breakdown</p>
               <h3 className="mt-2 text-2xl font-semibold text-white">This month</h3>
             </div>
-            <span className="rounded-full bg-slate-800/80 px-3 py-1 text-sm text-slate-300">$12,450</span>
+            <span className="bg-[#F7F6F4] px-3 py-1 text-sm text-slate-300">$12,450</span>
           </div>
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             <div className="rounded-3xl bg-slate-950/90 p-4">
