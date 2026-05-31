@@ -48,8 +48,8 @@ const cards = [
 
 export default function TopBar() {
   return (
-    <div className="flex ">
-    <div className="grid gap-4 lg:grid-cols-4">
+    <div className="flex">
+    <div className="grid gap-4 lg:grid-cols-4 w-[57%] border">
       {cards.map((card) => {
         const Icon = card.icon;
 
@@ -104,7 +104,7 @@ export default function TopBar() {
       })}
     </div>
 
-    <div className="border bg-[#F7F6F4] p-6 shadow-2xl/20 backdrop-blur-xl">
+    <div className=" w-[38%] ml-auto mr-6 space-y-6 border bg-[#F7F6F4] p-6 shadow-2xl/20 backdrop-blur-xl">
             <div className="flex items-center justify-between gap-4">
             <div>
               <p className="text-sm text-slate-400">Revenue Breakdown</p>
