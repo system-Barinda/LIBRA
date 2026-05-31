@@ -1,5 +1,8 @@
+import ActivityPanel from "./components/ActivityPanel";
 import Navbar from "./components/Navbar";
+import OverviewCards from "./components/OverviewCards";
 import Sidebar from "./components/Sidebar";
+import TopBar from "./components/TopBar";
 
 function App() {
   return (
@@ -12,8 +15,10 @@ function App() {
         <div><Navbar /></div>
 
         <br />
+        <div><TopBar /></div>
+        <div><OverviewCards /></div>
+        <div><ActivityPanel /></div>
 
-        
       </div>
     </div>
   );
