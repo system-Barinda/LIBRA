@@ -6,18 +6,9 @@ import TopBar from './components/TopBar'
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#F7F6F4] text-slate-400 ">
+    <div className="min-h-screen bg-[#F7F6F4] text-slate-400">
+      <div className='border h-100 w-100'> done</div>
       <div className='w-full'> <Navbar /></div>
-      <div className="mx-auto max-w-screen  py-6 sm:px-6">
-        <div className="grid gap-6 lg:grid-cols-[260px_1fr]">
-          <Sidebar />
-          <main className="space-y-6">
-            <TopBar />
-            <OverviewCards />
-            <ActivityPanel />
-          </main>
-        </div>
-      </div>
     </div>
   )
 }
