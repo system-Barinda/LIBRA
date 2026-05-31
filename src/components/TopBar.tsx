@@ -1,39 +1,96 @@
+import {
+  BookOpen,
+  Clock3,
+  Users,
+  Library,
+  TrendingUp,
+  TrendingDown,
+} from "lucide-react";
+
 const cards = [
-  { label: 'Borrowed Books', value: '1,250', delta: '+8.2%' },
-  { label: 'Overdue Returns', value: '132', delta: '-5.0%' },
-  { label: 'Total Visitors', value: '3,420', delta: '-2.4%' },
-]
+  {
+    label: "Borrowed Books",
+    value: "1,250",
+    subtitle: "books borrowed",
+    change: "+8.2%",
+    trend: "up",
+    icon: BookOpen,
+  },
+  {
+    label: "Overdue Returns",
+    value: "132",
+    subtitle: "overdue items",
+    change: "-5.6%",
+    trend: "down",
+    icon: Clock3,
+  },
+  {
+    label: "Total Visitors",
+    value: "3,420",
+    subtitle: "this month",
+    change: "-2.4%",
+    trend: "down",
+    icon: Users,
+  },
+  {
+    label: "Total Books",
+    value: "18,750",
+    subtitle: "in collection",
+    change: "+150",
+    trend: "up",
+    icon: Library,
+  },
+];
 
 export default function TopBar() {
   return (
-    <header className="border bg-[#F7F6F4] p-6 shadow-2xl/20 backdrop-blur-xl">
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-        <div>
-          <p className="text-sm uppercase tracking-[0.24em] text-orange-300/80">Dashboard</p>
-          <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">Good morning, Noah!</h2>
-          <p className="mt-2 max-w-xl text-sm text-slate-400">
-            Overview of current library activity, performance, and recent updates.
-          </p>
-        </div>
-        <div className="flex flex-col gap-3 sm:flex-row">
-          <button className="rounded-3xl border border-slate-800/80 bg-slate-950/90 px-4 py-3 text-sm text-slate-200 transition hover:bg-slate-900">
-            Add book
-          </button>
-          <button className="rounded-3xl bg-orange-500 px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-orange-400">
-            Invite team
-          </button>
-        </div>
-      </div>
+    <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      {cards.map((card) => {
+        const Icon = card.icon;
 
-      <div className="mt-6 grid gap-4 sm:grid-cols-3">
-        {cards.map((item) => (
-          <article key={item.label} className="rounded-3xl bg-slate-950/90 p-5 shadow-lg shadow-slate-950/20">
-            <p className="text-sm text-slate-400">{item.label}</p>
-            <p className="mt-3 text-3xl font-semibold text-white">{item.value}</p>
-            <p className="mt-2 text-sm text-green-400">{item.delta} from last week</p>
-          </article>
-        ))}
-      </div>
-    </header>
-  )
+        return (
+          <div
+            key={card.label}
+            className="rounded-2xl bg-white p-5 shadow-sm border border-gray-100"
+          >
+            {/* Top Row */}
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-800 text-white">
+                <Icon size={18} />
+              </div>
+
+              <p className="text-sm font-medium text-gray-600">
+                {card.label}
+              </p>
+            </div>
+
+            {/* Value */}
+            <h3 className="mt-5 text-3xl font-bold text-gray-900">
+              {card.value}
+            </h3>
+
+            {/* Bottom Row */}
+            <div className="mt-3 flex items-center justify-between">
+              <p className="text-sm text-gray-400">{card.subtitle}</p>
+
+              <span
+                className={`flex items-center gap-1 rounded-full px-2 py-1 text-xs font-medium ${
+                  card.trend === "up"
+                    ? "bg-green-100 text-green-600"
+                    : "bg-red-100 text-red-500"
+                }`}
+              >
+                {card.trend === "up" ? (
+                  <TrendingUp size={12} />
+                ) : (
+                  <TrendingDown size={12} />
+                )}
+                {card.change}
+              </span>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
 }
