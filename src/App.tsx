@@ -1,11 +1,13 @@
+import Sidebar from "./components/Sidebar";
+
 function App() {
   return (
     <div className="min-h-screen bg-[#F7F6F4] text-slate-400 flex">
-      <div className="sideBar border h-screen w-[30%]">
-        <h1>Sidebar</h1>
+      <div className="sideBar border h-screen w-[20%]">
+        <Sidebar />
       </div>
 
-      <div className="border h-screen w-[70%]">
+      <div className="border h-screen w-[80%]">
         <h1>Main Content</h1>
       </div>
     </div>
