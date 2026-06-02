@@ -61,7 +61,7 @@ function App() {
         </header>
 
         {/* APPLICATION BODY PADDING */}
-        <main className="p-4 md:p-6 lg:p-8 space-y-6 max-w-7xl w-full mx-auto flex-1">
+        <main className="p-4 md:p-6 lg:p-8 space-y-6 max-w-7xl w-full mx-auto flex-1 border bg-amber-400">
           {/* Desktop Only Nav Header */}
           <div className="hidden md:block">
             <Navbar />
