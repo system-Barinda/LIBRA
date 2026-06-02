@@ -48,15 +48,14 @@ const cards = [
 
 export default function TopBar() {
   return (
-    <div className="flex">
-    <div className="grid gap-4 lg:grid-cols-4 w-[57%] border">
+    <div className="gap-4 grid grid-cols-2 w-full">
       {cards.map((card) => {
         const Icon = card.icon;
 
         return (
           <div
             key={card.label}
-            className="rounded-2xl border border-gray-100 bg-[#FAFAFA] p-4 shadow-sm"
+            className="rounded-2xl border border-gray-800 bg-[#FAFAFA] p-4 shadow-sm"
           >
             {/* Header */}
             <div className="flex items-center gap-2">
@@ -103,16 +102,7 @@ export default function TopBar() {
         );
       })}
     </div>
-
-    <div className=" w-[38%] ml-auto mr-6 space-y-6 border bg-[#F7F6F4] p-6 shadow-2xl/20 backdrop-blur-xl">
-            <div className="flex items-center justify-between gap-4">
-            <div>
-              <p className="text-sm text-slate-400">Revenue Breakdown</p>
-            </div>
-            <span className="bg-[#F7F6F4] px-3 py-1 text-sm text-slate-300">This month</span>
-          </div>
-    
-    </div>
-    </div>
   );
 }
+
+{/* <div className=" bg-amber-950 grid gap-4 lg:grid-cols-4 w-full"></div> */}

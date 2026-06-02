@@ -61,8 +61,16 @@ function App() {
         </header>
 
         {/* APPLICATION BODY PADDING */}
-        <main className="p-2 border bg-amber-400 flex">
-         <div className="rightside border h-screen w-[70%]"></div>
+        <main className="p-2 border bg-amber-400 flex flex-col">
+         <div className="rightside  h-screen w-full">
+
+               <div className="">
+                   <TopBar />
+               </div>
+
+
+
+         </div>
          <div className="rightside bg-slate-500 h-screen w-[30%]"></div>
         
         </main>
