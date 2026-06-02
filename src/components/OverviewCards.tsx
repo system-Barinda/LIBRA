@@ -73,7 +73,7 @@ export default function OverviewCards() {
               <p className="mt-2 text-lg font-semibold text-white">$7,470</p>
             </div>
             <div className="rounded-3xl bg-slate-950/90 p-4">
-              <p className="text-sm text-slate-400">Fines & Events</p>
+              <p className="text-sm text-slate-800">Fines & Events</p>
               <p className="mt-2 text-lg font-semibold text-white">$4,980</p>
             </div>
           </div>

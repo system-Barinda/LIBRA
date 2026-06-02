@@ -17,7 +17,7 @@ export default function Sidebar() {
         </div>
         <div>
           <p className="text-sm text-slate-400">Library Admin</p>
-          <h1 className="text-xl font-semibold text-white">LIBRA</h1>
+          <h1 className="text-xl font-semibold text-slate-600">LIBRA</h1>
         </div>
       </div>
 
@@ -36,7 +36,7 @@ export default function Sidebar() {
         ))}
       </nav>
 
-      <div className="mt-8 rounded-3xl bg-slate-950/80 p-4 text-sm text-slate-300">
+      <div className="mt-8 rounded-3xl border p-4 text-sm text-slate-300">
         <p className="font-semibold text-white">On-the-Go Management</p>
         <p className="mt-2 text-slate-400">Access books, members, and stats anytime.</p>
         <button className="mt-4 inline-flex rounded-full bg-orange-500 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-orange-400">
