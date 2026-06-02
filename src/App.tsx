@@ -8,7 +8,7 @@ import TopBar from "./components/TopBar";
 function App() {
   const [show,setShow] = React.useState(false)
   const handleDespay = () => {
-    alert("done")
+    setShow(!show)
   }
   return (
     <div className="min-h-screen bg-[#F7F6F4] text-slate-400">
@@ -16,13 +16,12 @@ function App() {
         <div className="menuRight h-10 mx-5">done</div>
         <div className="menuLeft h-10 mx-5" onClick={handleDespay}>done</div>
       </div>
-      {show && <div className="mobileMenu border h-full w-full text-slate-800">
-        <div className="menuRight h-10 mx-5">done</div>
-        <div className="menuLeft h-10 mx-5" onClick={handleDespay}>done</div>
-      </div>}
-      <div className="sideBar border h-full w-[20%]">
+      {show ? <div className="sideBar border h-full w-[100%]">
         <Sidebar />
-      </div>
+      </div> : <div className="sideBar border h-full w-[20%]">
+        <h1>mwiriwe</h1>
+      </div>}
+      
 
       <div className="border h-full w-[80%]">
         <div><Navbar /></div>
