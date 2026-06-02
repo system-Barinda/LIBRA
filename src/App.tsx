@@ -61,23 +61,10 @@ function App() {
         </header>
 
         {/* APPLICATION BODY PADDING */}
-        <main className="p-4 md:p-6 lg:p-8 space-y-6 max-w-7xl w-full mx-auto flex-1 border bg-amber-400">
-          {/* Desktop Only Nav Header */}
-          <div className="hidden md:block">
-            <Navbar />
-          </div>
-
-          <div>
-            <TopBar />
-          </div>
-          
-          <div>
-            <OverviewCards />
-          </div>
-          
-          <div>
-            <ActivityPanel />
-          </div>
+        <main className="p-2 border bg-amber-400 flex">
+         <div className="rightside border h-screen w-[70%]"></div>
+         <div className="rightside bg-slate-500 h-screen w-[30%]"></div>
+        
         </main>
       </div>
 
@@ -86,3 +73,24 @@ function App() {
 }
 
 export default App;
+
+
+
+//  <main className="p-4 md:p-6 lg:p-8 space-y-6 max-w-7xl w-full mx-auto flex-1 border bg-amber-400">
+//           {/* Desktop Only Nav Header */}
+//           <div className="hidden md:block">
+//             <Navbar />
+//           </div>
+
+//           <div>
+//             <TopBar />
+//           </div>
+          
+//           <div>
+//             <OverviewCards />
+//           </div>
+          
+//           <div>
+//             <ActivityPanel />
+//           </div>
+//         </main>
