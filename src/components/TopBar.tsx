@@ -48,7 +48,7 @@ const cards = [
 
 export default function TopBar() {
   return (
-    <div className="gap-4 grid grid-cols-2 w-full">
+    <div className="gap-4 grid grid-cols-2 w-full md:grid-cols-1 lg:grid-cols-4">
       {cards.map((card) => {
         const Icon = card.icon;
 

@@ -61,8 +61,8 @@ function App() {
         </header>
 
         {/* APPLICATION BODY PADDING */}
-        <main className="p-2 border bg-amber-400 flex flex-col">
-         <div className="rightside  h-screen w-full">
+        <main className="p-2 border bg-amber-400 grid grid-cols-1 md:grid-cols-2">
+         <div className="rightside  h-screen w-full ">
 
                <div className="">
                    <TopBar />
@@ -71,7 +71,7 @@ function App() {
 
 
          </div>
-         <div className="rightside bg-slate-500 h-screen w-[30%]"></div>
+         <div className="rightside bg-slate-500 h-screen w-full"></div>
         
         </main>
       </div>
