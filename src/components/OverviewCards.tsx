@@ -21,13 +21,13 @@ export default function OverviewCards() {
 
         <div className="mt-6 space-y-4">
           <div className="grid gap-3 sm:grid-cols-2">
-            <div className="rounded-3xl bg-slate-950/90 p-4">
-              <p className="text-sm text-slate-400">Visitors</p>
-              <p className="mt-2 text-3xl font-semibold text-white">78</p>
+            <div className="rounded-3xl border p-4">
+              <p className="text-sm text-slate-800">Visitors</p>
+              <p className="mt-2 text-3xl font-semibold text-black">78</p>
             </div>
-            <div className="rounded-3xl bg-slate-950/90 p-4">
-              <p className="text-sm text-slate-400">Borrowers</p>
-              <p className="mt-2 text-3xl font-semibold text-white">62</p>
+            <div className="rounded-3xl border p-4">
+              <p className="text-sm text-slate-800">Borrowers</p>
+              <p className="mt-2 text-3xl font-semibold text-black">62</p>
             </div>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
