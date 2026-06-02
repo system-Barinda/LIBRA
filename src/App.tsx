@@ -6,32 +6,81 @@ import Sidebar from "./components/Sidebar";
 import TopBar from "./components/TopBar";
 
 function App() {
-  const [show,setShow] = React.useState(false)
-  const handleDespay = () => {
-    setShow(!show)
-  }
+  const [showMobileMenu, setShowMobileMenu] = React.useState(false);
+
+  const toggleMobileMenu = () => {
+    setShowMobileMenu(!showMobileMenu);
+  };
+
   return (
-    <div className="min-h-screen bg-[#F7F6F4] text-slate-400">
-      <div className="mobileMun flex justify-between border h-full w-full text-slate-800">
-        <div className="menuRight h-10 mx-5">done</div>
-        <div className="menuLeft h-10 mx-5" onClick={handleDespay}>done</div>
-      </div>
-      {show ? <div className="sideBar border h-full w-[100%]">
-        <Sidebar />
-      </div> : <div className="sideBar border h-full w-[20%]">
-        <h1>mwiriwe</h1>
-      </div>}
+    <div className="min-h-screen bg-[#F7F6F4] flex flex-col md:flex-row font-sans">
       
-
-      <div className="border h-full w-[80%]">
-        <div><Navbar /></div>
-
-        <br />
-        <div><TopBar /></div>
-        <div><OverviewCards /></div>
-        <div><ActivityPanel /></div>
-
+      {/* DESKTOP SIDEBAR: Visible on medium screens and up */}
+      <div className="hidden md:block md:w-64 shrink-0">
+        <Sidebar closeMenu={() => setShowMobileMenu(false)} />
       </div>
+
+      {/* MOBILE SIDEBAR OVERLAY: Slides/Pops in when active */}
+      {showMobileMenu && (
+        <div className="fixed inset-0 z-50 flex md:hidden">
+          {/* Backdrop shadow overlay */}
+          <div 
+            className="fixed inset-0 bg-black/50 transition-opacity" 
+            onClick={toggleMobileMenu}
+          />
+          {/* Sidebar drawer container */}
+          <div className="relative w-72 max-w-xs bg-gray-700 h-full z-10 shadow-xl">
+            <Sidebar closeMenu={toggleMobileMenu} isMobile={true} />
+          </div>
+        </div>
+      )}
+
+      {/* MAIN CONTENT AREA */}
+      <div className="flex-1 flex flex-col min-w-0">
+        
+        {/* MOBILE TOP NAVIGATION BAR */}
+        <header className="flex items-center justify-between bg-white px-4 py-3 border-b md:hidden sticky top-0 z-40">
+          {/* Brand Logo Element */}
+          <div className="flex items-center gap-2">
+            <div className="flex h-8 w-8 items-center justify-center rounded bg-orange-500 text-white font-bold text-sm">
+              L
+            </div>
+            <span className="font-bold text-slate-800 text-lg tracking-wider">LIBRA</span>
+          </div>
+          
+          {/* Burger Menu Button Toggle */}
+          <button 
+            onClick={toggleMobileMenu} 
+            className="p-2 text-slate-600 hover:bg-slate-100 rounded-lg transition"
+            aria-label="Toggle Menu"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+          </button>
+        </header>
+
+        {/* APPLICATION BODY PADDING */}
+        <main className="p-4 md:p-6 lg:p-8 space-y-6 max-w-7xl w-full mx-auto flex-1">
+          {/* Desktop Only Nav Header */}
+          <div className="hidden md:block">
+            <Navbar />
+          </div>
+
+          <div>
+            <TopBar />
+          </div>
+          
+          <div>
+            <OverviewCards />
+          </div>
+          
+          <div>
+            <ActivityPanel />
+          </div>
+        </main>
+      </div>
+
     </div>
   );
 }
