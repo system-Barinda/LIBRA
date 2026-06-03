@@ -109,7 +109,7 @@
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/DashBoard";
 import Inbox from "./pages/Inbox";
 // import Books from "./pages/Books";
 
@@ -117,7 +117,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route path="/" element={<Dashboard />} /> */}
+        <Route path="/" element={<Dashboard />} />
         <Route path="/inbox" element={<Inbox />} />
         {/* <Route path="/books" element={<Books />} /> */}
       </Routes>
