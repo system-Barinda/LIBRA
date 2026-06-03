@@ -1,11 +1,9 @@
-// Inbox.tsx
 
 import Sidebar from "../components/inbox/Sidebar";
 import Categories from "../components/inbox/Categories";
 import EmailList from "../components/inbox/EmailList";
 import EmailViewer from "../components/inbox/EmailViewer";
 
-import "../styles/inbox.css";
 
 export default function Inbox() {
   return (
