@@ -104,5 +104,3 @@ export default function TopBar() {
     </div>
   );
 }
-
-{/* <div className=" bg-amber-950 grid gap-4 lg:grid-cols-4 w-full"></div> */}
