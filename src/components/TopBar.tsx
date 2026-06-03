@@ -63,7 +63,7 @@ export default function TopBar() {
                 <Icon size={14} />
               </div>
 
-              <span className="text-xs font-medium text-gray-600">
+              <span className="text-sm text-gray-600">
                 {card.label}
               </span>
             </div>
@@ -75,7 +75,7 @@ export default function TopBar() {
 
             {/* Footer */}
             <div className="mt-1 flex items-center justify-between">
-              <span className="text-xs text-gray-400">
+              <span className="text-[10px] text-gray-400">
                 {card.subtitle}
               </span>
 
