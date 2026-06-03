@@ -1,9 +1,9 @@
 // Inbox.tsx
 
-import Sidebar from "../components/Sidebar";
-import Categories from "../components/Categories";
-import EmailList from "../components/EmailList";
-import EmailViewer from "../components/EmailViewer";
+import Sidebar from "../components/inbox/Sidebar";
+import Categories from "../components/inbox/Categories";
+import EmailList from "../components/inbox/EmailList";
+import EmailViewer from "../components/inbox/EmailViewer";
 
 import "../styles/inbox.css";
 
