@@ -109,7 +109,7 @@
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Dashboard from "./pages/DashBoard";
+import Dashboard from "./pages/Dashboard";
 import Inbox from "./pages/Inbox";
 // import Books from "./pages/Books";
 
