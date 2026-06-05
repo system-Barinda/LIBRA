@@ -65,50 +65,56 @@ export default function OverviewCards() {
               hover:shadow-md
               transition-all
               duration-300
-              h-30
+              h-20
             "
           >
             {/* Header */}
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-slate-700 text-white">
-                  <Icon size={15} />
+            <div className="flex flex-col items-center justify-between">
+              <div className="flex items-center gap-2">
+                <div className="flex h-4 w-4 items-center justify-center rounded-full bg-slate-700 text-white">
+                  <Icon size={10} />
                 </div>
 
-                <span className="text-sm font-medium text-slate-600">
+                <span className="text-[10px] font-medium text-slate-600">
                   {card.label}
                 </span>
               </div>
 
+            
+            </div>
+              <div className="flex items-center gap-3">
+
+
+                 {/* Value */}
+            <h2 className="mt-5 text-sm font-bold tracking-tight text-slate-900">
+              {card.value}
+            </h2> 
               <span
-                className={`flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-semibold ${
+                className={`flex border items-center gap-1 rounded-full  text-[8px] font-semibold ${
                   card.trend === "up"
                     ? "bg-emerald-50 text-emerald-600"
                     : "bg-red-50 text-red-500"
                 }`}
               >
                 {card.trend === "up" ? (
-                  <TrendingUp size={11} />
+                  <TrendingUp size={8} />
                 ) : (
-                  <TrendingDown size={11} />
+                  <TrendingDown size={8} />
                 )}
 
                 {card.change}
-              </span>
-            </div>
+              </span>     
+           
 
-            {/* Value */}
-            <h2 className="mt-5 text-3xl font-bold tracking-tight text-slate-900">
-              {card.value}
-            </h2>
+            </div>
 
             {/* Footer */}
             <div className="mt-2 flex items-center justify-between">
-              <p className="text-sm text-slate-500">
+              <p className="text-[6px] text-slate-500">
                 {card.subtitle}
               </p>
 
-              <p className="text-xs text-slate-400">
+              <p className="text-[6px] text-slate-400">
                 {card.note}
               </p>
             </div>
