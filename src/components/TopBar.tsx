@@ -46,61 +46,74 @@ const cards = [
   },
 ];
 
-export default function TopBar() {
+export default function OverviewCards() {
   return (
-    <div className="gap-4 grid grid-cols-2 w-full md:grid-cols-1 lg:grid-cols-4">
+    <section className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
       {cards.map((card) => {
         const Icon = card.icon;
 
         return (
           <div
             key={card.label}
-            className="rounded-2xl border border-gray-800 bg-[#FAFAFA] p-4 shadow-sm"
+            className="
+              bg-white
+              rounded-2xl
+              p-5
+              border
+              border-slate-200
+              shadow-sm
+              hover:shadow-md
+              transition-all
+              duration-300
+            "
           >
             {/* Header */}
-            <div className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-700 text-white">
-                <Icon size={14} />
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-700 text-white">
+                  <Icon size={15} />
+                </div>
+
+                <span className="text-sm font-medium text-slate-600">
+                  {card.label}
+                </span>
               </div>
 
-              <span className="text-sm text-gray-600">
-                {card.label}
-              </span>
-            </div>
-
-            {/* Value */}
-            <h3 className="mt-4 text-2xl font-bold text-gray-900">
-              {card.value}
-            </h3>
-
-            {/* Footer */}
-            <div className="mt-1 flex items-center justify-between">
-              <span className="text-[10px] text-gray-400">
-                {card.subtitle}
-              </span>
-
               <span
-                className={`flex items-center gap-1 rounded-full px-2 py-1 text-[11px] font-semibold ${
+                className={`flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-semibold ${
                   card.trend === "up"
-                    ? "bg-green-100 text-green-600"
-                    : "bg-red-100 text-red-500"
+                    ? "bg-emerald-50 text-emerald-600"
+                    : "bg-red-50 text-red-500"
                 }`}
               >
                 {card.trend === "up" ? (
-                  <TrendingUp size={10} />
+                  <TrendingUp size={11} />
                 ) : (
-                  <TrendingDown size={10} />
+                  <TrendingDown size={11} />
                 )}
+
                 {card.change}
               </span>
             </div>
 
-            <p className="mt-1 text-[11px] text-gray-400 text-right">
-              {card.note}
-            </p>
+            {/* Value */}
+            <h2 className="mt-5 text-3xl font-bold tracking-tight text-slate-900">
+              {card.value}
+            </h2>
+
+            {/* Footer */}
+            <div className="mt-2 flex items-center justify-between">
+              <p className="text-sm text-slate-500">
+                {card.subtitle}
+              </p>
+
+              <p className="text-xs text-slate-400">
+                {card.note}
+              </p>
+            </div>
           </div>
         );
       })}
-    </div>
+    </section>
   );
 }
