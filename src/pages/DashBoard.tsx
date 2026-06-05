@@ -4,7 +4,8 @@ import TopBar from "../components/TopBar";
 
 function Dashboard() {
   return (
-    <div className="p-6">
+    <div className="bg-amber-300 grid grid-cols-2">
+    <div className="p-6 ">
       {/* Top Section */}
       <TopBar />
 
@@ -37,7 +38,10 @@ function Dashboard() {
         </div>
       </div>
     </div>
-  );
+
+
+    <div className="h-screen border border-slate-800"> done</div>
+  </div>);
 }
 
 export default Dashboard;
