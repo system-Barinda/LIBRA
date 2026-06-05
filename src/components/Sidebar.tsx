@@ -1,15 +1,15 @@
 import React from 'react';
+import { NavLink } from "react-router-dom";
 
 const nav = [
-  { label: 'Dashboard', active: true },
-  { label: 'Inbox' },
-  { label: 'Library Activity' },
-  { label: 'Books' },
-  { label: 'Management' },
-  { label: 'Members' },
-  { label: 'Settings' },
+  { label: "Dashboard", path: "/" },
+  { label: "Inbox", path: "/inbox" },
+  { label: "Library Activity", path: "/activity" },
+  { label: "Books", path: "/books" },
+  { label: "Management", path: "/management" },
+  { label: "Members", path: "/members" },
+  { label: "Settings", path: "/settings" },
 ];
-
 export default function Sidebar({ closeMenu, isMobile = false }) {
   return (
     <aside className="bg-gray-700 p-6 w-full h-full min-h-screen flex flex-col justify-between select-none">
@@ -40,21 +40,24 @@ export default function Sidebar({ closeMenu, isMobile = false }) {
         </div>
 
         {/* Navigations Action Links */}
-        <nav className="space-y-1">
-          {nav.map((item) => (
-            <button
-              key={item.label}
-              onClick={isMobile ? closeMenu : undefined}
-              className={`block w-full rounded-2xl px-4 py-3 text-left text-sm font-semibold transition-all duration-200 ${
-                item.active
-                  ? 'bg-slate-800 text-white shadow-lg shadow-slate-950/30'
-                  : 'text-slate-400 hover:bg-slate-800/50 hover:text-white'
-              }`}
-            >
-              {item.label}
-            </button>
-          ))}
-        </nav>
+       <nav className="space-y-1">
+  {nav.map((item) => (
+    <NavLink
+      key={item.label}
+      to={item.path}
+      onClick={isMobile ? closeMenu : undefined}
+      className={({ isActive }) =>
+        `block w-full rounded-2xl px-4 py-3 text-sm font-semibold transition-all duration-200 ${
+          isActive
+            ? "bg-slate-800 text-white shadow-lg shadow-slate-950/30"
+            : "text-slate-400 hover:bg-slate-800/50 hover:text-white"
+        }`
+      }
+    >
+      {item.label}
+    </NavLink>
+  ))}
+</nav>
       </div>
 
       {/* Dynamic CTA Bottom Promo Box */}
