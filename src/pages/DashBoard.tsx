@@ -1,6 +1,7 @@
 import ActivityPanel from "../components/ActivityPanel";
 import OverviewCards from "../components/OverviewCards";
 import TopBar from "../components/TopBar";
+import TopBorrowedBooks from "../components/TopBorrowedBooks";
 
 function Dashboard() {
   return (
@@ -40,7 +41,7 @@ function Dashboard() {
     </div>
 
 
-    <div className=" w-[30%] h-screen border border-slate-800"> done</div>
+    <div className=" w-[30%] h-screen border border-slate-800"> <TopBorrowedBooks /></div>
   </div>);
 }
 
