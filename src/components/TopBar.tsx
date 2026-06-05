@@ -48,17 +48,16 @@ const cards = [
 
 export default function OverviewCards() {
   return (
-    <section className="grid grid-cols-1 sm:grid-cols-4 xl:grid-cols-4 gap-5">
+    <section className="grid grid-cols-1 sm:grid-cols-4 xl:grid-cols-4 gap-6">
       {cards.map((card) => {
         const Icon = card.icon;
 
         return (
           <div
-            key={card.label}
+            key={card.label} 
             className="
               bg-white
               rounded-2xl
-              p-5
               border
               border-slate-200
               shadow-sm
@@ -70,7 +69,7 @@ export default function OverviewCards() {
           >
             {/* Header */}
             <div className="flex flex-col items-center justify-between">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
                 <div className="flex h-4 w-4 items-center justify-center rounded-full bg-slate-700 text-white">
                   <Icon size={10} />
                 </div>
