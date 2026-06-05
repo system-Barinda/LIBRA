@@ -48,7 +48,7 @@ const cards = [
 
 export default function OverviewCards() {
   return (
-    <section className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
+    <section className="grid grid-cols-1 sm:grid-cols-4 xl:grid-cols-4 gap-5">
       {cards.map((card) => {
         const Icon = card.icon;
 
@@ -65,12 +65,13 @@ export default function OverviewCards() {
               hover:shadow-md
               transition-all
               duration-300
+              h-30
             "
           >
             {/* Header */}
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-700 text-white">
+                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-slate-700 text-white">
                   <Icon size={15} />
                 </div>
 

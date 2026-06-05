@@ -4,8 +4,8 @@ import TopBar from "../components/TopBar";
 
 function Dashboard() {
   return (
-    <div className="bg-amber-300 grid grid-cols-2">
-    <div className="p-6 ">
+    <div className="bg-amber-300 flex justify-around">
+    <div className="p-6  w-[70%]">
       {/* Top Section */}
       <TopBar />
 
@@ -40,7 +40,7 @@ function Dashboard() {
     </div>
 
 
-    <div className="h-screen border border-slate-800"> done</div>
+    <div className=" w-[30%] h-screen border border-slate-800"> done</div>
   </div>);
 }
 
