@@ -109,6 +109,8 @@
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import MainLayout from "./layouts/MainLayout";
+
 import Dashboard from "./pages/Dashboard";
 import Inbox from "./pages/Inbox";
 // import Books from "./pages/Books";
@@ -117,9 +119,11 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/inbox" element={<Inbox />} />
-        {/* <Route path="/books" element={<Books />} /> */}
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/inbox" element={<Inbox />} />
+          {/* <Route path="/books" element={<Books />} /> */}
+        </Route>
       </Routes>
     </BrowserRouter>
   );
