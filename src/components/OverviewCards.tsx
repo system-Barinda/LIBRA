@@ -70,7 +70,7 @@ export default function OverviewCards() {
       
     <section className="grid gap-6 md:grid-cols-2 bg-[#b9b911] w-full">
       {/* 1. LIBRARY USAGE TRENDS CARD */}
-      <div className="bg-white  p-6 shadow-sm border border-slate-100/50 flex flex-col justify-between">
+      <div className="bg-white  p-6 shadow-sm border border-slate-100/50 flex flex-col justify-between ">
         {/* Header section */}
         <div className="flex items-center justify-between mb-4">
           <div>
@@ -119,7 +119,7 @@ export default function OverviewCards() {
       </div>
 
       {/* 2. REVENUE TRENDS CARD */}
-      <div className="bg-white rounded-[24px] p-6 shadow-sm border border-slate-100/50 flex flex-col justify-between">
+      <div className="bg-white shadow-sm border border-slate-100/50 flex flex-col justify-between">
         {/* Header section */}
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-lg font-bold text-[#1E2229]">Revenue</h3>
