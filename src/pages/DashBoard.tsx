@@ -1,4 +1,5 @@
 import ActivityPanel from "../components/ActivityPanel";
+import CategoryAndRevenueBreakdown from "../components/CategoryAndRevenueBreakdown";
 import OverviewCards from "../components/OverviewCards";
 import TopBar from "../components/TopBar";
 import TopBorrowedBooks from "../components/TopBorrowedBooks";
@@ -13,6 +14,11 @@ function Dashboard() {
       {/* Overview Cards */}
       <div className="mt-6">
         <OverviewCards />
+      </div>
+
+      {/* CategoryAndRevenueBreakdown */}
+      <div className="mt-6">
+        <CategoryAndRevenueBreakdown />
       </div>
        
       
