@@ -6,7 +6,7 @@ import TopBorrowedBooks from "../components/TopBorrowedBooks";
 function Dashboard() {
   return (
     <div className="flex flex-col justify-around">
-    <div className=" w-full">
+    <div className="w-full">
       {/* Top Section */}
       <TopBar />
 

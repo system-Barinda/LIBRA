@@ -48,7 +48,7 @@ const cards = [
 
 export default function OverviewCards() {
   return (
-    <section className="grid grid-cols-2 xl:grid-cols-4 gap-6 border ">
+    <section className="grid grid-cols-2 xl:grid-cols-4 gap-6">
       {cards.map((card) => {
         const Icon = card.icon;
 
@@ -57,8 +57,6 @@ export default function OverviewCards() {
             key={card.label} 
             className="
               bg-white
-              rounded-2xl
-              shadow-sm
               hover:shadow-md
               transition-all
               duration-300
@@ -73,16 +71,16 @@ export default function OverviewCards() {
                   <Icon size={10} />
                 </div>
 
-                <span className="text-[10px] font-medium text-slate-600">
+                <span className="text-[12px] font-medium text-slate-600">
                   {card.label}
                 </span>
               </div>
 
             
             </div>
-              <div className="flex p-4  items-center justify-between">
+              <div className="flex px-4 py-2  items-center justify-between">
                  {/* Value */}
-            <h2 className="text-sm font-bold tracking-tight text-slate-900">
+            <h2 className="text-[15px] font-bold tracking-tight text-slate-900">
               {card.value}
             </h2> 
               <span
@@ -105,8 +103,8 @@ export default function OverviewCards() {
             </div>
 
             {/* Footer */}
-            <div className="px-4 flex items-center justify-between">
-              <p className="text-slate-500 text-sm">
+            <div className="px-4  flex items-center justify-between">
+              <p className="text-slate-500 text-[11px]">
                 {card.subtitle}
               </p>
 
