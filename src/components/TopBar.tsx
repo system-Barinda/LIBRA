@@ -58,13 +58,11 @@ export default function OverviewCards() {
             className="
               bg-white
               rounded-2xl
-              border
-              border-slate-400
               shadow-sm
               hover:shadow-md
               transition-all
               duration-300
-              h-20
+              h-30
               
             "
           >
@@ -82,15 +80,13 @@ export default function OverviewCards() {
 
             
             </div>
-              <div className="flex items-center gap-3">
-
-
+              <div className="flex p-4  items-center justify-between">
                  {/* Value */}
-            <h2 className="mt-5 text-sm font-bold tracking-tight text-slate-900">
+            <h2 className="text-sm font-bold tracking-tight text-slate-900">
               {card.value}
             </h2> 
               <span
-                className={`flex border items-center gap-1 rounded-full  text-[8px] font-semibold ${
+                className={`flex  border items-center gap-1 rounded-full  text-[8px] font-semibold ${
                   card.trend === "up"
                     ? "bg-emerald-50 text-emerald-600"
                     : "bg-red-50 text-red-500"
@@ -109,14 +105,14 @@ export default function OverviewCards() {
             </div>
 
             {/* Footer */}
-            <div className="mt-2 flex items-center justify-between">
-              <p className="text-[6px] text-slate-500">
+            <div className="px-4 flex items-center justify-between">
+              <p className="text-slate-500 text-sm">
                 {card.subtitle}
               </p>
 
-              <p className="text-[6px] text-slate-400">
+              {/* <p className=" txet-sm text-slate-400">
                 {card.note}
-              </p>
+              </p> */}
             </div>
           </div>
         );
