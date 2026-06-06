@@ -5,8 +5,8 @@ import TopBorrowedBooks from "../components/TopBorrowedBooks";
 
 function Dashboard() {
   return (
-    <div className="bg-amber-300 flex justify-around">
-    <div className="p-6  w-[60%]">
+    <div className="bg-amber-300 flex flex-col justify-around">
+    <div className=" w-full">
       {/* Top Section */}
       <TopBar />
 
@@ -41,7 +41,7 @@ function Dashboard() {
     </div>
 
 
-    <div className=" w-[40%] h-screen border border-slate-800"> <TopBorrowedBooks /></div>
+    <div className=" w-full h-screen border border-slate-800"> <TopBorrowedBooks /></div>
   </div>);
 }
 
