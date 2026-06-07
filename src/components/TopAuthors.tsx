@@ -41,11 +41,11 @@ const authors: Author[] = [
 
 export default function TopAuthors() {
   return (
-    <div className="w-full bg-[#f8f9fa] dark:bg-slate-900 rounded-2xl p-4 sm:p-6">
+    <div className="w-full bg-[#f8f9fa] rounded-2xl p-4 sm:p-6">
       
       {/* Header Section */}
       <div className="mb-5 flex items-center justify-between gap-4">
-        <h2 className="text-lg font-bold text-slate-800 dark:text-white tracking-tight">
+        <h2 className="text-lg font-bold text-slate-800 dark:text-black tracking-tight">
           Top Authors
         </h2>
 
@@ -56,11 +56,11 @@ export default function TopAuthors() {
       </div>
 
       {/* Main Container Card */}
-      <div className="bg-white dark:bg-slate-950 rounded-2xl shadow-sm border border-slate-100/60 dark:border-slate-800/60 divide-y divide-slate-100 dark:divide-slate-900">
+      <div className="bg-white  text-slate-900">
         {authors.map((author) => (
           <div
             key={author.id}
-            className="flex items-center justify-between p-4 sm:p-5 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-900/40 first:rounded-t-2xl last:rounded-b-2xl"
+            className="flex items-center justify-between p-4 sm:p-5 transition-colors first:rounded-t-2xl last:rounded-b-2xl"
           >
             {/* Left side: Avatar & Info */}
             <div className="flex items-center gap-4 min-w-0">

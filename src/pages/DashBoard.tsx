@@ -1,6 +1,7 @@
 import ActivityPanel from "../components/ActivityPanel";
 import CategoryAndRevenueBreakdown from "../components/CategoryAndRevenueBreakdown";
 import OverviewCards from "../components/OverviewCards";
+import TopAuthors from "../components/TopAuthors";
 import TopBar from "../components/TopBar";
 import TopBorrowedBooks from "../components/TopBorrowedBooks";
 
@@ -30,6 +31,9 @@ function Dashboard() {
       {/* Right / Sidebar Column (Takes up roughly 1/3 space on desktop) */}
       <div className="w-full md:w-1/3  rounded-xl p-4 text-slate-900/50 h-fit">
         <TopBorrowedBooks />
+        <br />
+
+        <TopAuthors />
       </div>
 
     </div>
