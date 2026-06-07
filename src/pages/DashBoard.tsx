@@ -6,27 +6,34 @@ import TopBorrowedBooks from "../components/TopBorrowedBooks";
 
 function Dashboard() {
   return (
-    <div className="flex flex-col justify-around md:flex-row  md:w-[70%] border border-slate-800">
-    <div className="w-full">
-      {/* Top Section */}
-      <TopBar />
-
-      {/* Overview Cards */}
-      <div className="mt-6">
-        <OverviewCards />
-      </div>
-
-      {/* CategoryAndRevenueBreakdown */}
-      <div className="mt-6">
-        <CategoryAndRevenueBreakdown />
-      </div>
-       
+    <div className="flex flex-col md:flex-row gap-6 w-full min-h-screen p-4 bg-white text-slate-800">
       
+      {/* Left / Main Content Column (Takes up roughly 2/3 space on desktop) */}
+      <div className="w-full md:w-2/3 flex flex-col gap-6">
+        {/* Top Section */}
+        <TopBar />
+
+        {/* Overview Cards */}
+        <div>
+          <OverviewCards />
+        </div>
+
+        {/* Category & Revenue Breakdown */}
+        <div>
+          <CategoryAndRevenueBreakdown />
+        </div>
+        
+        {/* Activity Panel (Included if needed, currently imported but unused) */}
+        {/* <div><ActivityPanel /></div> */}
+      </div>
+
+      {/* Right / Sidebar Column (Takes up roughly 1/3 space on desktop) */}
+      <div className="w-full md:w-1/3  rounded-xl p-4 text-slate-900/50 h-fit">
+        <TopBorrowedBooks />
+      </div>
+
     </div>
-
-
-    <div className=" w-full h-screen border border-slate-800 md:w-[100%]"> <TopBorrowedBooks /></div>
-  </div>);
+  );
 }
 
 export default Dashboard;
