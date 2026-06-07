@@ -6,7 +6,7 @@ import TopBorrowedBooks from "../components/TopBorrowedBooks";
 
 function Dashboard() {
   return (
-    <div className="flex flex-col justify-around">
+    <div className="flex flex-col justify-around md:flex-row  md:w-[70%] border border-slate-800">
     <div className="w-full">
       {/* Top Section */}
       <TopBar />
@@ -25,7 +25,7 @@ function Dashboard() {
     </div>
 
 
-    <div className=" w-full h-screen border border-slate-800"> <TopBorrowedBooks /></div>
+    <div className=" w-full h-screen border border-slate-800 md:w-[100%]"> <TopBorrowedBooks /></div>
   </div>);
 }
 
