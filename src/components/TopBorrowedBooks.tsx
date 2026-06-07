@@ -30,15 +30,15 @@ const books: Book[] = [
 
 export default function TopBorrowedBooks() {
   return (
-    <div className="w-full bg-[#f4f6f8] text-slate-500 p-4 md:w-[110%] sm:p-6">
+    <div className="w-full bg-white text-slate-500 p-4 md:w-[110%] sm:p-6">
       
       {/* Header Section */}
       <div className="mb-6 flex items-center justify-between gap-4">
-        <h2 className="text-lg font-bold text-slate-800 tracking-tight">
+        <h2 className="text-[10px] font-bold text-slate-800 tracking-tight">
           Top Borrowed Books
         </h2>
 
-        <button className="flex items-center gap-2 rounded-xl bg-white dark:bg-slate-800 px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 shadow-sm border border-slate-100 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors shrink-0">
+        <button className="flex items-center gap-2 bg-white px-4 py-2 text-[10px] font-medium text-slate-900  hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors shrink-0">
           This Month
           <ChevronDown size={16} className="text-slate-500" />
         </button>
