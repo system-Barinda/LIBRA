@@ -22,6 +22,7 @@ const revenueData = [
 
 export default function CategoryAndRevenueBreakdown() {
   // Generates smooth, micro-spaced segments that stretch or contract fluidly across any screen width
+  // generates somoth, micro spaced segments that stretch ror contract fluidly across any screen width
   const renderSegmentedBar = () => {
     return (
       <div className="flex w-full items-center gap-[3px] sm:gap-[4px]">
