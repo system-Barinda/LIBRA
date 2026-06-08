@@ -45,7 +45,7 @@ const authors: Author[] = [
 
 export default function TopAuthors() {
   return (
-    <div className="w-full rounded-2xl bg-[#f5f6f8] p-5">
+    <div className="w-full bg-[#f5f6f8]  border border-red-300">
       {/* Header */}
       <div className="mb-5 flex items-center justify-between">
         <h2 className="text-lg font-semibold text-[#1f2937]">
@@ -59,7 +59,7 @@ export default function TopAuthors() {
       </div>
 
       {/* Authors Card */}
-      <div className="overflow-hidden rounded-2xl bg-white border border-gray-100">
+      <div className="overflow-hidden rounded-2xl bg-gray-500 border border-gray-100 gap-3">
         {authors.map((author, index) => (
           <div
             key={author.id}
@@ -80,7 +80,7 @@ export default function TopAuthors() {
               </div>
 
               <div>
-                <h3 className="text-[15px] font-semibold text-gray-800">
+                <h3 className="text-[13px] font-semibold text-gray-800">
                   {author.name}
                 </h3>
 
