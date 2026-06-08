@@ -63,14 +63,14 @@ export default function TopAuthors() {
         {authors.map((author, index) => (
           <div
             key={author.id}
-            className={`flex items-center justify-between px-4 py-4 transition-colors hover:bg-gray-50 ${
+            className={`flex items-center justify-between px-4  border border-red-800 py-4 transition-colors hover:bg-gray-50 ${
               index !== authors.length - 1
                 ? "border-b border-gray-100"
                 : ""
             }`}
           >
             {/* Left Side */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center ">
               <div className="h-10 w-10 overflow-hidden rounded-full border-[3px] border-orange-400">
                 <img
                   src={author.avatar}
