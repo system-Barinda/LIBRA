@@ -45,7 +45,7 @@ const authors: Author[] = [
 
 export default function TopAuthors() {
   return (
-    <div className="w-full">
+    <div className="w-full ">
       {/* Header */}
       <div className="mb-4 flex items-center justify-between">
         <h2 className="text-xl font-bold text-[#232B35]">
@@ -59,11 +59,11 @@ export default function TopAuthors() {
       </div>
 
       {/* Authors List */}
-      <div className="overflow-hidden rounded-3xl bg-white">
+      <div className="overflow-hidden  bg-white">
         {authors.map((author, index) => (
           <div
             key={author.id}
-            className={`flex items-center justify-between  ${
+            className={`flex p-2 items-center justify-between  ${
               index !== authors.length - 1
                 ? "border-b border-gray-100"
                 : ""
@@ -84,7 +84,7 @@ export default function TopAuthors() {
                   {author.name}
                 </h3>
 
-                <div className="mt-1  border flex items-center gap-1 text-sm text-gray-400">
+                <div className="mt-1   flex items-center gap-1 text-sm text-gray-400">
                   <BookOpen size={13} />
                   <span>{author.booksCount} Books</span>
                 </div>
@@ -92,7 +92,7 @@ export default function TopAuthors() {
             </div>
 
             {/* Right Side */}
-            <div className="flex mt-7  border items-center gap-1 text-sm text-gray-400">
+            <div className="flex mt-7  items-center gap-1 text-sm text-gray-400">
               <Users size={14} />
               <span>{author.borrowersCount} Borrowers</span>
             </div>
