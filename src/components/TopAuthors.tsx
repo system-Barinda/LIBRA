@@ -180,21 +180,22 @@ export default function TopAuthors() {
           >
             {/* Left Side */}
             <div className="flex items-center ">
-              <div className="flex">
-                 <div className="h-10 w-10 overflow-hidden rounded-full border-[3px] border-orange-400">
-                <img src={author.avatar} alt={author.name} className="h-full w-full object-cover" />
-              </div>
-                  
-                  <div>
-                <h3 className="text-[13px] font-semibold text-gray-800">
-                  {author.name}
-                </h3>  
-              </div> 
 
-              </div>
+              <div className="flex onetop border border-red-500 items-center gap-3">
+                   <div className="h-10 w-10 overflow-hidden rounded-full border-[3px] border-orange-400">
+                   <img src={author.avatar} alt={author.name} className="h-full w-full object-cover" />
+                   </div>
+                  
+                    <div>
+                    <h3 className="text-[13px] font-semibold text-gray-800">
+                     {author.name}
+                    </h3>  
+                     </div> 
+
+                   </div>
              
 
-               <div className="flex">
+               <div className="flex belowTop  border ">
 
                <div className="mt-1 flex items-center gap-1 text-xs text-gray-400">
                   <BookOpen size={12} />
