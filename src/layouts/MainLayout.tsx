@@ -45,7 +45,7 @@ export default function MainLayout() {
 
           <button
             onClick={() => setShowMobileMenu(true)}
-            className="p-2 rounded-lg hover:bg-slate-100"
+            className="p-2 bg-white text-slate-900 rounded-lg hover:bg-slate-100"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

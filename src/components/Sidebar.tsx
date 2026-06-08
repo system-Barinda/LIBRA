@@ -10,9 +10,9 @@ const nav = [
   { label: "Members", path: "/members" },
   { label: "Settings", path: "/settings" },
 ];
-export default function Sidebar({ closeMenu, isMobile = false }) {
+export default function Sidebar({ closeMenu, isMobile = false }:any) {
   return (
-    <aside className="bg-gray-300 p-6 w-full h-full min-h-screen flex flex-col justify-between select-none">
+    <aside className="bg-gray-100 p-6 w-full h-full min-h-screen flex flex-col justify-between select-none">
       <div>
         {/* Sidebar Header Title Info */}
         <div className="mb-8 flex items-center justify-between gap-3">
