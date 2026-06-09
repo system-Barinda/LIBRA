@@ -69,7 +69,7 @@ export default function ActivityPanel() {
 
 
       {/* Table */}
-      <div className="overflow-hidden border border-red-800 rounded-2xl border border-gray-100">
+      <div className="overflow-hidden border border-red-800  border border-gray-100">
         {/* Header Row - Hidden on Mobile */}
         <div className="border-b flex items-center justify-between px-6 py-3 text-xs font-semibold text-gray-400 uppercase">
           <div className="flex items-center gap-1">
@@ -91,13 +91,13 @@ export default function ActivityPanel() {
               className="
                 p-4
                 md:grid md:grid-cols-2 md:items-center md:px-6
-                hover:bg-gray-50 transition
+                hover:bg-gray-50 transition 
               "
             >
               {/* Mobile Layout */}
-              <div className="space-y-3 md:space-y-0">
+              <div className="space-y-3 md:space-y-0 flex text-[10px]">
                 {/* Book */}
-                <div className="flex items-center gap-3">
+                <div className="flex items-center border">
                   <div
                     className={`h-14 w-10 md:h-16 md:w-12 flex-shrink-0 rounded-md ${item.coverColor}`}
                   />
@@ -114,7 +114,7 @@ export default function ActivityPanel() {
                 </div>
 
                 {/* Member (Mobile) */}
-                <div className="flex items-center justify-between md:hidden">
+                <div className="border flex items-center justify-between md:hidden">
                   <div className="flex items-center gap-3">
                     <div className="h-9 w-9 rounded-full bg-orange-500 flex items-center justify-center text-white font-semibold">
                       {item.member.charAt(0)}
