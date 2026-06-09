@@ -34,6 +34,9 @@ function Dashboard() {
         <br />
 
         <TopAuthors />
+        <br />
+
+        <ActivityPanel />
       </div>
 
     </div>
