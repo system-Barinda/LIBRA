@@ -41,7 +41,7 @@ const activity = [
 
 export default function ActivityPanel() {
   return (
-    <div className="w-full rounded-3xl bg-white p-4 sm:p-6 lg:p-8 shadow-sm">
+    <div className="w-full border bg-white">
       {/* Header */}
       <div className="mb-5 flex items-center justify-between">
         <h2 className="text-lg sm:text-xl font-bold text-gray-800">
@@ -66,10 +66,12 @@ export default function ActivityPanel() {
         </button>
       </div>
 
+
+
       {/* Table */}
-      <div className="overflow-hidden rounded-2xl border border-gray-100">
+      <div className="overflow-hidden border border-red-800 rounded-2xl border border-gray-100">
         {/* Header Row - Hidden on Mobile */}
-        <div className="hidden md:grid md:grid-cols-2 bg-gray-50 px-6 py-3 text-sm font-medium text-gray-500 border-b">
+        <div className="border-b flex items-center justify-between px-6 py-3 text-xs font-semibold text-gray-400 uppercase">
           <div className="flex items-center gap-1">
             Book
             <span className="text-xs">↕</span>
