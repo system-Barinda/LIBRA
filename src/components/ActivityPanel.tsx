@@ -95,46 +95,54 @@ export default function ActivityPanel() {
               "
             >
               {/* Mobile Layout */}
-              <div className="space-y-3 md:space-y-0 flex text-[10px]">
+              <div className="space-y-3 h-20 md:space-y-0 flex text-[10px]">
                 {/* Book */}
                 <div className="flex items-center border">
                   <div
-                    className={`h-14 w-10 md:h-16 md:w-12 flex-shrink-0 rounded-md ${item.coverColor}`}
+                    className={`h-10 w-6 md:h-16 md:w-12 flex-shrink-0 rounded-md ${item.coverColor}`}
                   />
 
                   <div className="min-w-0">
-                    <h4 className="text-sm font-semibold text-gray-800 leading-tight">
+                    <h4 className="text-[10px]  text-gray-800 leading-tight">
                       {item.book}
                     </h4>
 
-                    <p className="text-xs text-gray-400 mt-1">
+                    <p className="text-[9px] text-gray-400 mt-1">
                       {item.author}
                     </p>
                   </div>
                 </div>
 
                 {/* Member (Mobile) */}
-                <div className="border flex items-center justify-between md:hidden">
-                  <div className="flex items-center gap-3">
-                    <div className="h-9 w-9 rounded-full bg-orange-500 flex items-center justify-center text-white font-semibold">
+                <div className="border flex flex-col items-center justify-between md:hidden">
+                  <div className="flex items-center gap-3 border ">
+                    <div className="h-5 w-5 rounded-full bg-orange-500 flex items-center justify-center text-white font-semibold">
                       {item.member.charAt(0)}
                     </div>
 
-                    <div>
-                      <p className="text-sm font-semibold text-gray-800">
+                    <div className="border">
+                      <p className="  text-[10px] font-semibold text-gray-800">
                         {item.member}
                       </p>
-                      <p className="text-xs text-gray-400">
-                        {item.memberId}
-                      </p>
+                     
                     </div>
                   </div>
 
-                  <span
-                    className={`rounded-lg px-2 py-1 text-[11px] font-semibold ${item.badgeColor}`}
+                 <div className="semi-details flex mb-2  bg-red-400">
+                   <p className=" border text-[6px] text-gray-400">
+                        {item.memberId}
+                      </p>
+
+                      <span
+                    className={`rounded-lg px-2 py-1 text-[6px] font-semibold ${item.badgeColor}`}
                   >
                     {item.membership}
                   </span>
+                 </div>
+
+
+
+                  
                 </div>
               </div>
 
