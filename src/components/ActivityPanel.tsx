@@ -1,98 +1,123 @@
-const activity = [
-  { book: 'Claudia’s Life Story', member: 'Livia Hart', status: 'Returned', due: 'Sept 14, 2035' },
-  { book: 'The Coffee Shop Next Door', member: 'Noah Trent', status: 'Borrowed', due: 'Sept 11, 2035' },
-  { book: 'The Book of Prayer', member: 'Celina Moore', status: 'Returned', due: 'Sept 02, 2035' },
-  { book: 'Floral Dreams', member: 'Isla Ray', status: 'Overdue', due: 'Sept 05, 2035' },
-]
+import React from 'react'
 
-const recent = [
-  { title: 'Inventory Updated', detail: 'Admin added 15 new books to Science & Tech.' },
-  { title: 'New Member Registered', detail: 'Olive James signed up for a Standard membership.' },
-  { title: 'Book Returned', detail: 'Echoes of Apart returned by Livia Hart.' },
+// Updated data matching image_46b657.png exactly
+const activity = [
+  { 
+    book: 'Claudia’s Life Story', 
+    author: 'Mira Ellison',
+    member: 'Livia Hart', 
+    memberId: 'MBR-2081',
+    membership: 'Premium',
+    badgeColor: 'bg-[#1e293b] text-white', // Dark Navy
+    coverColor: 'bg-[#ebdcd5]'
+  },
+  { 
+    book: 'The Coffee Shop Next Door', 
+    author: 'Avery Davis',
+    member: 'Noah Trent', 
+    memberId: 'MBR-1643',
+    membership: 'Standard',
+    badgeColor: 'bg-[#fbe2d3] text-[#c25e3a]', // Light Orange/Peach
+    coverColor: 'bg-[#d0e1ed]'
+  },
+  { 
+    book: 'The Book of Prayer', 
+    author: 'Elara Quinn',
+    member: 'Celine Moore', 
+    memberId: 'MBR-3095',
+    membership: 'Basic',
+    badgeColor: 'bg-[#f1f3f5] text-[#495057]', // Neutral Gray
+    coverColor: 'bg-[#dfdec4]'
+  },
+  { 
+    book: 'Floral Dreams', 
+    author: 'Claudia Alexa',
+    member: 'Isla Ray', 
+    memberId: 'MBR-2389',
+    membership: 'Standard',
+    badgeColor: 'bg-[#fbe2d3] text-[#c25e3a]',
+    coverColor: 'bg-[#edd9db]'
+  },
 ]
 
 export default function ActivityPanel() {
   return (
-    <section className="grid gap-6 xl:grid-cols-[1.2fr_0.8fr]">
-      <div className="border bg-[#F7F6F4] p-6 shadow-2xl/20 backdrop-blur-xl">
-        <div className="flex items-center justify-between gap-4">
-          <div>
-            <p className="text-sm text-slate-400">Library Activity</p>
-            <h3 className="mt-2 text-2xl font-semibold text-white">Last week</h3>
+    <div className="w-full max-w-4xl rounded-3xl bg-white p-8 font-sans shadow-sm">
+      {/* Header Section */}
+      <div className="mb-6 flex items-center justify-between">
+        <h2 className="text-xl font-bold text-neutral-800">Library Activity</h2>
+        
+        {/* Dropdown Styled Selector */}
+        <button className="flex items-center gap-2 rounded-xl bg-neutral-100 px-4 py-2.5 text-sm font-medium text-neutral-700 hover:bg-neutral-200 transition-colors">
+          Last Week
+          <svg className="h-4 w-4 text-neutral-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
+
+      {/* Table Structure */}
+      <div className="w-full overflow-hidden rounded-xl border border-neutral-100">
+        {/* Table Column Headers */}
+        <div className="grid grid-cols-2 bg-neutral-50/70 px-6 py-3 text-sm font-medium text-neutral-500 border-b border-neutral-100">
+          <div className="flex items-center gap-1.5 cursor-pointer select-none">
+            Book
+            <span className="text-xs text-neutral-400">↕</span>
           </div>
-          <span className="rounded-full bg-slate-800/80 px-3 py-1 text-sm text-slate-300">Updated</span>
+          <div className="flex items-center gap-1.5 cursor-pointer select-none">
+            Member Info
+            <span className="text-xs text-neutral-400">↕</span>
+          </div>
         </div>
 
-        <div className="mt-6 space-y-4">
-          {activity.map((item) => (
-            <div key={item.book} className="rounded-3xl border border-slate-800/70 bg-slate-950/70 p-4">
-              <div className="flex items-center justify-between gap-4 text-sm text-slate-400">
-                <span>{item.member}</span>
-                <span>{item.due}</span>
+        {/* Table Body Content Rows */}
+        <div className="divide-y divide-neutral-100">
+          {activity.map((item, index) => (
+            <div key={index} className="grid grid-cols-2 items-center px-6 py-4 hover:bg-neutral-50/40 transition-colors">
+              
+              {/* Left Column: Book Details */}
+              <div className="flex items-center gap-4">
+                {/* Book Cover Placeholder */}
+                <div className={`h-16 w-12 flex-shrink-0 rounded-md ${item.coverColor} border border-neutral-200/40 shadow-xs flex items-end p-1`}>
+                  <div className="w-full h-2 bg-white/40 rounded-xs" />
+                </div>
+                <div className="overflow-hidden">
+                  <h4 className="truncate text-sm font-semibold text-neutral-800">{item.book}</h4>
+                  <p className="text-xs text-neutral-400 mt-0.5">{item.author}</p>
+                </div>
               </div>
-              <p className="mt-3 text-base font-semibold text-white">{item.book}</p>
-              <span className={`mt-3 inline-flex rounded-full px-3 py-1 text-xs font-semibold ${
-                item.status === 'Overdue'
-                  ? 'bg-rose-500/15 text-rose-300'
-                  : 'bg-emerald-500/15 text-emerald-300'
-              }`}
-              >
-                {item.status}
-              </span>
+
+              {/* Right Column: Member Details */}
+              <div className="flex items-center gap-3">
+                {/* Avatar Graphic Component */}
+                <div className="relative h-10 w-10 flex-shrink-0 rounded-full bg-orange-500 flex items-center justify-center overflow-hidden border border-orange-200">
+                  {/* Styled minimalist face icon matching image profiles */}
+                  <div className="w-6 h-6 rounded-full bg-neutral-800 mt-2 relative">
+                    <div className="absolute -top-1 left-1.5 w-3 h-2 bg-amber-100 rounded-b-md" />
+                  </div>
+                </div>
+                
+                <div className="flex flex-1 items-center justify-between gap-2">
+                  <div>
+                    <h4 className="text-sm font-semibold text-neutral-800">{item.member}</h4>
+                    <p className="text-xs text-neutral-400 mt-0.5">{item.memberId}</p>
+                  </div>
+                  {/* Membership Badge */}
+                  <span className={`rounded-lg px-2.5 py-1 text-xs font-bold ${item.badgeColor}`}>
+                    {item.membership}
+                  </span>
+                </div>
+              </div>
+
             </div>
           ))}
         </div>
       </div>
 
-      <div className="space-y-6">
-        <div className="border bg-[#F7F6F4] p-6 shadow-2xl/20 backdrop-blur-xl">
-          <div className="flex items-center justify-between gap-4">
-            <div>
-              <p className="text-sm text-slate-400">Top Authors</p>
-              <h3 className="mt-2 text-2xl font-semibold text-white">This week</h3>
-            </div>
-            <span className="rounded-full bg-slate-800/80 px-3 py-1 text-sm text-slate-300">Live</span>
-          </div>
-          <ul className="mt-6 space-y-3 text-sm text-slate-300">
-            <li className="rounded-3xl bg-slate-950/70 p-4">
-              <div className="flex items-center justify-between">
-                <span>Ava Thornton</span>
-                <span className="font-semibold text-white">6 books</span>
-              </div>
-              <p className="mt-1 text-slate-400">365 borrowers</p>
-            </li>
-            <li className="rounded-3xl bg-slate-950/70 p-4">
-              <div className="flex items-center justify-between">
-                <span>Leo Vance</span>
-                <span className="font-semibold text-white">5 books</span>
-              </div>
-              <p className="mt-1 text-slate-400">342 borrowers</p>
-            </li>
-            <li className="rounded-3xl bg-slate-950/70 p-4">
-              <div className="flex items-center justify-between">
-                <span>Mira Ellison</span>
-                <span className="font-semibold text-white">4 books</span>
-              </div>
-              <p className="mt-1 text-slate-400">326 borrowers</p>
-            </li>
-          </ul>
-        </div>
-
-        <div className="border bg-[#F7F6F4] p-6 shadow-2xl/20 backdrop-blur-xl">
-          <div>
-            <p className="text-sm text-slate-400">Recent Activities</p>
-            <h3 className="mt-2 text-2xl font-semibold text-white">This week</h3>
-          </div>
-          <div className="mt-6 space-y-3 text-slate-300">
-            {recent.map((item) => (
-              <div key={item.title} className="rounded-3xl bg-slate-950/70 p-4">
-                <p className="font-semibold text-white">{item.title}</p>
-                <p className="mt-1 text-sm text-slate-400">{item.detail}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+      {/* Decorative horizontal scrollbar mimicking the platform layer at the bottom */}
+      <div className="mt-4 h-1.5 w-full bg-neutral-100 rounded-full overflow-hidden">
+        <div className="h-full w-3/5 bg-neutral-300 rounded-full" />
       </div>
-    </section>
+    </div>
   )
 }
