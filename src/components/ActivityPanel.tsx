@@ -96,9 +96,9 @@ export default function ActivityPanel() {
               "
             >
               {/* Mobile Layout */}
-              <div className="h-20 w-full flex gap-10 text-[10px] bg-amber-300">
+              <div className="h-20 w-full flex gap-2 text-[10px] bg-amber-300">
                 {/* Book */}
-                <div className="flex items-center border">
+                <div className=" w-full flex items-center border">
                   <div
                     className={`h-10 w-6 md:h-16 md:w-12 flex-shrink-0 rounded-md ${item.coverColor}`}
                   />
@@ -115,21 +115,18 @@ export default function ActivityPanel() {
                 </div>
 
                 {/* Member (Mobile) */}
-                <div className=" bg-red-600  h-20 w-full border flex flex-col items-center justify-between md:hidden">
-                  <div className="flex items-center gap-3 border ">
-                    <div className="h-5 w-5 rounded-full bg-orange-500 flex items-center justify-center text-white font-semibold">
+                <div className="   h-20 w-full border flex items-center justify-between md:hidden">
+                  <div className="flex  flex-col items-center gap-3 border ">
+                    <div className="h-5  rounded-full bg-orange-500 flex gap-4 items-center justify-center text-white font-semibold">
                       {item.member.charAt(0)}
-                    </div>
-
-                    <div className="border">
                       <p className="  text-[10px] font-semibold text-gray-800">
                         {item.member}
                       </p>
-                     
                     </div>
-                  </div>
 
-                 <div className="semi-details flex mb-2  bg-red-400">
+
+
+                    <div className="semi-details flex mb-2  bg-red-400">
                    <p className=" border text-[6px] text-gray-400">
                         {item.memberId}
                       </p>
@@ -140,6 +137,9 @@ export default function ActivityPanel() {
                     {item.membership}
                   </span>
                  </div>
+                  </div>
+
+                 
 
 
 
