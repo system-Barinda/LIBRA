@@ -69,7 +69,7 @@ export default function ActivityPanel() {
 
 
       {/* Table */}
-      <div className="overflow-hidden border border-red-800  border border-gray-100">
+      <div className="overflow-hidden border border-red-800">
         {/* Header Row - Hidden on Mobile */}
         <div className="border-b flex items-center justify-between px-6 py-3 text-xs font-semibold text-gray-400 uppercase">
           <div className="flex items-center gap-1">
@@ -84,18 +84,19 @@ export default function ActivityPanel() {
         </div>
 
         {/* Rows */}
-        <div className="divide-y divide-gray-100">
+        <div className="divide-y divide-gray-100 border bg-amber-100 space-x-2">
           {activity.map((item, index) => (
             <div
               key={index}
               className="
                 p-4
-                md:grid md:grid-cols-2 md:items-center md:px-6
+                bg-blue-300
+                flex 
                 hover:bg-gray-50 transition 
               "
             >
               {/* Mobile Layout */}
-              <div className="space-y-3 h-20 md:space-y-0 flex text-[10px]">
+              <div className="h-20 w-full flex gap-10 text-[10px] bg-amber-300">
                 {/* Book */}
                 <div className="flex items-center border">
                   <div
@@ -114,7 +115,7 @@ export default function ActivityPanel() {
                 </div>
 
                 {/* Member (Mobile) */}
-                <div className="border flex flex-col items-center justify-between md:hidden">
+                <div className=" bg-red-600  h-20 w-full border flex flex-col items-center justify-between md:hidden">
                   <div className="flex items-center gap-3 border ">
                     <div className="h-5 w-5 rounded-full bg-orange-500 flex items-center justify-center text-white font-semibold">
                       {item.member.charAt(0)}
