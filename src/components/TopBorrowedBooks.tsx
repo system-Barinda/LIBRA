@@ -30,7 +30,7 @@ const books: Book[] = [
 
 export default function TopBorrowedBooks() {
   return (
-    <div className="w-full bg-white text-slate-500 p-4 md:w-[110%] sm:p-6">
+    <div className="w-full bg-white text-slate-500 md:w-[100%]">
       
       {/* Header Section */}
       <div className="mb-6 flex items-center justify-between gap-4">
