@@ -20,7 +20,7 @@ function Dashboard() {
         </div>
 
         {/* Category & Revenue Breakdown */}
-        <div>
+        <div className="">
           <CategoryAndRevenueBreakdown />
         </div>
         

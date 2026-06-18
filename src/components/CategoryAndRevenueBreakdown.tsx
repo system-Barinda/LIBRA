@@ -46,10 +46,10 @@ export default function CategoryAndRevenueBreakdown() {
   };
 
   return (
-    <section className="grid w-full gap-6 p-4 sm:p-6 bg-[#FBFBFA] xl:grid-cols-[1.20fr_1fr] lg:grid-cols-1 md:grid-cols-1">
+    <section className=" grid gap-3 lg:gap-3 w-fullbg-[#FBFBFA] xl:grid-cols-[1.20fr_1fr] lg:grid-cols-1 md:grid-cols-1">
       
       {/* LEFT PANEL: BOOK CATEGORIES COMPONENT */}
-      <div className="flex flex-col justify-between rounded-[24px] border border-slate-100/50 bg-white p-5 sm:p-6 shadow-sm">
+      <div className="flex flex-col justify-between rounded-[24px]  lg:w-[90%] border border-slate-100/50 bg-white p-5  shadow-sm">
         {/* Module Header */}
         <div className="flex items-center justify-between gap-4 mb-2">
           <h3 className="text-base sm:text-lg font-bold text-[#1E2229] whitespace-nowrap">Book Categories</h3>
@@ -81,7 +81,7 @@ export default function CategoryAndRevenueBreakdown() {
       </div>
 
       {/* RIGHT PANEL: REVENUE BREAKDOWN DONUT COMPONENT */}
-      <div className="flex flex-col justify-between rounded-[24px] border border-slate-100/50 bg-white p-5 sm:p-6 shadow-sm">
+      <div className="flex flex-col justify-between rounded-[24px] border border-slate-100/50 bg-white p-5 lg:mr-40 lg:w-[100%] shadow-sm">
         {/* Module Header */}
         <div className="flex items-center justify-between gap-4 mb-4">
           <h3 className="text-base sm:text-lg font-bold text-[#1E2229] whitespace-nowrap">Revenue Breakdown</h3>

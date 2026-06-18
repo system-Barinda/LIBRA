@@ -117,7 +117,7 @@ export default function OverviewCards() {
       </div>
 
       {/* 2. REVENUE TRENDS CARD */}
-      <div className="bg-white  border border-slate-100/50 flex flex-col justify-between">
+      <div className="bg-white border border-slate-100/50 flex flex-col justify-between">
         {/* Header section */}
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-lg font-bold text-[#1E2229]">Revenue</h3>
