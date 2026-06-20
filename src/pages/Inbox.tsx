@@ -5,7 +5,7 @@ import EmailViewer from "../components/inbox/EmailViewer";
 export default function Inbox() {
   return (
     <div className="min-h-screen bg-[#f4f4f4] p-3 md:p-0">
-      <div className="mx-auto flex h-[calc(100vh-24px)] max-w-[1400px] overflow-hidden rounded-[28px] bg-white shadow-lg md:h-screen md:max-w-none md:rounded-none md:shadow-none">
+      <div className="mx-auto flex h-[calc(100vh-24px)] w-full overflow-hidden rounded-[28px] bg-white shadow-lg md:h-screen  md:rounded-none md:shadow-none">
 
         {/* Categories */}
         <div className="hidden w-[260px] border-r border-gray-200 bg-white md:block">
@@ -13,7 +13,7 @@ export default function Inbox() {
         </div>
 
         {/* Email List */}
-        <div className="w-full md:w-[400px] border-r border-gray-200 bg-[#fafafa]">
+        <div className="w-full  border-r border-gray-900 bg-[#fafafa]">
           <EmailList />
         </div>
 
