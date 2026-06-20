@@ -88,7 +88,7 @@ export default function EmailViewer() {
         <div className="p-6 border-t">
 
           <textarea
-            rows="5"
+            rows={5}
             placeholder="Type something..."
             className="w-full rounded-2xl border p-5 resize-none outline-none focus:ring-2 focus:ring-orange-400"
           />

@@ -30,7 +30,7 @@ const emails = [
 
 export default function EmailList() {
   return (
-    <div className="h-full bg-[#fafaf8] flex flex-col">
+    <div className="border h-full w-full bg-[#d8d806] flex flex-col">
 
       {/* Top */}
       <div className="p-5">
@@ -54,7 +54,7 @@ export default function EmailList() {
       </div>
 
       {/* Emails */}
-      <div className="flex-1 overflow-auto px-5 pb-5">
+      <div className="border flex-1 overflow-auto px-5 pb-5">
 
         {emails.map((email, index) => (
           <div
