@@ -5,17 +5,25 @@ import EmailViewer from "../components/inbox/EmailViewer";
 export default function Inbox() {
   return (
     <div className="border border-gray-900 h-screen bg-[#f4f4f4] flex">
-     <div className="sidecontainer border h-screen w-[40%] text-black">
+     <div className="sidecontainer border h-screen w-[20%] text-black">
       
       {/* Categories */}
-        <div className="hidden w-[260px] border-r border-gray-200 bg-white md:block">
-
            <Categories />
 
-         </div>
         </div>
-        
-     <div className="rightcontainer border h-screen w-[60%] text-black bg-amber-300"><h1>done</h1></div>
+
+     <div className="rightcontainer border h-screen w-[80%] text-black bg-amber-300 flex">
+               {/* Email List */}
+                  <div className="w-full  border-r border-gray-200 bg-[#fafafa]">
+                       <EmailList />
+                  </div>
+
+
+                {/* Email Viewer */}
+                   <div className="hidden flex-1 bg-white lg:block">
+                    <EmailViewer />
+                  </div>
+     </div>
     </div>
   );
 }
