@@ -14,13 +14,13 @@ export default function Inbox() {
 
      <div className="rightcontainer border h-screen w-[80%] text-black bg-amber-300 flex">
                {/* Email List */}
-                  <div className="w-full  border-r border-gray-200 bg-[#fafafa]">
+                  <div className="w-[30%]  border-r border-gray-200 bg-[#fafafa]">
                        <EmailList />
                   </div>
 
 
                 {/* Email Viewer */}
-                   <div className="hidden flex-1 bg-white lg:block">
+                   <div className="bg-white">
                     <EmailViewer />
                   </div>
      </div>
