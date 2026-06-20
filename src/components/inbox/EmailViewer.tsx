@@ -3,100 +3,108 @@ import {
   Archive,
   Trash2,
   MoreVertical,
+  Send
 } from "lucide-react";
 
 export default function EmailViewer() {
   return (
-    <div className="flex flex-col h-full bg-white rounded-2xl border border-gray-200 overflow-hidden">
-      {/* Toolbar */}
-      <div className="flex items-center justify-between px-6 py-4 border-b">
-        <div className="flex items-center gap-4">
-          <button className="text-gray-500 hover:text-orange-500">
+    <div className="h-full bg-[#fafaf8] p-4">
+
+      <div className="bg-white rounded-3xl h-full flex flex-col shadow-sm">
+
+        {/* Toolbar */}
+        <div className="h-16 border-b px-6 flex items-center justify-between">
+
+          <div className="flex gap-6 text-gray-500">
+
             <ArrowLeft size={18} />
-          </button>
-
-          <button className="text-gray-500 hover:text-orange-500">
             <Archive size={18} />
-          </button>
-
-          <button className="text-gray-500 hover:text-red-500">
             <Trash2 size={18} />
-          </button>
-
-          <button className="text-gray-500 hover:text-orange-500">
             <MoreVertical size={18} />
-          </button>
-        </div>
 
-        <p className="text-sm text-gray-500">
-          September 27, 2025 • 09:22 AM
-        </p>
-      </div>
+          </div>
 
-      {/* Email Header */}
-      <div className="px-6 py-5 border-b">
-        <div className="flex items-center gap-4">
-          <img
-            src="https://i.pravatar.cc/80?img=32"
-            alt="avatar"
-            className="w-12 h-12 rounded-full"
-          />
-
-          <div>
-            <h3 className="font-semibold text-gray-900">
-              Livia Hart
-            </h3>
-
-            <p className="text-sm text-gray-500">
-              livia.hart@email.com
-            </p>
+          <div className="text-gray-400 text-sm">
+            September 27, 2025
           </div>
         </div>
-      </div>
 
-      {/* Email Content */}
-      <div className="flex-1 overflow-y-auto px-6 py-6">
-        <h2 className="text-xl font-semibold text-gray-900 mb-6">
-          Overdue Book Follow-up
-        </h2>
+        {/* Header */}
+        <div className="px-8 py-6 border-b">
 
-        <div className="space-y-4 text-gray-700 leading-7">
-          <p>Hi there,</p>
+          <div className="flex items-center gap-4">
 
-          <p>
-            I just returned Echoes of Astra this morning
-            via the return box at the west entrance.
-          </p>
+            <div className="w-12 h-12 rounded-full bg-orange-500 text-white flex items-center justify-center">
+              L
+            </div>
 
-          <p>
-            Could you please confirm if it is already
-            marked as returned in the system?
-          </p>
+            <div>
+              <h3 className="font-semibold text-lg">
+                Livia Hart
+              </h3>
 
-          <p>
-            I want to make sure I don't incur any late
-            fees.
-          </p>
-
-          <p>Thanks in advance,</p>
-
-          <p className="font-medium">Livia</p>
+              <p className="text-gray-400 text-sm">
+                livia.hart@email.com
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
 
-      {/* Reply Section */}
-      <div className="border-t p-6">
-        <textarea
-          placeholder="Type your reply..."
-          className="w-full h-32 resize-none rounded-xl border border-gray-200 p-4 focus:outline-none focus:ring-2 focus:ring-orange-500"
-        />
+        {/* Body */}
+        <div className="flex-1 overflow-auto px-8 py-8">
 
-        <div className="flex justify-end mt-4">
-          <button className="px-5 py-2.5 bg-orange-500 hover:bg-orange-600 text-white rounded-xl font-medium transition">
-            Send Reply
-          </button>
+          <h2 className="text-2xl font-semibold mb-10">
+            Overdue Book Follow-up
+          </h2>
+
+          <div className="space-y-8 text-gray-700 leading-8">
+
+            <p>Hi there,</p>
+
+            <p>
+              I just returned Echoes of Astra this morning via the return box at
+              the west entrance.
+            </p>
+
+            <p>
+              Could you please confirm if it's already marked as returned in the
+              system?
+            </p>
+
+            <p>
+              I want to make sure I don't incur any late fees.
+            </p>
+
+            <p>Thanks in advance,</p>
+
+            <p className="font-medium">
+              Livia
+            </p>
+
+          </div>
         </div>
+
+        {/* Reply */}
+        <div className="p-6 border-t">
+
+          <textarea
+            rows="5"
+            placeholder="Type something..."
+            className="w-full rounded-2xl border p-5 resize-none outline-none focus:ring-2 focus:ring-orange-400"
+          />
+
+          <div className="flex justify-end mt-4">
+
+            <button className="bg-orange-500 text-white px-6 py-3 rounded-xl flex gap-2 items-center">
+              <Send size={16} />
+              Send
+            </button>
+
+          </div>
+        </div>
+
       </div>
+
     </div>
   );
 }
