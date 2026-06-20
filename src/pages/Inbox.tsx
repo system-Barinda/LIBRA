@@ -12,7 +12,7 @@ export default function Inbox() {
 
         </div>
 
-     <div className="rightcontainer border h-screen w-[80%] text-black bg-amber-300 flex">
+     <div className="rightcontainer border h-screen w-[80%] text-black flex">
                {/* Email List */}
                   <div className="w-[30%]  border-r border-gray-200 bg-[#fafafa]">
                        <EmailList />
@@ -20,7 +20,7 @@ export default function Inbox() {
 
 
                 {/* Email Viewer */}
-                   <div className="bg-white">
+                   <div className="w-[70%] bg-white">
                     <EmailViewer />
                   </div>
      </div>
