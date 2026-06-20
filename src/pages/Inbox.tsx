@@ -1,25 +1,27 @@
-
-import Sidebar from "../components/inbox/Sidebar";
 import Categories from "../components/inbox/Categories";
 import EmailList from "../components/inbox/EmailList";
 import EmailViewer from "../components/inbox/EmailViewer";
 
-
 export default function Inbox() {
   return (
-    <div className="inbox-page">
-      <Sidebar />
+    <div className="min-h-screen bg-[#f4f4f4] p-3 md:p-0">
+      <div className="mx-auto flex h-[calc(100vh-24px)] max-w-[1400px] overflow-hidden rounded-[28px] bg-white shadow-lg md:h-screen md:max-w-none md:rounded-none md:shadow-none">
 
-      <div className="categories-panel">
-        <Categories />
-      </div>
+        {/* Categories */}
+        <div className="hidden w-[260px] border-r border-gray-200 bg-white md:block">
+          <Categories />
+        </div>
 
-      <div className="email-list-panel">
-        <EmailList />
-      </div>
+        {/* Email List */}
+        <div className="w-full md:w-[400px] border-r border-gray-200 bg-[#fafafa]">
+          <EmailList />
+        </div>
 
-      <div className="email-view-panel">
-        <EmailViewer />
+        {/* Email Viewer */}
+        <div className="hidden flex-1 bg-white lg:block">
+          <EmailViewer />
+        </div>
+
       </div>
     </div>
   );
