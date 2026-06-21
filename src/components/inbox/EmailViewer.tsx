@@ -8,7 +8,7 @@ import {
 
 export default function EmailViewer() {
   return (
-    <div className="h-full bg-[#fafaf8] p-4">
+    <div className=" border h-full bg-[#fafaf8] p-4">
 
       <div className="bg-white rounded-3xl h-full flex flex-col shadow-sm">
 
@@ -19,13 +19,13 @@ export default function EmailViewer() {
 
             <ArrowLeft size={18} />
             <Archive size={18} />
-            <Trash2 size={18} />
+            <Trash2 size={18} className="hidden lg:block" />
             <MoreVertical size={18} />
 
           </div>
 
           <div className="text-gray-400 text-sm">
-            September 27, 2025
+             5 from  6
           </div>
         </div>
 
