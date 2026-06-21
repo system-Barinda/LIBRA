@@ -4,6 +4,7 @@ import {
   Trash2,
   MoreVertical,Download,
 } from "lucide-react";
+import EmailActions from "./EmailActions";
 
 export default function EmailViewer() {
   return (
@@ -89,7 +90,7 @@ export default function EmailViewer() {
         {/* Reply */}
         <div className="p-6 border">
 
-         
+         <EmailActions />
 
           </div>
         </div>
