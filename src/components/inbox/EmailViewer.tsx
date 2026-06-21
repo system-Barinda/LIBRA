@@ -2,8 +2,7 @@ import {
   ArrowLeft,
   Archive,
   Trash2,
-  MoreVertical,
-  Send,Download 
+  MoreVertical,Download,
 } from "lucide-react";
 
 export default function EmailViewer() {
@@ -88,26 +87,15 @@ export default function EmailViewer() {
         </div>
 
         {/* Reply */}
-        <div className="p-6 border-t">
+        <div className="p-6 border">
 
-          <textarea
-            rows={5}
-            placeholder="Type something..."
-            className="w-full rounded-2xl border p-5 resize-none outline-none focus:ring-2 focus:ring-orange-400"
-          />
-
-          <div className="flex justify-end mt-4">
-
-            <button className="bg-orange-500 text-white px-6 py-3 rounded-xl flex gap-2 items-center">
-              <Send size={16} />
-              Send
-            </button>
+         
 
           </div>
         </div>
 
       </div>
 
-    </div>
+  
   );
 }
