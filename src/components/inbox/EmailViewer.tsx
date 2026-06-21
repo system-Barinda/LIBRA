@@ -3,7 +3,7 @@ import {
   Archive,
   Trash2,
   MoreVertical,
-  Send
+  Send,Download 
 } from "lucide-react";
 
 export default function EmailViewer() {
@@ -13,24 +13,25 @@ export default function EmailViewer() {
       <div className="bg-white rounded-3xl h-full flex flex-col shadow-sm">
 
         {/* Toolbar */}
-        <div className="h-16 border-b px-6 flex items-center justify-between">
+        <div className="h-16  px-6 flex items-center justify-between">
 
           <div className="flex gap-6 text-gray-500">
 
             <ArrowLeft size={18} />
-            <Archive size={18} />
+            <Archive size={18} className="hidden lg:block" />
+            <Download size={18} className="w-5 h-5" />
             <Trash2 size={18} className="hidden lg:block" />
             <MoreVertical size={18} />
 
           </div>
 
           <div className="text-gray-400 text-sm">
-             5 from  6
+             5 from  36
           </div>
         </div>
 
         {/* Header */}
-        <div className="px-8 py-6 border-b">
+        <div className="px-8 py-6 flex flex-col gap-4">
 
           <div className="flex items-center gap-4">
 
@@ -47,13 +48,15 @@ export default function EmailViewer() {
                 livia.hart@email.com
               </p>
             </div>
+           
           </div>
+           <p className="text-gray-400">semptember 27 2026   -   09:27 PM</p>
         </div>
 
         {/* Body */}
         <div className="flex-1 overflow-auto px-8 py-8">
 
-          <h2 className="text-2xl font-semibold mb-10">
+          <h2 className="text-[18px] font-semibold mb-10">
             Overdue Book Follow-up
           </h2>
 
