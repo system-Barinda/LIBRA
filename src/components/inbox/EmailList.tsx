@@ -56,7 +56,7 @@ export default function EmailList() {
       </div>
 
       {/* Emails */}
-      <div className="flex-1 overflow-auto px-5 pb-5">
+      <div className=" py-5 flex-1 overflow-auto px-1  pb-5">
 
         {emails.map((email, index) => (
           <div
@@ -64,20 +64,20 @@ export default function EmailList() {
             className={`${
               index === 0
                 ? "bg-[#f1efeb]"
-                : "bg-transparent border-b"
-            } rounded-3xl p-5 mb-4 cursor-pointer`}
+                : "bg-transparent "
+            } p-2 mb-4 cursor-pointer`}
           >
             <div className="flex justify-between">
 
               <div className="flex gap-4">
 
-                <div className="w-12 h-12 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold">
+                <div className="w-30 h-13 rounded-[100%] bg-orange-500 text-white flex items-center justify-center font-bold">
                   {email.name[0]}
                 </div>
 
                 <div>
                   <div className="flex gap-2 items-center">
-                    <h3 className="font-semibold text-[18px]">
+                    <h3 className="font-semibold text-[15px]">
                       {email.name}
                     </h3>
 
@@ -86,11 +86,11 @@ export default function EmailList() {
                     )}
                   </div>
 
-                  <h4 className="font-medium mt-1">
+                  <h4 className="font-medium mt-1 text-[13px]">
                     {email.subject}
                   </h4>
 
-                  <p className="text-gray-500 mt-2 text-sm leading-6">
+                  <p className="text-gray-500 mt-2 text-[13px] leading-6">
                     {email.preview}
                   </p>
                 </div>

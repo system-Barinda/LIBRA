@@ -12,7 +12,7 @@ export default function Inbox() {
 
         </div>
 
-     <div className="rightcontainer border h-screen w-full lg:w-[80%] text-black flex flex-col">
+     <div className="rightcontainer  h-screen w-full lg:w-[80%] text-black flex flex-col">
                {/* Email List */}
                   <div className="w-full lg:w-[30%]  border-r border-gray-200 bg-[#fafafa]">
                        <EmailList />
