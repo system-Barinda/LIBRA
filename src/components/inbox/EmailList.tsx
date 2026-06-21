@@ -1,4 +1,5 @@
-import { Search, SlidersHorizontal, Plus } from "lucide-react";
+import { Search, SlidersHorizontal, Plus ,PanelLeft} from "lucide-react";
+
 
 const emails = [
   {
@@ -30,24 +31,25 @@ const emails = [
 
 export default function EmailList() {
   return (
-    <div className="border h-full bg-[#fafaf8] flex flex-col">
+    <div className="h-full bg-[#fafaf8] flex flex-col">
 
       {/* Top */}
-      <div className="p-5">
-        <div className="flex gap-3 border">
+      <div className="">
+        <div className="flex gap-2">
 
-          <div className="flex-1 bg-white rounded-2xl px-4 h-14 shadow-sm flex items-center">
+          <div className=" bg-white rounded-2xl px-1 h-14 shadow-sm gap-2 flex items-center justify-between">
+            <button className="rounded-md hover:bg-gray-100"> <PanelLeft className="text-gray-700" /> </button>
             <Search size={18} className="text-gray-400" />
 
             <input
               placeholder="Search email"
-              className="ml-3 flex-1 outline-none bg-transparent"
+              className=" ml-1 flex-1 outline-none bg-transparent"
             />
 
-            <SlidersHorizontal size={18} className="text-gray-400" />
+            <SlidersHorizontal size={18} className="text-gray-400 " />
           </div>
 
-          <button className="w-14 h-14 rounded-2xl bg-orange-500 text-white flex items-center justify-center shadow-sm">
+          <button className="w-10 h-10 text-center rounded bg-orange-500 text-white flex items-center mx-auto mt-2 justify-center shadow-sm">
             <Plus />
           </button>
         </div>
