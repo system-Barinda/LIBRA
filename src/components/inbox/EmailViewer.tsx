@@ -8,7 +8,7 @@ import EmailActions from "./EmailActions";
 
 export default function EmailViewer() {
   return (
-    <div className=" border h-full bg-[#fafaf8] p-4">
+    <div className=" h-full bg-[#fafaf8] p-4">
 
       <div className="bg-white rounded-3xl h-full flex flex-col shadow-sm">
 
@@ -88,7 +88,7 @@ export default function EmailViewer() {
         </div>
 
         {/* Reply */}
-        <div className="p-6 border">
+        <div className="p-6  mt-20">
 
          <EmailActions />
 
