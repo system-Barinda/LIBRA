@@ -34,7 +34,7 @@ export default function EmailList() {
 
       {/* Top */}
       <div className="p-5">
-        <div className="flex gap-3">
+        <div className="flex gap-3 border">
 
           <div className="flex-1 bg-white rounded-2xl px-4 h-14 shadow-sm flex items-center">
             <Search size={18} className="text-gray-400" />
