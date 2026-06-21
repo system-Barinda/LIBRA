@@ -72,6 +72,7 @@ export default function EmailList() {
               <div className="flex gap-4">
 
                 <div className="w-30 h-13 rounded-[100%] bg-orange-500 text-white flex items-center justify-center font-bold">
+                  
                   {email.name[0]}
                 </div>
 
