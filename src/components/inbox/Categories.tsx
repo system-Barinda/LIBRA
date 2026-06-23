@@ -6,107 +6,84 @@ import {
   Archive,
   Trash2,
   PenSquare,
+  X,
 } from "lucide-react";
 
 const categories = [
-  {
-    name: "Inbox",
-    icon: Inbox,
-    count: 48,
-    active: true,
-  },
-  {
-    name: "Starred",
-    icon: Star,
-    count: 12,
-  },
-  {
-    name: "Sent",
-    icon: Send,
-    count: 31,
-  },
-  {
-    name: "Drafts",
-    icon: FileText,
-    count: 4,
-  },
-  {
-    name: "Archive",
-    icon: Archive,
-    count: 86,
-  },
-  {
-    name: "Trash",
-    icon: Trash2,
-    count: 7,
-  },
+  { name: "All Inbox", icon: Inbox, count: 17, active: true },
+  { name: "Starred", icon: Star, count: 10 },
+  { name: "Sent", icon: Send, count: 8 },
+  { name: "Drafts", icon: FileText, count: 0 },
+  { name: "Spam", icon: Archive, count: 0 },
+  { name: "Trash", icon: Trash2, count: 0 },
 ];
 
-export default function Categories() {
+export default function Categories({ isMobile, closeMenu }:any) {
   return (
-    <div className=" hidden lg:block h-full bg-white border-r border-gray-200 flex flex-col">
-      {/* Header */}
-      <div className="p-5 border-b border-gray-200">
-        <button className="w-full flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 rounded-xl transition">
-          <PenSquare size={18} />
-          New Message
-        </button>
-      </div>
+    <div 
+      className={`h-full bg-[#f4f3ef] border-r border-gray-100 flex flex-col justify-between ${
+        isMobile ? "w-full" : "hidden lg:flex"
+      }`}
+    >
+      <div>
+        {/* Header containing responsive close trigger */}
+        <div className="p-5 flex items-center justify-between">
+          <span className="text-lg font-bold text-gray-800">Category</span>
+          {isMobile && (
+            <button 
+              onClick={closeMenu} 
+              className="p-1.5 rounded-full hover:bg-gray-200 text-gray-500"
+            >
+              <X size={18} />
+            </button>
+          )}
+        </div>
 
-      {/* Categories */}
-      <div className="flex-1 p-3">
-        <h3 className="px-3 mb-3 text-xs uppercase tracking-wider text-gray-400 font-semibold">
-          Mailbox
-        </h3>
+        {/* Categories Dynamic Navigation Links */}
+        <div className="flex-1 px-3">
+          <div className="space-y-1">
+            {categories.map((category) => {
+              const Icon = category.icon;
 
-        <div className="space-y-1">
-          {categories.map((category) => {
-            const Icon = category.icon;
-
-            return (
-              <button
-                key={category.name}
-                className={`w-full flex items-center justify-between px-3 py-3 rounded-xl transition ${
-                  category.active
-                    ? "bg-orange-50 text-orange-600"
-                    : "hover:bg-gray-100 text-gray-700"
-                }`}
-              >
-                <div className="flex items-center gap-3">
-                  <Icon size={18} />
-                  <span>{category.name}</span>
-                </div>
-
-                <span
-                  className={`text-xs px-2 py-1 rounded-full ${
+              return (
+                <button
+                  key={category.name}
+                  className={`w-full flex items-center justify-between px-4 py-3 rounded-2xl transition-all text-sm font-medium ${
                     category.active
-                      ? "bg-orange-100 text-orange-600"
-                      : "bg-gray-100 text-gray-500"
+                      ? "bg-white text-gray-900 shadow-xs"
+                      : "hover:bg-gray-200/50 text-gray-600"
                   }`}
                 >
-                  {category.count}
-                </span>
-              </button>
-            );
-          })}
+                  <div className="flex items-center gap-3">
+                    <Icon size={18} className={category.active ? "text-orange-500" : "text-gray-500"} />
+                    <span>{category.name}</span>
+                  </div>
+
+                  {category.count > 0 && (
+                    <span
+                      className={`text-[11px] font-bold px-2 py-0.5 rounded-full ${
+                        category.active
+                          ? "bg-orange-500 text-white"
+                          : "bg-gray-200 text-gray-600"
+                      }`}
+                    >
+                      {category.count}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
 
-      {/* Footer */}
-      <div className="p-4 border-t border-gray-200">
-        <div className="rounded-xl bg-orange-50 p-4">
-          <h4 className="font-medium text-gray-900">
-            Storage Usage
-          </h4>
-
-          <p className="text-sm text-gray-500 mt-1">
-            3.2 GB of 10 GB used
-          </p>
-
-          <div className="mt-3 h-2 bg-orange-100 rounded-full overflow-hidden">
-            <div className="h-full w-1/3 bg-orange-500 rounded-full" />
-          </div>
+      {/* Optional User Stats / Footer section */}
+      <div className="p-5">
+        <div className="flex items-center justify-between text-sm font-medium text-gray-700">
+          <span>Label</span>
+          <button className="text-gray-500 hover:text-black text-lg">+</button>
         </div>
+        {/* Labels could go here */}
       </div>
     </div>
   );
