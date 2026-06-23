@@ -25,8 +25,18 @@ export default function EmailViewer() {
 
           </div>
 
-          <div className="text-gray-400 text-sm">
-             5 from  36
+          <div className="text-gray-400 text-sm flex text-center items-center ml-12 gap-2 w-100">
+            <span className="text-gray-400 text-sm"> 5 of 36 </span>
+
+                 <div className="flex items-center gap-3">
+                   <button className="w-5 h-5 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center">
+                    <ArrowLeft size={16} />
+                   </button>
+
+                   <button className="w-5 h-5 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center">
+                    <ArrowLeft size={16} className="rotate-180" />
+                   </button>
+               </div>
           </div>
         </div>
 
