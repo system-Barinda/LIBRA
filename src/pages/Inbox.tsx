@@ -4,27 +4,24 @@ import EmailViewer from "../components/inbox/EmailViewer";
 
 export default function Inbox() {
   return (
-    <div className="border border-gray-100 h-screen bg-[#f4f4f4] flex flex-col">
-     <div className="sidecontainer h-screen lg:w-[20%] text-black">
+    // Global grid container across screens
+    <div className="h-screen w-screen bg-[#f4f4f4] flex flex-col lg:flex-row overflow-hidden text-black">
       
-      {/* Categories */}
-           <Categories />
+      {/* 1. Left Sidebar Column - Categories */}
+      <div className="hidden lg:block lg:w-[20%] xl:w-[18%] h-full shrink-0">
+        <Categories isMobile={false} />
+      </div>
 
-        </div>
+      {/* 2. Middle Column - Email List Summary Stream */}
+      <div className="w-full lg:w-[32%] xl:w-[28%] h-full border-r border-gray-200 bg-[#fafafa]">
+        <EmailList />
+      </div>
 
-     <div className="rightcontainer  h-screen w-full lg:w-[80%] text-black flex flex-col">
-               {/* Email List */}
-                  <div className="w-full lg:w-[30%]  border-r border-gray-200 bg-[#fafafa]">
-                       <EmailList />
-                  </div>
+      {/* 3. Right Column - Full Live Email Body Viewer */}
+      <div className="hidden lg:block lg:w-[48%] xl:w-[54%] h-full bg-white">
+        <EmailViewer />
+      </div>
 
-
-                {/* Email Viewer */}
-                   <div className="w-full lg:w-[70%] bg-white">
-                    <EmailViewer />
-                  </div>
-     </div>
     </div>
   );
 }
-
