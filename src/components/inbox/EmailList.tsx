@@ -1,4 +1,6 @@
 import { Search, SlidersHorizontal, Plus ,PanelLeft} from "lucide-react";
+import Categories from "./Categories";
+import { useState } from "react";
 
 
 const emails = [
@@ -30,6 +32,7 @@ const emails = [
 ];
 
 export default function EmailList() {
+  const [showCategory, setShowCategory] = useState(false);
   return (
     <div className="h-full bg-[#fafaf8] flex flex-col">
 
@@ -48,8 +51,30 @@ export default function EmailList() {
 
             <SlidersHorizontal size={18} className="text-gray-400 " />
           </div>
+            
 
-          <button className="w-10 h-10 text-center rounded bg-orange-500 text-white flex items-center mx-auto mt-2 justify-center shadow-sm">
+            <div className="showCategory hidden">
+              <Categories />
+            </div>
+
+            {showCategory && (
+                    <div className="fixed inset-0 z-50 lg:hidden">
+                      <div
+                        className="absolute inset-0 bg-black/50"
+                        onClick={() => setShowCategory(false)}
+                      />
+            
+                      <div className="relative h-full w-72 max-w-[85vw]">
+                        <Sidebar
+                          isMobile={true}
+                          closeMenu={() => setShowCategory(false)}
+                        />
+                      </div>
+                    </div>
+                  )}
+            
+          <button onClick={() => setShowCategory(true)}
+           className="w-10 h-10 text-center rounded bg-orange-500 text-white flex items-center mx-auto mt-2 justify-center shadow-sm">
             <Plus />
           </button>
         </div>

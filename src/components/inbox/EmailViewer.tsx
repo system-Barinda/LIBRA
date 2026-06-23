@@ -5,8 +5,12 @@ import {
   MoreVertical,Download,
 } from "lucide-react";
 import EmailActions from "./EmailActions";
+import { useState } from "react";
 
 export default function EmailViewer() {
+
+  const [showCategory, setShowCategory] = useState(false);
+  
   return (
     <div className=" h-full bg-[#fafaf8] p-4">
 

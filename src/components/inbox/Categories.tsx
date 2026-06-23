@@ -44,7 +44,7 @@ const categories = [
 
 export default function Categories() {
   return (
-    <div className="hidden lg:block h-full bg-white border-r border-gray-200 flex flex-col">
+    <div className=" hidden lg:block h-full bg-white border-r border-gray-200 flex flex-col">
       {/* Header */}
       <div className="p-5 border-b border-gray-200">
         <button className="w-full flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 rounded-xl transition">
