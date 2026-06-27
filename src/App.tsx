@@ -113,6 +113,7 @@ import MainLayout from "./layouts/MainLayout";
 
 import Dashboard from "./pages/Dashboard";
 import Inbox from "./pages/Inbox";
+import LibraryActivity from "./pages/LibraryActivity";
 // import Books from "./pages/Books";
 
 function App() {
@@ -122,6 +123,7 @@ function App() {
         <Route element={<MainLayout />}>
           <Route path="/" element={<Dashboard />} />
           <Route path="/inbox" element={<Inbox />} />
+          <Route path="/activity" element={<LibraryActivity />} />
           {/* <Route path="/books" element={<Books />} /> */}
         </Route>
       </Routes>
