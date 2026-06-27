@@ -5,7 +5,7 @@ import MainLayout from "./layouts/MainLayout";
 import Dashboard from "./pages/Dashboard";
 import Inbox from "./pages/Inbox";
 import LibraryActivity from "./pages/LibraryActivity";
-// import Books from "./pages/Books";Ssss
+ import Books from "./pages/Books";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/inbox" element={<Inbox />} />
           <Route path="/activity" element={<LibraryActivity />} />
-          {/* <Route path="/books" element={<Books />} /> */}
+          <Route path="/books" element={<Books />} /> 
         </Route>
       </Routes>
     </BrowserRouter>
