@@ -1,30 +1,49 @@
 import React from "react";
 
-const styles = {
-  Active: "bg-green-100 text-green-700",
-  Expired: "bg-orange-100 text-orange-700",
-  Suspended: "bg-red-100 text-red-700",
-};
+export default function StatusBadge({ status, type = "status" }:any) {
+  if (type === "membership") {
+    const getMembershipBadge = (membership:any) => {
+      switch (membership) {
+        case "Premium":
+          return "bg-[#1E293B] text-white";
+        case "Standard":
+          return "bg-[#FFEDD5] text-[#9A3412]";
+        case "Basic":
+        default:
+          return "bg-[#F1F5F9] text-[#475569]";
+      }
+    };
 
-const StatusBadge = ({ status }) => {
+    return (
+      <span
+        className={`rounded px-2 py-0.5 text-[10px] font-medium ${getMembershipBadge(
+          status
+        )}`}
+      >
+        {status}
+      </span>
+    );
+  }
+
+  const getStatusBadge = (statusState:any) => {
+    switch (statusState) {
+      case "Active":
+        return "bg-[#E6F4EA] text-[#2D7D46]";
+      case "Expired":
+        return "bg-[#FCE8E6] text-[#D93025]";
+      case "Suspended":
+      default:
+        return "bg-[#E8EAED] text-[#5F6368]";
+    }
+  };
+
   return (
     <span
-      className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ${
-        styles[status] || "bg-gray-100 text-gray-700"
-      }`}
+      className={`inline-block rounded-full px-3 py-1 text-xs font-medium ${getStatusBadge(
+        status
+      )}`}
     >
-      <span
-        className={`mr-2 h-2 w-2 rounded-full ${
-          status === "Active"
-            ? "bg-green-500"
-            : status === "Expired"
-            ? "bg-orange-500"
-            : "bg-red-500"
-        }`}
-      />
       {status}
     </span>
   );
-};
-
-export default StatusBadge;
+}
