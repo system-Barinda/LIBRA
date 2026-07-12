@@ -6,7 +6,7 @@ import Dashboard from "./pages/Dashboard";
 import Inbox from "./pages/Inbox";
 import LibraryActivity from "./pages/LibraryActivity";
  import Books from "./pages/Books";
-import MembersTable from "./pages/MembersTable";
+import Members from "./pages/Members";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
           <Route path="/inbox" element={<Inbox />} />
           <Route path="/activity" element={<LibraryActivity />} />
           <Route path="/books" element={<Books />} /> 
-          <Route path="/members" element={<MembersTable />} /> 
+          <Route path="/members" element={<Members />} /> 
         </Route>
       </Routes>
     </BrowserRouter>
