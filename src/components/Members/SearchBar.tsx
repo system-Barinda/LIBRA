@@ -1,23 +1,20 @@
 import React from "react";
-import { Search } from "lucide-react";
+import { Search, SlidersHorizontal } from "lucide-react";
 
-const SearchBar = ({ value, onChange }:any) => {
+export default function SearchBar({ search, setSearch }:any) {
   return (
-    <div className="relative w-full sm:w-80">
-      <Search
-        size={18}
-        className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
-      />
-
+    <div className="relative flex items-center">
+      <Search size={16} className="absolute left-3.5 text-gray-400" />
       <input
-        type="text"
-        value={value}
-        onChange={onChange}
-        placeholder="Search members..."
-        className="w-full rounded-lg border border-gray-200 py-2 pl-10 pr-4 outline-none focus:border-orange-500"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Search a member"
+        className="w-64 rounded-xl bg-[#F1F3F4] py-2 pl-9 pr-9 text-sm text-gray-700 placeholder-gray-400 focus:outline-none"
+      />
+      <SlidersHorizontal
+        size={14}
+        className="absolute right-3 cursor-pointer text-gray-400"
       />
     </div>
   );
-};
-
-export default SearchBar;
+}
