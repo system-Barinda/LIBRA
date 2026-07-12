@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard";
 import Inbox from "./pages/Inbox";
 import LibraryActivity from "./pages/LibraryActivity";
  import Books from "./pages/Books";
+import MembersTable from "./pages/MembersTable";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/inbox" element={<Inbox />} />
           <Route path="/activity" element={<LibraryActivity />} />
           <Route path="/books" element={<Books />} /> 
+          <Route path="/members" element={<MembersTable />} /> 
         </Route>
       </Routes>
     </BrowserRouter>
