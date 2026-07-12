@@ -1,71 +1,99 @@
-import { members } from "../../data/members";
-import {
-  Search,
-  Filter,
-  Plus,
-  ChevronDown,
-} from "lucide-react";
+import React, { useMemo, useState } from "react";
+import { Plus } from "lucide-react";
 
-const badgeColors = {
-  Active:
-    "bg-green-100 text-green-700",
-  Expired:
-    "bg-orange-100 text-orange-700",
-  Suspended:
-    "bg-gray-200 text-gray-600",
-};
+import membersData from "../../data/members";
 
-const membershipColors = {
-  Premium:
-    "bg-indigo-100 text-indigo-700",
-  Standard:
-    "bg-orange-100 text-orange-700",
-  Basic:
-    "bg-gray-100 text-gray-600",
-};
+import SearchBar from "./SearchBar";
+import FilterDropdown from "./FilterDropdown";
+import MemberRow from "./MemberRow";
+import Pagination from "./Pagination";
+import StatusBadge from "./StatusBadge";
 
-export default function MembersTable() {
+const MembersTable = () => {
+  const [search, setSearch] = useState("");
+  const [membership, setMembership] = useState("");
+  const [status, setStatus] = useState("");
+
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const itemsPerPage = 6;
+
+  const filteredMembers = useMemo(() => {
+    return membersData.filter((member) => {
+      const matchesSearch =
+        member.name.toLowerCase().includes(search.toLowerCase()) ||
+        member.email.toLowerCase().includes(search.toLowerCase());
+
+      const matchesMembership =
+        membership === "" || member.membership === membership;
+
+      const matchesStatus =
+        status === "" || member.status === status;
+
+      return (
+        matchesSearch &&
+        matchesMembership &&
+        matchesStatus
+      );
+    });
+  }, [search, membership, status]);
+
+  const totalPages = Math.ceil(
+    filteredMembers.length / itemsPerPage
+  );
+
+  const currentMembers = filteredMembers.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
   return (
     <div className="rounded-2xl bg-white shadow-sm border border-gray-100">
 
       {/* Header */}
 
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between p-5 border-b">
+      <div className="flex flex-col gap-4 lg:flex-row lg:justify-between lg:items-center p-6 border-b">
 
         <div className="flex flex-wrap gap-3">
 
-          <div className="relative w-full sm:w-72">
-            <Search
-              className="absolute left-3 top-3 text-gray-400"
-              size={18}
-            />
+          <SearchBar
+            value={search}
+            onChange={(e:any) => {
+              setCurrentPage(1);
+              setSearch(e.target.value);
+            }}
+          />
 
-            <input
-              placeholder="Search member..."
-              className="w-full rounded-lg border pl-10 pr-4 py-2 outline-none focus:ring-2 focus:ring-orange-400"
-            />
-          </div>
+          <FilterDropdown
+            label="Membership"
+            value={membership}
+            onChange={(e:any) => setMembership(e.target.value)}
+            options={[
+              "Premium",
+              "Standard",
+              "Basic",
+            ]}
+          />
 
-          <button className="flex items-center gap-2 rounded-lg border px-4 py-2 text-sm hover:bg-gray-50">
-            Membership
-            <ChevronDown size={16} />
-          </button>
-
-          <button className="flex items-center gap-2 rounded-lg border px-4 py-2 text-sm hover:bg-gray-50">
-            Status
-            <ChevronDown size={16} />
-          </button>
-
-          <button className="flex items-center gap-2 rounded-lg border px-4 py-2 text-sm hover:bg-gray-50">
-            <Filter size={16} />
-            Filter
-          </button>
+          <FilterDropdown
+            label="Status"
+            value={status}
+            onChange={(e:any) => setStatus(e.target.value)}
+            options={[
+              "Active",
+              "Expired",
+              "Suspended",
+            ]}
+          />
 
         </div>
 
-        <button className="flex items-center justify-center gap-2 rounded-lg bg-orange-500 px-5 py-2 text-white hover:bg-orange-600">
+        <button className="flex items-center gap-2 rounded-lg bg-orange-500 px-5 py-2 text-white hover:bg-orange-600">
+
           <Plus size={18} />
+
           Add Member
+
         </button>
 
       </div>
@@ -74,19 +102,23 @@ export default function MembersTable() {
 
       <div className="hidden lg:block overflow-x-auto">
 
-        <table className="w-full">
+        <table className="min-w-full">
 
-          <thead className="text-left text-sm text-gray-500">
+          <thead className="bg-gray-50 text-gray-500 uppercase text-xs">
 
-            <tr className="border-b">
+            <tr>
 
-              <th className="px-6 py-4">Member</th>
+              <th className="px-6 py-4 text-left">
+                Member
+              </th>
 
-              <th>Email</th>
+              <th className="text-left">
+                Contact
+              </th>
 
               <th>Status</th>
 
-              <th>Join / Expiry</th>
+              <th>Membership</th>
 
               <th>Borrowed</th>
 
@@ -100,80 +132,11 @@ export default function MembersTable() {
 
           <tbody>
 
-            {members.map((member) => (
-              <tr
+            {currentMembers.map((member) => (
+              <MemberRow
                 key={member.id}
-                className="border-b hover:bg-gray-50"
-              >
-                <td className="px-6 py-4">
-
-                  <div className="flex items-center gap-3">
-
-                    <img
-                      src={member.avatar}
-                      className="w-11 h-11 rounded-full"
-                    />
-
-                    <div>
-
-                      <h3 className="font-medium">
-                        {member.name}
-                      </h3>
-
-                      <p className="text-xs text-gray-500">
-                        {member.id}
-                      </p>
-
-                      <span
-                        className={`mt-1 inline-flex rounded-full px-2 py-1 text-xs ${membershipColors[member.membership]}`}
-                      >
-                        {member.membership}
-                      </span>
-
-                    </div>
-
-                  </div>
-
-                </td>
-
-                <td>
-
-                  <div>
-                    <p>{member.email}</p>
-                    <p className="text-xs text-gray-500">
-                      {member.phone}
-                    </p>
-                  </div>
-
-                </td>
-
-                <td>
-
-                  <span
-                    className={`rounded-full px-3 py-1 text-xs font-medium ${badgeColors[member.status]}`}
-                  >
-                    {member.status}
-                  </span>
-
-                </td>
-
-                <td>
-
-                  {member.joinDate}
-                  <br />
-                  <span className="text-gray-400">
-                    {member.expiryDate}
-                  </span>
-
-                </td>
-
-                <td>{member.borrowed}</td>
-
-                <td>{member.overdue}</td>
-
-                <td>{member.fines}</td>
-
-              </tr>
+                member={member}
+              />
             ))}
 
           </tbody>
@@ -184,9 +147,9 @@ export default function MembersTable() {
 
       {/* Mobile */}
 
-      <div className="grid gap-4 p-4 lg:hidden">
+      <div className="space-y-4 p-4 lg:hidden">
 
-        {members.map((member) => (
+        {currentMembers.map((member) => (
 
           <div
             key={member.id}
@@ -197,74 +160,25 @@ export default function MembersTable() {
 
               <img
                 src={member.avatar}
-                className="h-14 w-14 rounded-full"
+                className="w-14 h-14 rounded-full"
+                alt=""
               />
 
               <div className="flex-1">
 
-                <div className="flex justify-between">
-
-                  <h2 className="font-semibold">
-                    {member.name}
-                  </h2>
-
-                  <span
-                    className={`rounded-full px-3 py-1 text-xs ${badgeColors[member.status]}`}
-                  >
-                    {member.status}
-                  </span>
-
-                </div>
+                <h3 className="font-semibold">
+                  {member.name}
+                </h3>
 
                 <p className="text-sm text-gray-500">
                   {member.email}
                 </p>
 
-                <span
-                  className={`mt-2 inline-flex rounded-full px-2 py-1 text-xs ${membershipColors[member.membership]}`}
-                >
-                  {member.membership}
-                </span>
-
-              </div>
-
-            </div>
-
-            <div className="grid grid-cols-3 gap-4 mt-5 text-center">
-
-              <div>
-
-                <p className="text-lg font-semibold">
-                  {member.borrowed}
-                </p>
-
-                <p className="text-xs text-gray-500">
-                  Borrowed
-                </p>
-
-              </div>
-
-              <div>
-
-                <p className="text-lg font-semibold">
-                  {member.overdue}
-                </p>
-
-                <p className="text-xs text-gray-500">
-                  Overdue
-                </p>
-
-              </div>
-
-              <div>
-
-                <p className="text-lg font-semibold">
-                  {member.fines}
-                </p>
-
-                <p className="text-xs text-gray-500">
-                  Fines
-                </p>
+                <div className="mt-2">
+                  <StatusBadge
+                    status={member.status}
+                  />
+                </div>
 
               </div>
 
@@ -276,36 +190,14 @@ export default function MembersTable() {
 
       </div>
 
-      {/* Footer */}
-
-      <div className="flex flex-col gap-4 sm:flex-row items-center justify-between border-t p-5">
-
-        <p className="text-sm text-gray-500">
-          Showing 1-10 of 56 members
-        </p>
-
-        <div className="flex gap-2">
-
-          <button className="h-9 w-9 rounded-lg border">
-            1
-          </button>
-
-          <button className="h-9 w-9 rounded-lg bg-orange-500 text-white">
-            2
-          </button>
-
-          <button className="h-9 w-9 rounded-lg border">
-            3
-          </button>
-
-          <button className="h-9 w-9 rounded-lg border">
-            4
-          </button>
-
-        </div>
-
-      </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        setCurrentPage={setCurrentPage}
+      />
 
     </div>
   );
-}
+};
+
+export default MembersTable;
