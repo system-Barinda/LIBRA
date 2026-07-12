@@ -1,203 +1,66 @@
-import React, { useMemo, useState } from "react";
-import { Plus } from "lucide-react";
-
-import membersData from "../../data/members";
-
-import SearchBar from "./SearchBar";
-import FilterDropdown from "./FilterDropdown";
+import React from "react";
+import { ChevronsUpDown } from "lucide-react";
 import MemberRow from "./MemberRow";
-import Pagination from "./Pagination";
-import StatusBadge from "./StatusBadge";
 
-const MembersTable = () => {
-  const [search, setSearch] = useState("");
-  const [membership, setMembership] = useState("");
-  const [status, setStatus] = useState("");
-
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const itemsPerPage = 6;
-
-  const filteredMembers = useMemo(() => {
-    return membersData.filter((member) => {
-      const matchesSearch =
-        member.name.toLowerCase().includes(search.toLowerCase()) ||
-        member.email.toLowerCase().includes(search.toLowerCase());
-
-      const matchesMembership =
-        membership === "" || member.membership === membership;
-
-      const matchesStatus =
-        status === "" || member.status === status;
-
-      return (
-        matchesSearch &&
-        matchesMembership &&
-        matchesStatus
-      );
-    });
-  }, [search, membership, status]);
-
-  const totalPages = Math.ceil(
-    filteredMembers.length / itemsPerPage
-  );
-
-  const currentMembers = filteredMembers.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
-
+export default function MembersTable({ members }:any) {
   return (
-    <div className="rounded-2xl bg-white shadow-sm border border-gray-100">
-
-      {/* Header */}
-
-      <div className="flex flex-col gap-4 lg:flex-row lg:justify-between lg:items-center p-6 border-b">
-
-        <div className="flex flex-wrap gap-3">
-
-          <SearchBar
-            value={search}
-            onChange={(e:any) => {
-              setCurrentPage(1);
-              setSearch(e.target.value);
-            }}
-          />
-
-          <FilterDropdown
-            label="Membership"
-            value={membership}
-            onChange={(e:any) => setMembership(e.target.value)}
-            options={[
-              "Premium",
-              "Standard",
-              "Basic",
-            ]}
-          />
-
-          <FilterDropdown
-            label="Status"
-            value={status}
-            onChange={(e:any) => setStatus(e.target.value)}
-            options={[
-              "Active",
-              "Expired",
-              "Suspended",
-            ]}
-          />
-
-        </div>
-
-        <button className="flex items-center gap-2 rounded-lg bg-orange-500 px-5 py-2 text-white hover:bg-orange-600">
-
-          <Plus size={18} />
-
-          Add Member
-
-        </button>
-
-      </div>
-
-      {/* Desktop */}
-
-      <div className="hidden lg:block overflow-x-auto">
-
-        <table className="min-w-full">
-
-          <thead className="bg-gray-50 text-gray-500 uppercase text-xs">
-
-            <tr>
-
-              <th className="px-6 py-4 text-left">
-                Member
-              </th>
-
-              <th className="text-left">
-                Contact
-              </th>
-
-              <th>Status</th>
-
-              <th>Membership</th>
-
-              <th>Borrowed</th>
-
-              <th>Overdue</th>
-
-              <th>Fines</th>
-
-            </tr>
-
-          </thead>
-
-          <tbody>
-
-            {currentMembers.map((member) => (
-              <MemberRow
-                key={member.id}
-                member={member}
-              />
-            ))}
-
-          </tbody>
-
-        </table>
-
-      </div>
-
-      {/* Mobile */}
-
-      <div className="space-y-4 p-4 lg:hidden">
-
-        {currentMembers.map((member) => (
-
-          <div
-            key={member.id}
-            className="rounded-xl border p-4"
-          >
-
-            <div className="flex gap-3">
-
-              <img
-                src={member.avatar}
-                className="w-14 h-14 rounded-full"
-                alt=""
-              />
-
-              <div className="flex-1">
-
-                <h3 className="font-semibold">
-                  {member.name}
-                </h3>
-
-                <p className="text-sm text-gray-500">
-                  {member.email}
-                </p>
-
-                <div className="mt-2">
-                  <StatusBadge
-                    status={member.status}
-                  />
+    <>
+      {/* Desktop View */}
+      <div className="hidden overflow-x-auto lg:block">
+        <table className="w-full text-left text-sm text-gray-600">
+          <thead>
+            <tr className="border-b border-gray-100 text-xs text-gray-400">
+              <th className="pb-3 font-normal">
+                <div className="flex cursor-pointer items-center gap-1">
+                  Member Info <ChevronsUpDown size={12} />
                 </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        ))}
-
+              </th>
+              <th className="pb-3 font-normal">
+                <div className="flex cursor-pointer items-center gap-1">
+                  Email / Phone <ChevronsUpDown size={12} />
+                </div>
+              </th>
+              <th className="pb-3 text-center font-normal">
+                <div className="flex cursor-pointer items-center justify-center gap-1">
+                  Status <ChevronsUpDown size={12} />
+                </div>
+              </th>
+              <th className="pb-3 text-center font-normal">
+                <div className="flex cursor-pointer items-center justify-center gap-1">
+                  Join – Expiry Date <ChevronsUpDown size={12} />
+                </div>
+              </th>
+              <th className="pb-3 text-center font-normal">
+                <div className="flex cursor-pointer items-center justify-center gap-1">
+                  Borrowed <ChevronsUpDown size={12} />
+                </div>
+              </th>
+              <th className="pb-3 text-center font-normal">
+                <div className="flex cursor-pointer items-center justify-center gap-1">
+                  Overdue <ChevronsUpDown size={12} />
+                </div>
+              </th>
+              <th className="pb-3 pr-2 text-right font-normal">
+                <div className="flex cursor-pointer items-center justify-end gap-1">
+                  Fines <ChevronsUpDown size={12} />
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-gray-50">
+            {members.map((member:any) => (
+              <MemberRow key={member.id} member={member} />
+            ))}
+          </tbody>
+        </table>
       </div>
 
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        setCurrentPage={setCurrentPage}
-      />
-
-    </div>
+      {/* Mobile View */}
+      <div className="space-y-4 lg:hidden">
+        {members.map((member:any) => (
+          <MemberRow key={member.id} member={member} isMobile={true} />
+        ))}
+      </div>
+    </>
   );
-};
-
-export default MembersTable;
+}
