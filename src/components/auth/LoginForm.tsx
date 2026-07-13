@@ -59,7 +59,7 @@ const LoginForm = () => {
       <p className="mt-8 text-sm text-gray-500">
         New to Libra?{" "}
         <Link
-          to="/register"
+          to="/"
           className="font-medium text-[#FF7A3D] hover:underline"
         >
           Create an Account
