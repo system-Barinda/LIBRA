@@ -13,8 +13,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Register />} />
         <Route element={<MainLayout />}>
-          <Route path="/" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/inbox" element={<Inbox />} />
           <Route path="/activity" element={<LibraryActivity />} />
