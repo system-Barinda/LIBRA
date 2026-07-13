@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import AuthInput from "./AuthInput";
 import AuthButton from "./AuthButton";
+import { Link } from "react-router-dom";
 
 const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -85,12 +86,12 @@ const RegisterForm = () => {
 
       <p className="mt-8 text-sm text-gray-500">
         Already have an account?{" "}
-        <button
-          type="button"
-          className="font-medium text-[#FF7A3D] hover:underline"
-        >
-          Login Here
-        </button>
+       <Link
+  to="/login"
+  className="font-medium text-[#FF7A3D] hover:underline"
+>
+  Login Here
+</Link>
       </p>
     </div>
   );

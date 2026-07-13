@@ -8,12 +8,14 @@ import LibraryActivity from "./pages/LibraryActivity";
  import Books from "./pages/Books";
 import Members from "./pages/Members";
 import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Register />} />
+        <Route path="/login" element={<Login />} />
         <Route element={<MainLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/inbox" element={<Inbox />} />
