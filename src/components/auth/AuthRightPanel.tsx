@@ -1,46 +1,100 @@
+import Logo from "../Logo";
 import dashboardPreview from "../../assets/dashboard-preview.png";
 
 const AuthRightPanel = () => {
   return (
-    <div className="relative flex h-full min-h-screen flex-col items-center justify-center overflow-hidden bg-[#F6EFE6] px-12 py-16">
-      {/* Decorative Background */}
-      <div className="absolute -left-32 -top-32 h-72 w-72 rounded-full bg-orange-100 opacity-40 blur-3xl" />
-      <div className="absolute -bottom-24 -right-24 h-80 w-80 rounded-full bg-orange-200 opacity-30 blur-3xl" />
+    <section
+      className="
+        relative
+        overflow-hidden
+        bg-[#F6EFE6]
 
-      {/* Content */}
-      <div className="relative z-10 flex max-w-xl flex-col items-center text-center">
+        flex
+        flex-col
+        items-center
+
+        px-6
+        py-8
+
+        md:px-12
+        md:py-14
+
+        lg:h-screen
+        lg:justify-center
+      "
+    >
+      {/* Background */}
+      <div className="absolute -left-20 top-0 h-72 w-72 rounded-full bg-orange-100 opacity-40 blur-3xl" />
+      <div className="absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-orange-200 opacity-30 blur-3xl" />
+
+      <div className="relative z-10 flex w-full flex-col items-center text-center">
         {/* Logo */}
-        <div className="mb-10 flex h-16 w-16 items-center justify-center rounded-xl bg-[#FF7A3D] shadow-lg">
-          <div className="flex gap-[3px]">
-            <div className="h-8 w-1.5 rotate-[-30deg] rounded bg-white" />
-            <div className="h-8 w-1.5 rotate-[-30deg] rounded bg-white" />
-            <div className="h-8 w-1.5 rotate-[-30deg] rounded bg-white" />
-          </div>
-        </div>
+        <Logo />
 
-        {/* Title */}
-        <h2 className="max-w-md text-4xl font-bold leading-tight text-gray-900">
+        {/* Heading */}
+        <h2
+          className="
+            mt-8
+            text-3xl
+            font-bold
+            leading-tight
+            text-gray-900
+
+            md:mt-10
+            md:text-4xl
+
+            lg:text-5xl
+          "
+        >
           Maintain the Heart of the Library
         </h2>
 
         {/* Subtitle */}
-        <p className="mt-5 max-w-md text-base leading-7 text-gray-600">
-          Streamline daily operations, empower librarians, and create a better
-          experience for every reader.
+        <p
+          className="
+            mt-4
+            max-w-sm
+            text-sm
+            leading-6
+            text-gray-600
+
+            md:max-w-xl
+            md:text-base
+          "
+        >
+          Handle book records, member data, and library services with ease.
         </p>
 
-        {/* Dashboard Preview */}
-        <div className="mt-14 w-full">
-          <div className="overflow-hidden rounded-3xl bg-white p-5 shadow-2xl">
-            <img
-              src={dashboardPreview}
-              alt="Library Dashboard"
-              className="w-full rounded-2xl object-cover"
-            />
-          </div>
+        {/* Dashboard Image */}
+        <div
+          className="
+            mt-8
+
+            w-full
+            max-w-md
+
+            md:mt-12
+            md:max-w-2xl
+
+            lg:max-w-3xl
+          "
+        >
+          <img
+            src={dashboardPreview}
+            alt="Dashboard Preview"
+            className="
+              w-full
+              rounded-[28px]
+              object-cover
+
+              shadow-[0_30px_70px_rgba(0,0,0,0.15)]
+
+              md:rounded-[32px]
+            "
+          />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

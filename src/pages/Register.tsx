@@ -20,19 +20,25 @@ const Register = () => {
 
         {/* Form */}
         <section
-          className="
-            order-2
-            lg:order-1
-            flex
-            items-center
-            justify-center
-            bg-white
-            px-6
-            py-14
-            md:px-10
-            lg:px-16
-          "
-        >
+  className="
+    order-2
+    lg:order-1
+
+    flex
+    items-center
+    justify-center
+
+    bg-white
+
+    px-6
+    py-10
+
+    md:px-10
+    md:py-14
+
+    lg:px-16
+  "
+>
           <div className="w-full max-w-md">
             <RegisterForm />
           </div>
