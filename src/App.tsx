@@ -7,13 +7,15 @@ import Inbox from "./pages/Inbox";
 import LibraryActivity from "./pages/LibraryActivity";
  import Books from "./pages/Books";
 import Members from "./pages/Members";
+import Register from "./pages/Register";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<MainLayout />}>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<Register />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/inbox" element={<Inbox />} />
           <Route path="/activity" element={<LibraryActivity />} />
           <Route path="/books" element={<Books />} /> 
