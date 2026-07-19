@@ -10,6 +10,7 @@ import Members from "./pages/Members";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Supply from "./pages/SupplyAndDemand";
+import StockManagement from "./pages/StockManagement";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/activity" element={<LibraryActivity />} />
           <Route path="/books" element={<Books />} /> 
           <Route path="/management/supply" element={<Supply />} /> 
+          <Route path="/management/stock" element={<StockManagement />} />
           <Route path="/members" element={<Members />} /> 
         </Route>
       </Routes>
