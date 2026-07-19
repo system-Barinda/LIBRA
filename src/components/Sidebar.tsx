@@ -34,16 +34,16 @@ export default function Sidebar({ closeMenu, isMobile = false }) {
   const [openManagement, setOpenManagement] = useState(true);
   const location = useLocation();
 
-  // Helper to check if any child link inside a parent menu group is active
+  // Checks if any nested option matches the active page URL exactly
   const isChildActive = (children) => {
     return children.some(child => location.pathname === child.path);
   };
 
   return (
-    <aside className="bg-white border-r border-gray-100 p-4 md:p-3 lg:p-6 w-full h-full min-h-screen flex flex-col justify-between select-none transition-all">
+    <aside className="bg-white border-r border-gray-100 p-4 md:p-2 lg:p-6 w-full h-full min-h-screen flex flex-col justify-between select-none transition-all md:w-16 lg:w-64">
       <div>
         {/* Header Logo Box */}
-        <div className="mb-8 flex items-center justify-between gap-3 px-2">
+        <div className="mb-8 flex items-center justify-between gap-3 px-2 md:justify-center lg:justify-between">
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 lg:h-12 lg:w-12 items-center justify-center rounded-xl bg-orange-500/10 text-[#FF7E40]">
               <LibraryBig size={24} className="stroke-[2.5]" />
@@ -66,7 +66,7 @@ export default function Sidebar({ closeMenu, isMobile = false }) {
           )}
         </div>
 
-        {/* Primary Navigation System */}
+        {/* Navigation Link List */}
         <nav className="space-y-1">
           {nav.map((item) => {
             const Icon = item.icon;
@@ -75,17 +75,17 @@ export default function Sidebar({ closeMenu, isMobile = false }) {
               const hasActiveChild = isChildActive(item.children);
               return (
                 <div key={item.label} className="space-y-1">
-                  {/* Dropdown Header Trigger Link */}
+                  {/* Dropdown Parent Menu Button */}
                   <button
                     onClick={() => setOpenManagement(!openManagement)}
-                    className={`w-full flex items-center justify-between px-3.5 py-3 rounded-xl transition-all text-sm font-medium ${
+                    className={`w-full flex items-center px-3.5 py-3 rounded-xl transition-all text-sm font-medium justify-center lg:justify-between ${
                       hasActiveChild 
-                        ? "text-[#FF7E40] bg-orange-50/50" 
+                        ? "text-[#FF7E40] bg-orange-50/60 rounded-xl" 
                         : "text-slate-500 hover:bg-gray-50 hover:text-slate-800"
                     }`}
                   >
-                    <div className="flex items-center gap-3 justify-center lg:justify-start w-full lg:w-auto">
-                      <Icon size={18} className="shrink-0" />
+                    <div className="flex items-center gap-3">
+                      <Icon size={20} className="shrink-0" />
                       <span className="hidden lg:inline">{item.label}</span>
                     </div>
 
@@ -97,7 +97,7 @@ export default function Sidebar({ closeMenu, isMobile = false }) {
                     />
                   </button>
 
-                  {/* Nested Layout Submenus Panel Container */}
+                  {/* Submenus Drawer Dropdown */}
                   {openManagement && (
                     <div className="lg:ml-4 lg:border-l lg:border-gray-100 lg:pl-4 space-y-1 flex flex-col items-center lg:items-stretch">
                       {item.children.map((child) => (
@@ -106,16 +106,19 @@ export default function Sidebar({ closeMenu, isMobile = false }) {
                           to={child.path}
                           onClick={isMobile ? closeMenu : undefined}
                           className={({ isActive }) =>
-                            `w-full block rounded-xl px-3.5 py-2.5 text-xs font-medium transition-all ${
+                            `w-full block text-center lg:text-left rounded-xl px-2 lg:px-3.5 py-2 text-xs font-semibold transition-all ${
                               isActive
                                 ? "bg-[#FF7E40] text-white shadow-sm"
                                 : "text-slate-500 hover:bg-gray-50 hover:text-slate-800"
                             }`
                           }
                         >
+                          {/* Desktop Text */}
                           <span className="hidden lg:inline">{child.label}</span>
-                          <span className="lg:hidden block text-center font-bold tracking-tighter">
-                            {child.label.split(" ").map(w => w[0]).join("")}
+                          
+                          {/* Tablet Short Abbreviation Labels (SM / S&A) */}
+                          <span className="lg:hidden block text-[10px] tracking-tight whitespace-nowrap">
+                            {child.label === "Stock Management" ? "SM" : "S&A"}
                           </span>
                         </NavLink>
                       ))}
@@ -125,7 +128,7 @@ export default function Sidebar({ closeMenu, isMobile = false }) {
               );
             }
 
-            {/* Default Standalone Menu NavLink Elements */}
+            {/* Default Standalone Sidebar Links */}
             return (
               <NavLink
                 key={item.label}
@@ -139,30 +142,28 @@ export default function Sidebar({ closeMenu, isMobile = false }) {
                   }`
                 }
               >
-                <Icon size={18} className="shrink-0" />
+                <Icon size={20} className="shrink-0" />
                 <span className="hidden lg:inline">{item.label}</span>
               </NavLink>
             );
           })}
           
-          {/* Static Presentational Separator & Logout Block Layout Element */}
           <div className="my-4 border-t border-gray-100 w-full" />
 
+          {/* Logout Action Button Element */}
           <button className="w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-medium text-slate-500 hover:bg-red-50 hover:text-red-600 transition-all justify-center lg:justify-start">
-            <LogOut size={18} className="shrink-0" />
+            <LogOut size={20} className="shrink-0" />
             <span className="hidden lg:inline">Logout</span>
           </button>
         </nav>
       </div>
 
-      {/* Global Context Promotional Promo Box Panel (Hidden on Tablets) */}
+      {/* Sidebar Footer Banner Card (Completely Hidden on Tablet viewports) */}
       <div className="hidden lg:block mt-8 rounded-2xl bg-gray-50 border border-gray-100 p-4 text-sm text-slate-600">
         <p className="font-bold text-slate-800">On-the-Go Management</p>
-
         <p className="mt-1 text-xs text-slate-400 leading-relaxed">
           Libra Mobile lets you access books, members, and stats anytime, anywhere.
         </p>
-
         <button className="mt-4 w-full rounded-xl bg-[#FF7E40] hover:bg-[#e0682e] px-4 py-2 text-xs font-semibold text-white transition-all shadow-sm">
           Try for Free
         </button>
