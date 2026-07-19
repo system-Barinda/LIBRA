@@ -49,7 +49,7 @@ export default function Sidebar({ closeMenu, isMobile = false }) {
               <LibraryBig size={24} className="stroke-[2.5]" />
             </div>
 
-            <div className="hidden lg:block">
+            <div className="block md:hidden lg:block">
               <h1 className="text-lg font-bold text-slate-800 tracking-wide">
                 LIBRA
               </h1>
@@ -86,12 +86,12 @@ export default function Sidebar({ closeMenu, isMobile = false }) {
                   >
                     <div className="flex items-center gap-3">
                       <Icon size={20} className="shrink-0" />
-                      <span className="hidden lg:inline">{item.label}</span>
+                      <span className="block md:hidden lg:inline">{item.label}</span>
                     </div>
 
                     <ChevronDown
                       size={14}
-                      className={`hidden lg:block transition-transform duration-200 text-slate-400 ${
+                      className={`block md:hidden lg:block transition-transform duration-200 text-slate-400 ${
                         openManagement ? "rotate-180" : ""
                       }`}
                     />
@@ -113,11 +113,11 @@ export default function Sidebar({ closeMenu, isMobile = false }) {
                             }`
                           }
                         >
-                          {/* Desktop Text */}
-                          <span className="hidden lg:inline">{child.label}</span>
+                          {/* Visible on Mobile and Desktop */}
+                          <span className="block md:hidden lg:inline">{child.label}</span>
                           
-                          {/* Tablet Short Abbreviation Labels (SM / S&A) */}
-                          <span className="lg:hidden block text-[10px] tracking-tight whitespace-nowrap">
+                          {/* Abbreviated Tags Only on Tablet viewports */}
+                          <span className="hidden md:block lg:hidden text-[10px] tracking-tight whitespace-nowrap">
                             {child.label === "Stock Management" ? "SM" : "S&A"}
                           </span>
                         </NavLink>
@@ -143,7 +143,7 @@ export default function Sidebar({ closeMenu, isMobile = false }) {
                 }
               >
                 <Icon size={20} className="shrink-0" />
-                <span className="hidden lg:inline">{item.label}</span>
+                <span className="block md:hidden lg:inline">{item.label}</span>
               </NavLink>
             );
           })}
@@ -153,13 +153,13 @@ export default function Sidebar({ closeMenu, isMobile = false }) {
           {/* Logout Action Button Element */}
           <button className="w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-medium text-slate-500 hover:bg-red-50 hover:text-red-600 transition-all justify-center lg:justify-start">
             <LogOut size={20} className="shrink-0" />
-            <span className="hidden lg:inline">Logout</span>
+            <span className="block md:hidden lg:inline">Logout</span>
           </button>
         </nav>
       </div>
 
-      {/* Sidebar Footer Banner Card (Completely Hidden on Tablet viewports) */}
-      <div className="hidden lg:block mt-8 rounded-2xl bg-gray-50 border border-gray-100 p-4 text-sm text-slate-600">
+      {/* Sidebar Footer Banner Card (Hidden only on Tablet layout viewports) */}
+      <div className="block md:hidden lg:block mt-8 rounded-2xl bg-gray-50 border border-gray-100 p-4 text-sm text-slate-600">
         <p className="font-bold text-slate-800">On-the-Go Management</p>
         <p className="mt-1 text-xs text-slate-400 leading-relaxed">
           Libra Mobile lets you access books, members, and stats anytime, anywhere.
