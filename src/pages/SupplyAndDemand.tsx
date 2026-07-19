@@ -273,7 +273,7 @@ export default function Supply() {
                     <td className="hidden md:table-cell py-3 px-6 font-medium text-slate-500 align-middle whitespace-nowrap">{row.source}</td>
                   </tr>
                 ))}
-              </tbody>
+              </tbody> 
             </table>
           </div>
 
