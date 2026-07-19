@@ -27,7 +27,7 @@ const initialTableData = [
   { vendor: 'Obsidian Edge Distributors', logoColor: 'text-amber-600', totalBooks: 190, file: 'obsidian_batch.pdf', date: 'Jul 27, 2035', price: '$2,900.00', invoice: 'INV-OBS-2093', source: 'Library Reserve' },
 ];
 
-export default function Dashboard() {
+export default function Supply() {
   const [searchTerm, setSearchTerm] = useState('');
 
   const filteredData = initialTableData.filter(row => 
