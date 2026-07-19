@@ -17,17 +17,51 @@ const fundingData = [
 ];
 
 const initialTableData = [
-  { vendor: 'Aurora Books Co.', logoColor: 'text-orange-500', totalBooks: 320, file: 'aurora_books_q1.pdf', date: 'Jan 15, 2035', price: '$4,800.00', invoice: 'INV-SKY-7642', source: 'City Library Budget' },
-  { vendor: 'Nebula Press Distribution', logoColor: 'text-blue-500', totalBooks: 275, file: 'nebula_batch_3.pdf', date: 'Feb 10, 2035', price: '$4,125.00', invoice: 'INV-SKY-7642', source: 'Local Education Grant' },
-  { vendor: 'GroveLine Publishing', logoColor: 'text-purple-500', totalBooks: 200, file: 'groveline_list.pdf', date: 'Mar 05, 2035', price: '$3,100.00', invoice: 'INV-SKY-7642', source: 'City Library Budget' },
-  { vendor: 'Skybound Learning Partners', logoColor: 'text-orange-600', totalBooks: 150, file: 'skybound_batch2.pdf', date: 'Apr 18, 2035', price: '$2,250.00', invoice: 'INV-SKY-7642', source: 'State Education Fund' },
-  { vendor: 'Hollow House Publishing', logoColor: 'text-slate-700', totalBooks: 180, file: 'hallow_house_q2.pdf', date: 'May 02, 2035', price: '$2,700.00', invoice: 'INV-SKY-7642', source: 'Library Reserve' },
-  { vendor: 'Forge & Feather Supplies', logoColor: 'text-orange-500', totalBooks: 210, file: 'forge_list.pdf', date: 'Jun 09, 2035', price: '$3,350.00', invoice: 'INV-SKY-7642', source: 'City Library Budget' },
-  { vendor: 'Greenline Books', logoColor: 'text-emerald-600', totalBooks: 135, file: 'greenline_books.pdf', date: 'Jul 01, 2035', price: '$2,025.00', invoice: 'INV-SKY-7642', source: 'Cultural Literacy Grant' },
-  { vendor: 'Obsidian Edge Distributors', logoColor: 'text-amber-600', totalBooks: 190, file: 'obsidian_batch.pdf', date: 'Jul 27, 2035', price: '$2,900.00', invoice: 'INV-SKY-7642', source: 'Library Reserve' },
+  { id: 1, vendor: 'Aurora Books Co.', logoColor: 'text-orange-500', totalBooks: 320, file: 'aurora_books_q1.pdf', date: 'Jan 15, 2035', price: '$4,800.00', invoice: 'INV-SKY-7642', source: 'City Library Budget' },
+  { id: 2, vendor: 'Nebula Press Distribution', logoColor: 'text-blue-500', totalBooks: 275, file: 'nebula_batch_3.pdf', date: 'Feb 10, 2035', price: '$4,125.00', invoice: 'INV-SKY-7642', source: 'Local Education Grant' },
+  { id: 3, vendor: 'GroveLine Publishing', logoColor: 'text-purple-500', totalBooks: 200, file: 'groveline_list.pdf', date: 'Mar 05, 2035', price: '$3,100.00', invoice: 'INV-SKY-7642', source: 'City Library Budget' },
+  { id: 4, vendor: 'Skybound Learning Partners', logoColor: 'text-orange-600', totalBooks: 150, file: 'skybound_batch2.pdf', date: 'Apr 18, 2035', price: '$2,250.00', invoice: 'INV-SKY-7642', source: 'State Education Fund' },
+  { id: 5, vendor: 'Hollow House Publishing', logoColor: 'text-slate-700', totalBooks: 180, file: 'hallow_house_q2.pdf', date: 'May 02, 2035', price: '$2,700.00', invoice: 'INV-SKY-7642', source: 'Library Reserve' },
+  { id: 6, vendor: 'Forge & Feather Supplies', logoColor: 'text-orange-500', totalBooks: 210, file: 'forge_list.pdf', date: 'Jun 09, 2035', price: '$3,350.00', invoice: 'INV-SKY-7642', source: 'City Library Budget' },
+  { id: 7, vendor: 'Greenline Books', logoColor: 'text-emerald-600', totalBooks: 135, file: 'greenline_books.pdf', date: 'Jul 01, 2035', price: '$2,025.00', invoice: 'INV-SKY-7642', source: 'Cultural Literacy Grant' },
+  { id: 8, vendor: 'Obsidian Edge Distributors', logoColor: 'text-amber-600', totalBooks: 190, file: 'obsidian_batch.pdf', date: 'Jul 27, 2035', price: '$2,900.00', invoice: 'INV-SKY-7642', source: 'Library Reserve' },
 ];
 
-export default function Dashboard() {
+/**
+ * MobileRowCard - Renders the complex table data into a clean grid card for mobile screens.
+ */
+const MobileRowCard = ({ row }) => (
+  <div className="border border-slate-100 rounded-xl p-4 bg-white shadow-sm/50 space-y-3">
+    {/* Row 1: Logo + Vendor, Date */}
+    <div className="flex justify-between items-start">
+      <div className="flex items-center space-x-2.5">
+        <div className={`w-2 h-2 rounded-full ${row.logoColor} ring-4 ring-slate-50`} />
+        <span className="font-semibold text-slate-900 text-sm">{row.vendor}</span>
+      </div>
+      <span className="text-slate-400 font-medium text-xs whitespace-nowrap">{row.date}</span>
+    </div>
+
+    {/* Row 2: Price, Source */}
+    <div className="flex justify-between items-end">
+      <span className="font-bold text-lg text-orange-600/90">{row.price}</span>
+      <span className="text-slate-700 font-medium text-xs whitespace-nowrap bg-slate-50 border border-slate-100 px-2 py-0.5 rounded-md">{row.source}</span>
+    </div>
+
+    {/* Row 3: Books/File, Invoice */}
+    <div className="flex justify-between items-center text-xs">
+      <div className="flex items-center space-x-2 text-slate-500 font-medium">
+        <span>{row.totalBooks} Books</span>
+        <a href="#" className="inline-flex items-center space-x-1.5 bg-orange-50 text-orange-700 font-medium text-xs px-2.5 py-1 rounded-md border border-orange-100 hover:bg-orange-100 transition whitespace-nowrap truncate max-w-[140px]">
+          <svg className="w-3.5 h-3.5 text-orange-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A1 1 0 0113 2.586L15.414 5A1 1 0 0116 5.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd"/></svg>
+          <span className="truncate">{row.file}</span>
+        </a>
+      </div>
+      <span className="font-semibold text-slate-400 text-xs tracking-tight">{row.invoice}</span>
+    </div>
+  </div>
+);
+
+export default function Supply() {
   const [searchTerm, setSearchTerm] = useState('');
 
   const filteredData = initialTableData.filter(row => 
@@ -36,10 +70,10 @@ export default function Dashboard() {
   );
 
   return (
-    <div className="min-h-screen bg-[#f8fafc] p-6 text-slate-800 font-sans antialiased tablet:w-[820px] tablet:mx-auto">
+    <div className="min-h-screen bg-[#f8fafc] p-6 tablet:p-10 text-slate-800 font-sans antialiased tablet:w-[820px] tablet:mx-auto">
       <div className="space-y-6">
         
-        {/* TOP: Wide Line Graph */}
+        {/* TOP: Acquisitions Line Graph (Stacks Vertically on Mobile) */}
         <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex flex-col justify-between">
           <div>
             <div className="flex justify-between items-center mb-4">
@@ -65,7 +99,6 @@ export default function Dashboard() {
             </div>
           </div>
 
-          {/* Line Chart */}
           <div className="relative w-full h-44 mt-2">
             <svg viewBox="0 0 500 150" className="w-full h-full overflow-visible">
               <line x1="0" y1="30" x2="500" y2="30" stroke="#f1f5f9" strokeWidth="1" />
@@ -98,10 +131,10 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* MIDDLE: Side-by-Side Smaller Metrics */}
-        <div className="grid grid-cols-2 gap-6">
+        {/* MIDDLE: Stacks Vertically on Mobile, Side-by-Side on Tablet/Desktop */}
+        <div className="grid grid-cols-1 tablet:grid-cols-2 gap-6">
           
-          {/* Card 2: Top Suppliers */}
+          {/* Card: Top Suppliers */}
           <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex flex-col justify-between">
             <div>
               <div className="flex justify-between items-center mb-4">
@@ -137,7 +170,7 @@ export default function Dashboard() {
             </div>
           </div>
 
-          {/* Card 3: Funding Source Breakdown */}
+          {/* Card: Funding Source Breakdown */}
           <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex flex-col justify-between">
             <div className="flex justify-between items-center mb-2">
               <h3 className="font-semibold text-slate-900 text-lg">Funding Source Breakdown</h3>
@@ -170,14 +203,40 @@ export default function Dashboard() {
 
         </div>
 
-        {/* BOTTOM: Tablet-Optimized Data Table */}
+        {/* BOTTOM: Tablet-Optimized Data Table / Mobile Card View */}
         <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
           
-          <div className="p-5 border-b border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white">
-            <h3 className="font-bold text-slate-900 text-xl tracking-tight">Supply & Acquisition</h3>
+          {/* Table Header / Mobile Controls */}
+          <div className="p-5 border-b border-slate-100 flex justify-between items-center gap-4 bg-white">
+            <h3 className="font-bold text-slate-900 text-xl tracking-tight hidden tablet:block">Supply & Acquisition</h3>
             
-            <div className="flex items-center gap-3 w-full sm:w-auto">
-              <div className="relative w-full sm:w-72">
+            {/* Mobile Title View */}
+            <div className="flex tablet:hidden items-center space-x-2">
+                <div className="relative tablet:w-72">
+                    <span className="absolute inset-y-0 left-3 flex items-center text-slate-400">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    </span>
+                    <input 
+                    type="text" 
+                    placeholder="Search a vendor..." 
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="w-[160px] bg-slate-50 text-sm pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-800/10 focus:border-slate-800 transition"
+                    />
+                </div>
+                <div className="relative">
+                    <select className="appearance-none bg-slate-50 text-sm pl-4 pr-7 py-2.5 rounded-xl border border-slate-200 focus:outline-none cursor-pointer hover:bg-slate-100 transition whitespace-nowrap font-semibold text-slate-700">
+                    <option>Filter</option>
+                    </select>
+                    <div className="absolute right-2 top-2 pointer-events-none text-slate-500">
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7"/></svg>
+                    </div>
+                </div>
+            </div>
+
+            {/* Desktop Controls (preserves desktop/tablet view) */}
+            <div className="hidden tablet:flex items-center gap-3 w-auto">
+              <div className="relative tablet:w-72">
                 <span className="absolute inset-y-0 left-3 flex items-center text-slate-400">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                 </span>
@@ -201,7 +260,8 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <div className="overflow-x-auto">
+          {/* --- Tablet/Desktop View Table (Hidden on Mobile) --- */}
+          <div className="overflow-x-auto hidden tablet:block">
             <table className="w-full text-left border-collapse min-w-[700px]">
               <thead>
                 <tr className="bg-slate-50/70 border-b border-slate-100 text-[11px] font-bold uppercase tracking-wider text-slate-400">
@@ -212,16 +272,16 @@ export default function Dashboard() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 text-sm text-slate-600">
-                {filteredData.map((row, index) => (
-                  <tr key={index} className="hover:bg-slate-50/80 transition-colors group">
-                    {/* Tablet Cell 1: Stacks Vendor, Books, File */}
+                {filteredData.map((row) => (
+                  <tr key={row.id} className="hover:bg-slate-50/80 transition-colors group">
+                    {/* Tablet Cell 1: Vendor, Books, File */}
                     <td className="py-4 px-6 align-top">
                       <div className="flex items-center space-x-3 mb-2.5">
                         <div className={`w-2.5 h-2.5 rounded-full ${row.logoColor} ring-4 ring-slate-50 group-hover:ring-slate-100 transition`} />
-                        <span className="font-semibold text-slate-900 text-base">{row.vendor}</span>
+                        <span className="font-semibold text-slate-900 text-base whitespace-nowrap">{row.vendor}</span>
                       </div>
-                      <div className="flex items-center space-x-3 ml-6">
-                        <span className="text-slate-500 font-medium text-xs whitespace-nowrap">{row.totalBooks} Books</span>
+                      <div className="flex items-center space-x-3 ml-6 text-slate-500 font-medium text-xs whitespace-nowrap">
+                        <span>{row.totalBooks} Books</span>
                         <a href="#" className="inline-flex items-center space-x-1.5 bg-orange-50 text-orange-700 font-medium text-xs px-2.5 py-1 rounded-md border border-orange-100 hover:bg-orange-100 transition whitespace-nowrap truncate max-w-[160px]">
                           <svg className="w-3.5 h-3.5 text-orange-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A1 1 0 0113 2.586L15.414 5A1 1 0 0116 5.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd"/></svg>
                           <span>{row.file}</span>
@@ -229,9 +289,9 @@ export default function Dashboard() {
                       </div>
                     </td>
                     <td className="py-4 px-6 text-slate-500 font-medium whitespace-nowrap align-middle">{row.date}</td>
-                    {/* Tablet Cell 3: Stacks Price and Invoice */}
+                    {/* Tablet Cell 3: Price and Invoice */}
                     <td className="py-4 px-6 align-middle">
-                      <div className="font-bold text-lg text-orange-600/90">{row.price}</div>
+                      <div className="font-bold text-lg text-orange-600/90 whitespace-nowrap">{row.price}</div>
                       <div className="flex items-center space-x-1 text-slate-500 whitespace-nowrap">
                         <span className="font-medium text-[11px]">Invoice:</span>
                         <span className="font-semibold text-xs tracking-tight">{row.invoice}</span>
@@ -244,8 +304,18 @@ export default function Dashboard() {
             </table>
           </div>
 
+          {/* --- Mobile View Card Layout (Hidden on Tablet/Desktop) --- */}
+          <div className="tablet:hidden p-4 space-y-4 bg-slate-50/50">
+            {filteredData.map((row) => (
+                <MobileRowCard key={row.id} row={row} />
+            ))}
+            {filteredData.length === 0 && (
+                <div className="text-center text-slate-400 py-10 font-medium text-sm">No matching vendors.</div>
+            )}
+          </div>
+
           {/* Table Pagination Footer */}
-          <div className="p-4 border-t border-slate-100 bg-slate-50/50 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-semibold text-slate-500">
+          <div className="p-4 border-t border-slate-100 bg-slate-50/50 flex flex-col sm:flex-row tablet:flex-row justify-between items-center gap-4 text-xs font-semibold text-slate-500">
             <div className="flex items-center space-x-2">
               <span>Show</span>
               <div className="relative">
@@ -267,9 +337,9 @@ export default function Dashboard() {
               </button>
               <button className="px-3 py-1.5 rounded-lg bg-orange-500 text-white font-bold transition">1</button>
               <button className="px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 transition">2</button>
-              <button className="px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 transition">3</button>
-              <button className="px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 transition">4</button>
-              <button className="px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 transition">5</button>
+              <button className="px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 transition hidden tablet:block">3</button>
+              <button className="p-1.5 rounded-lg border border-slate-200 bg-white text-slate-400 cursor-default hidden tablet:block" disabled>...</button>
+              <button className="px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 transition">6</button>
               <button className="p-1.5 rounded-lg border border-slate-200 bg-white text-slate-500 hover:text-slate-700 hover:bg-slate-50 transition">
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7"/></svg>
               </button>
