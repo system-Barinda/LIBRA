@@ -25,7 +25,7 @@ interface BookItem {
   resourceLink: string;
 }
 
-// --- Verified Mock Data matching layout ---
+// --- Verified Mock Data ---
 const booksData: BookItem[] = [
   {
     title: 'Where The Flowers Bloom',
@@ -178,30 +178,30 @@ export default function Books() {
     <div className="min-h-screen bg-[#FAFAFA] p-4 md:p-6 lg:p-8 font-sans antialiased text-gray-600">
       
       {/* --- Header Bar Panel --- */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+      <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 mb-6">
         <h2 className="font-bold text-gray-800 text-xl tracking-tight">Books Collection</h2>
         
         {/* Navigation & Toolbar Controls Layout */}
-        <div className="flex items-center justify-between sm:justify-end gap-2 w-full sm:w-auto">
+        <div className="flex flex-wrap items-center gap-2 w-full lg:w-auto">
           {/* Main Actionable Search Input Block */}
-          <div className="relative flex-1 sm:flex-initial min-w-[160px] md:w-64">
+          <div className="relative flex-1 min-w-[200px] sm:flex-initial sm:w-64">
             <Search className="absolute left-3 top-2.5 text-gray-400" size={15} />
             <input 
               type="text" 
               placeholder="Search a book" 
-              className="pl-9 pr-4 py-2 text-xs border border-gray-200 rounded-xl bg-[#F5F5F5] focus:outline-none focus:bg-white focus:ring-2 focus:ring-orange-500/10 w-full transition-all"
+              className="pl-9 pr-4 py-2 text-xs border border-gray-200 rounded-xl bg-[#F5F5F5] focus:outline-none focus:bg-white focus:ring-2 focus:ring-orange-500/20 w-full transition-all"
             />
           </div>
 
           {/* Filter Trigger Elements */}
           <button className="p-2 text-xs font-semibold text-gray-600 border border-gray-200 rounded-xl bg-white hover:bg-gray-50 flex items-center gap-1.5 transition-colors shrink-0">
             <SlidersHorizontal size={14} className="text-gray-500" />
-            <span className="hidden md:inline">Filter</span>
+            <span>Filter</span>
           </button>
 
           {/* Sort Menu Options Dropdown Selection */}
-          <div className="relative hidden md:flex items-center gap-1.5 text-xs text-gray-500 shrink-0">
-            <span>Sort by:</span>
+          <div className="flex items-center gap-1.5 text-xs text-gray-500 shrink-0">
+            <span className="hidden sm:inline">Sort by:</span>
             <button className="border border-gray-200 rounded-xl bg-white px-3 py-2 text-gray-700 font-medium hover:bg-gray-50 flex items-center gap-1 transition-all">
               Popular <ChevronDown size={12} className="ml-0.5 text-gray-400" />
             </button>
@@ -209,7 +209,7 @@ export default function Books() {
 
           {/* Grid Layout Toggle View Box */}
           <div className="flex items-center gap-0.5 bg-gray-100 p-1 rounded-xl shrink-0">
-            <button className="p-1.5 rounded-lg text-white bg-[#FF7E40] shadow-2xs">
+            <button className="p-1.5 rounded-lg text-white bg-[#FF7E40] shadow-sm">
               <List size={14} />
             </button>
             <button className="p-1.5 rounded-lg text-gray-400 hover:text-gray-600 transition-colors">
@@ -218,29 +218,28 @@ export default function Books() {
           </div>
 
           {/* Primary Create Action Call To Button */}
-          <button className="text-xs font-semibold text-white bg-[#FF7E40] hover:bg-[#e0682e] rounded-xl px-3 py-2 flex items-center gap-1.5 shadow-sm transition-all shrink-0">
+          <button className="text-xs font-semibold text-white bg-[#FF7E40] hover:bg-[#e0682e] rounded-xl px-3 py-2 flex items-center gap-1.5 shadow-sm transition-all shrink-0 ml-auto sm:ml-0">
             <Plus size={16} /> <span>Add Book</span>
           </button>
         </div>
       </div>
 
       {/* --- Primary Display Surface Card Wrapper --- */}
-      <div className="bg-white rounded-2xl border border-gray-100 shadow-xs overflow-hidden">
+      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
         
         {/* Responsive Table Layout Module Container */}
         <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse min-w-[640px]">
+          <table className="w-full text-left border-collapse min-w-[768px]">
             <thead>
               <tr className="border-b border-gray-100 text-[11px] font-semibold text-gray-400 bg-[#FAFAFA] uppercase tracking-wider">
-                <th className="py-3 px-4 md:px-6 cursor-pointer select-none">Book <span className="text-[9px] ml-0.5">↕</span></th>
-                <th className="py-3 px-4 md:px-6 cursor-pointer select-none">Author <span className="text-[9px] ml-0.5">↕</span></th>
-                <th className="py-3 px-4 md:px-6 cursor-pointer select-none hidden md:table-cell">Publisher <span className="text-[9px] ml-0.5">↕</span></th>
-                <th className="py-3 px-4 md:px-6 cursor-pointer select-none">Status <span className="text-[9px] ml-0.5">↕</span></th>
-                <th className="py-3 px-4 md:px-6 cursor-pointer select-none hidden md:table-cell text-center">Copies <span className="text-[9px] ml-0.5">↕</span></th>
-                <th className="py-3 px-4 md:px-6 cursor-pointer select-none hidden md:table-cell">Shelf Location <span className="text-[9px] ml-0.5">↕</span></th>
-                <th className="py-3 px-4 md:px-6 cursor-pointer select-none hidden md:table-cell">Resource Link <span className="text-[9px] ml-0.5">↕</span></th>
-                {/* Fallback Mobile Header Column Wrapper */}
-                <th className="py-3 px-4 md:px-6 md:hidden">Details <span className="text-[9px] ml-0.5">↕</span></th>
+                <th className="py-3 px-4 md:px-6 cursor-pointer select-none w-[30%]">Book <span className="text-[9px] ml-0.5">↕</span></th>
+                <th className="py-3 px-4 md:px-6 cursor-pointer select-none w-[15%]">Author <span className="text-[9px] ml-0.5">↕</span></th>
+                <th className="py-3 px-4 md:px-6 cursor-pointer select-none hidden md:table-cell w-[15%]">Publisher <span className="text-[9px] ml-0.5">↕</span></th>
+                <th className="py-3 px-4 md:px-6 cursor-pointer select-none w-[10%]">Status <span className="text-[9px] ml-0.5">↕</span></th>
+                <th className="py-3 px-4 md:px-6 cursor-pointer select-none hidden md:table-cell text-center w-[8%]">Copies <span className="text-[9px] ml-0.5">↕</span></th>
+                <th className="py-3 px-4 md:px-6 cursor-pointer select-none hidden md:table-cell w-[12%]">Shelf Location <span className="text-[9px] ml-0.5">↕</span></th>
+                <th className="py-3 px-4 md:px-6 cursor-pointer select-none hidden md:table-cell w-[10%]">Resource Link <span className="text-[9px] ml-0.5">↕</span></th>
+                <th className="py-3 px-4 md:px-6 md:hidden w-[10%]">Details</th>
               </tr>
             </thead>
             
@@ -249,38 +248,38 @@ export default function Books() {
                 <tr key={book.id} className="hover:bg-gray-50/40 transition-colors">
                   
                   {/* Book Details Block Title Column */}
-                  <td className="py-3 px-4 md:px-6">
+                  <td className="py-3 px-4 md:px-6 align-middle">
                     <div className="flex items-center gap-3">
                       <img 
                         src={book.image} 
                         alt={book.title} 
-                        className="w-10 h-14 object-cover rounded-md bg-gray-50 border border-gray-100 shadow-3xs shrink-0"
+                        className="w-10 h-14 object-cover rounded-md bg-gray-50 border border-gray-100 shadow-sm shrink-0"
                       />
                       <div className="min-w-0">
-                        <p className="font-bold text-gray-800 text-sm md:text-xs line-clamp-1">{book.title}</p>
+                        <p className="font-bold text-gray-800 text-xs md:text-sm truncate">{book.title}</p>
                         <p className="text-[10px] text-gray-400 font-medium mt-0.5">{book.id}</p>
                       </div>
                     </div>
                   </td>
 
                   {/* Author Information Column */}
-                  <td className="py-3 px-4 md:px-6">
+                  <td className="py-3 px-4 md:px-6 align-middle">
                     <div className="flex items-center gap-2">
                       <img src={book.author.avatar} alt={book.author.name} className="w-5 h-5 rounded-full object-cover shrink-0" />
-                      <span className="font-medium text-gray-700 truncate max-w-[100px]">{book.author.name}</span>
+                      <span className="font-medium text-gray-700 truncate max-w-[120px]">{book.author.name}</span>
                     </div>
                   </td>
 
                   {/* Publisher Block Hidden on Mobile */}
-                  <td className="py-3 px-4 md:px-6 hidden md:table-cell">
-                    <div>
-                      <p className="font-medium text-gray-700">{book.publisher}</p>
+                  <td className="py-3 px-4 md:px-6 hidden md:table-cell align-middle">
+                    <div className="min-w-0">
+                      <p className="font-medium text-gray-700 truncate">{book.publisher}</p>
                       <p className="text-[10px] text-gray-400 mt-0.5">{book.year}</p>
                     </div>
                   </td>
 
                   {/* Operational Status Badges Column */}
-                  <td className="py-3 px-4 md:px-6 vertical-align-middle">
+                  <td className="py-3 px-4 md:px-6 align-middle whitespace-nowrap">
                     {book.status === 'Available' && (
                       <span className="bg-[#E6F4EA] text-[#137333] font-semibold text-[10px] px-2.5 py-1 rounded-full border border-transparent">Available</span>
                     )}
@@ -296,26 +295,26 @@ export default function Books() {
                   </td>
 
                   {/* Standard Desktop Extra Columns Layout */}
-                  <td className="py-3 px-4 md:px-6 hidden md:table-cell text-center font-medium text-gray-700">
+                  <td className="py-3 px-4 md:px-6 hidden md:table-cell text-center font-medium text-gray-700 align-middle">
                     {book.copies}
                   </td>
 
-                  <td className="py-3 px-4 md:px-6 hidden md:table-cell font-medium text-gray-700 tracking-tight">
+                  <td className="py-3 px-4 md:px-6 hidden md:table-cell font-medium text-gray-700 tracking-tight align-middle whitespace-nowrap">
                     {book.shelfLocation}
                   </td>
 
-                  <td className="py-3 px-4 md:px-6 hidden md:table-cell">
-                    <a href="#resource" className="inline-flex items-center gap-1 text-[#FF7E40] hover:text-[#e0682e] transition-all max-w-[160px]">
+                  <td className="py-3 px-4 md:px-6 hidden md:table-cell align-middle">
+                    <a href="#resource" className="inline-flex items-center gap-1 text-[#FF7E40] hover:text-[#e0682e] transition-all max-w-[140px]">
                       <Link2 size={12} className="shrink-0" />
                       <span className="truncate underline font-medium">{book.resourceLink}</span>
                     </a>
                   </td>
 
                   {/* Combined Aggregated Column Block Specific for Responsive Views */}
-                  <td className="py-3 px-4 md:px-6 md:hidden">
-                    <div className="space-y-1 text-[11px]">
+                  <td className="py-3 px-4 md:px-6 md:hidden align-middle">
+                    <div className="space-y-1 text-[11px] min-w-[100px]">
                       <p className="text-gray-400">Copies: <span className="font-semibold text-gray-700">{book.copies}</span></p>
-                      <p className="text-gray-400">Shelf: <span className="font-semibold text-gray-700">{book.shelfLocation}</span></p>
+                      <p className="text-gray-400">Shelf: <span className="font-semibold text-gray-700 whitespace-nowrap">{book.shelfLocation}</span></p>
                       <a href="#resource" className="inline-flex items-center gap-0.5 text-[#FF7E40] underline font-medium">
                         <Link2 size={10} /> Link
                       </a>
@@ -329,7 +328,7 @@ export default function Books() {
         </div>
 
         {/* --- Global Dynamic Footer Controls Row --- */}
-        <div className="p-4 border-t border-gray-100 bg-white flex flex-row justify-between items-center text-xs font-medium text-gray-500">
+        <div className="p-4 border-t border-gray-100 bg-white flex flex-col sm:flex-row gap-4 justify-between items-center text-xs font-medium text-gray-500">
           {/* Counter Status Entry Indicators Layout */}
           <div className="flex items-center gap-1.5">
             <span>Show</span>
@@ -345,16 +344,16 @@ export default function Books() {
           </div>
 
           {/* Actionable Steps Multi-page Elements Block */}
-          <div className="flex items-center gap-1">
-            <button className="p-1.5 border border-gray-200 rounded-lg bg-gray-50 text-gray-300 cursor-not-allowed">
+          <div className="flex items-center gap-1 overflow-x-auto max-w-full py-1">
+            <button className="p-1.5 border border-gray-200 rounded-lg bg-gray-50 text-gray-300 cursor-not-allowed shrink-0">
               <ChevronLeft size={14} />
             </button>
-            <button className="px-2.5 py-1 rounded-lg text-white bg-[#FF7E40] font-bold">1</button>
-            <button className="px-2.5 py-1 rounded-lg bg-transparent hover:bg-gray-50 text-gray-600 transition-colors">2</button>
-            <button className="px-2.5 py-1 rounded-lg bg-transparent hover:bg-gray-50 text-gray-600 transition-colors">3</button>
-            <span className="px-1 text-gray-300">..</span>
-            <button className="px-2.5 py-1 rounded-lg bg-transparent hover:bg-gray-50 text-gray-600 transition-colors">6</button>
-            <button className="p-1.5 border border-gray-200 rounded-lg bg-white text-gray-500 hover:bg-gray-50 transition-colors">
+            <button className="px-2.5 py-1 rounded-lg text-white bg-[#FF7E40] font-bold shrink-0">1</button>
+            <button className="px-2.5 py-1 rounded-lg bg-transparent hover:bg-gray-50 text-gray-600 transition-colors shrink-0">2</button>
+            <button className="px-2.5 py-1 rounded-lg bg-transparent hover:bg-gray-50 text-gray-600 transition-colors shrink-0">3</button>
+            <span className="px-1 text-gray-300 shrink-0">..</span>
+            <button className="px-2.5 py-1 rounded-lg bg-transparent hover:bg-gray-50 text-gray-600 transition-colors shrink-0">6</button>
+            <button className="p-1.5 border border-gray-200 rounded-lg bg-white text-gray-500 hover:bg-gray-50 transition-colors shrink-0">
               <ChevronRight size={14} />
             </button>
           </div>
