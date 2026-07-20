@@ -23,7 +23,7 @@ const nav = [
   { label: "Settings", path: "/settings" },
 ];
 
-export default function Sidebar({ closeMenu, isMobile = false }) {
+export default function Sidebar({ closeMenu, isMobile = false }:any) {
   const [openManagement, setOpenManagement] = useState(true);
 
   return (
