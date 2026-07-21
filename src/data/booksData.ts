@@ -1,3 +1,5 @@
+import type { BookItem } from "../types/BookTypes";
+
 export const booksData: BookItem[] = [
   {
     title: 'Where The Flowers Bloom',
