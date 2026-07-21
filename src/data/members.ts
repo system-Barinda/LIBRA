@@ -1,4 +1,6 @@
-const members = [
+import type { Member } from "../types/BookTypes";
+
+const members:Member[] = [
   {
     id: "M001",
     name: "Olivia Wilson",

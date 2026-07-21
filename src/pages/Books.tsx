@@ -12,12 +12,6 @@ import {
 } from 'lucide-react';
 import { booksData } from '../data/booksData';
 
-// --- Types & Interfaces ---
-
-
-// --- Verified Mock Data ---
-
-
 export default function Books() {
   return (
     <div className="min-h-screen bg-[#FAFAFA] p-4 md:p-6 lg:p-8 font-sans antialiased text-gray-600">
