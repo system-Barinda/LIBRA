@@ -47,11 +47,11 @@ export default function BookDetails({ book, onBack }) {
             <div className="flex flex-col sm:flex-row gap-6">
               
               {/* Cover Image */}
-              <div className="w-full sm:w-56 md:w-64 shrink-0 flex justify-center sm:block">
+              <div className="w-full sm:w-56 md:w-64 shrink-0 flex justify-center sm:block bg-amber-400 rounded-xl">
                 <img 
                   src={book?.image || "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=400"} 
                   alt={book?.title || "Where the Flowers Bloom"} 
-                  className="w-48 sm:w-full h-64 sm:h-80 md:h-84 object-cover rounded-xl shadow-md border border-gray-100"
+                  className="w-full sm:w-full h-full sm:h-80 md:h-full object-cover rounded-xl shadow-md border border-gray-100"
                 />
               </div>
 
