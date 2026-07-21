@@ -11,7 +11,7 @@ export default function MainLayout() {
     <div className="flex min-h-screen bg-[#F7F6F4]">
       {/* Desktop Sidebar */}
       <aside className="hidden lg:block w-72 shrink-0">
-        <Sidebar />
+        <Sidebar closeMenu={undefined} />
       </aside>
 
       {/* Mobile Sidebar */}
