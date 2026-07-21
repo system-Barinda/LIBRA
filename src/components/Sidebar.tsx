@@ -24,7 +24,7 @@ const nav = [
 ];
 
 export default function Sidebar({ closeMenu, isMobile = false }) {
-  const [openManagement, setOpenManagement] = useState(true);
+  const [openManagement, setOpenManagement] = useState(false);
 
   return (
     <aside className="bg-gray-100 p-6 w-full h-full min-h-screen flex flex-col justify-between select-none">
