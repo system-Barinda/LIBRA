@@ -1,7 +1,7 @@
 import React from "react";
 import StatusBadge from "./StatusBadge";
 
-export default function MemberRow({ member, isMobile = false }:any) {
+export default function MemberRow({ member, isMobile = false }: any) {
   if (isMobile) {
     return (
       <div className="rounded-xl border border-gray-100 bg-white p-4 shadow-sm">

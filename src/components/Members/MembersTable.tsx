@@ -2,7 +2,7 @@ import React from "react";
 import { ChevronsUpDown } from "lucide-react";
 import MemberRow from "./MemberRow";
 
-export default function MembersTable({ members }:any) {
+export default function MembersTable({ members }: any) {
   return (
     <>
       {/* Desktop View */}
@@ -48,7 +48,7 @@ export default function MembersTable({ members }:any) {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-50">
-            {members.map((member:any) => (
+            {members.map((member: any) => (
               <MemberRow key={member.id} member={member} />
             ))}
           </tbody>
@@ -57,7 +57,7 @@ export default function MembersTable({ members }:any) {
 
       {/* Mobile View */}
       <div className="space-y-4 lg:hidden">
-        {members.map((member:any) => (
+        {members.map((member: any) => (
           <MemberRow key={member.id} member={member} isMobile={true} />
         ))}
       </div>
