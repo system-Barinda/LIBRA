@@ -55,7 +55,7 @@ export default function Members() {
 
         return matchesSearch && matchesMembership && matchesStatus;
       })
-      .sort((a: any, b: any) => {
+      .sort((a: unknown, b: unknown) => {
         // Sort Logic
         if (sortBy === "name_asc") {
           return a.name.localeCompare(b.name);
