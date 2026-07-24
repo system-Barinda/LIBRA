@@ -41,17 +41,17 @@ const activity = [
 
 export default function ActivityPanel() {
   return (
-    <div className="w-full  bg-white">
+    <div className="w-full max-w-4xl mx-auto p-4 sm:p-6 bg-white rounded-2xl shadow-sm border border-gray-100">
       {/* Header */}
-      <div className="mb-5 flex items-center justify-between">
-        <h2 className="text-lg sm:text-xl font-bold text-gray-800">
+      <div className="mb-6 flex items-center justify-between">
+        <h2 className="text-lg sm:text-xl font-bold text-gray-900">
           Library Activity
         </h2>
 
         <button className="flex items-center gap-2 rounded-xl bg-gray-100 px-3 py-2 text-xs sm:text-sm font-medium text-gray-700 transition hover:bg-gray-200">
           Last Week
           <svg
-            className="h-4 w-4"
+            className="h-4 w-4 text-gray-500"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -66,98 +66,62 @@ export default function ActivityPanel() {
         </button>
       </div>
 
-      {/* Table */}
-      <div className="overflow-hidden">
-        {/* Header Row - Hidden on Mobile */}
-        <div className="border-b flex items-center justify-between px-6 py-3 text-xs font-semibold text-gray-400 uppercase">
+      {/* Main Container */}
+      <div className="rounded-xl border border-gray-200 overflow-hidden">
+        {/* Table Header (Visible on Desktop) */}
+        <div className="hidden sm:grid sm:grid-cols-2 bg-gray-50/70 border-b border-gray-200 px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">
           <div className="flex items-center gap-1">
             Book
-            <span className="text-xs">↕</span>
+            <span className="text-gray-400">↕</span>
           </div>
-
           <div className="flex items-center gap-1">
             Member Info
-            <span className="text-xs">↕</span>
+            <span className="text-gray-400">↕</span>
           </div>
         </div>
 
         {/* Rows */}
-        <div className="divide-y divide-gray-100 border bg-amber-100 space-x-2">
+        <div className="divide-y divide-gray-100 bg-white">
           {activity.map((item, index) => (
             <div
               key={index}
-              className="
-                p-4
-                bg-white
-                flex 
-                hover:bg-gray-50 transition 
-              "
+              className="p-4 sm:px-6 sm:py-4 flex flex-col sm:grid sm:grid-cols-2 gap-4 items-start sm:items-center hover:bg-gray-50/80 transition-colors duration-150"
             >
-              {/* Mobile Layout */}
-              <div className="h-20 w-full flex gap-2 text-[10px]">
-                {/* Book */}
-                <div className=" w-full flex items-center border">
-                  <div
-                    className={`h-10 w-6 md:h-16 md:w-12 flex-shrink-0 rounded-md ${item.coverColor}`}
-                  />
+              {/* Book Info */}
+              <div className="flex items-center gap-3.5 w-full">
+                <div
+                  className={`h-14 w-10 sm:h-16 sm:w-12 flex-shrink-0 rounded-md shadow-sm border border-black/5 ${item.coverColor}`}
+                />
+                <div className="min-w-0 flex-1">
+                  <h4 className="text-sm font-semibold text-gray-900 truncate">
+                    {item.book}
+                  </h4>
+                  <p className="text-xs text-gray-500 mt-0.5">{item.author}</p>
+                </div>
+              </div>
+
+              {/* Member Info */}
+              <div className="flex items-center justify-between w-full pt-3 sm:pt-0 border-t sm:border-t-0 border-gray-100">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="h-9 w-9 sm:h-10 sm:w-10 rounded-full bg-amber-500 flex-shrink-0 flex items-center justify-center text-white font-semibold text-sm shadow-sm">
+                    {item.member.charAt(0)}
+                  </div>
 
                   <div className="min-w-0">
-                    <h4 className="text-[10px]  text-gray-800 leading-tight">
-                      {item.book}
+                    <h4 className="text-sm font-semibold text-gray-900 truncate">
+                      {item.member}
                     </h4>
-
-                    <p className="text-[9px] text-gray-400 mt-1">
-                      {item.author}
+                    <p className="text-xs text-gray-400 font-mono">
+                      {item.memberId}
                     </p>
                   </div>
                 </div>
 
-                {/* Member (Mobile) */}
-                <div className="   h-20 w-full border flex items-center justify-between md:hidden">
-                  <div className="flex  flex-col items-center gap-3 border ">
-                    <div className="h-5  rounded-full bg-orange-500 flex gap-4 items-center justify-center text-white font-semibold">
-                      {item.member.charAt(0)}
-                      <p className="  text-[10px] font-semibold text-gray-800">
-                        {item.member}
-                      </p>
-                    </div>
-
-                    <div className="semi-details flex mb-2  bg-red-400">
-                      <p className=" border text-[6px] text-gray-400">
-                        {item.memberId}
-                      </p>
-
-                      <span
-                        className={`rounded-lg px-2 py-1 text-[6px] font-semibold ${item.badgeColor}`}
-                      >
-                        {item.membership}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Desktop Member Column */}
-              <div className="hidden md:flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-orange-500 flex items-center justify-center text-white font-semibold">
-                  {item.member.charAt(0)}
-                </div>
-
-                <div className="flex flex-1 items-center justify-between">
-                  <div>
-                    <h4 className="text-sm font-semibold text-gray-800">
-                      {item.member}
-                    </h4>
-
-                    <p className="text-xs text-gray-400">{item.memberId}</p>
-                  </div>
-
-                  <span
-                    className={`rounded-lg px-3 py-1 text-xs font-semibold ${item.badgeColor}`}
-                  >
-                    {item.membership}
-                  </span>
-                </div>
+                <span
+                  className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ${item.badgeColor}`}
+                >
+                  {item.membership}
+                </span>
               </div>
             </div>
           ))}
