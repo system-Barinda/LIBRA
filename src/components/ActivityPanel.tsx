@@ -41,7 +41,7 @@ const activity = [
 
 export default function ActivityPanel() {
   return (
-    <div className="w-full border bg-white">
+    <div className="w-full  bg-white">
       {/* Header */}
       <div className="mb-5 flex items-center justify-between">
         <h2 className="text-lg sm:text-xl font-bold text-gray-800">
@@ -66,10 +66,8 @@ export default function ActivityPanel() {
         </button>
       </div>
 
-
-
       {/* Table */}
-      <div className="overflow-hidden border border-red-800">
+      <div className="overflow-hidden">
         {/* Header Row - Hidden on Mobile */}
         <div className="border-b flex items-center justify-between px-6 py-3 text-xs font-semibold text-gray-400 uppercase">
           <div className="flex items-center gap-1">
@@ -90,13 +88,13 @@ export default function ActivityPanel() {
               key={index}
               className="
                 p-4
-                bg-blue-300
+                bg-white
                 flex 
                 hover:bg-gray-50 transition 
               "
             >
               {/* Mobile Layout */}
-              <div className="h-20 w-full flex gap-2 text-[10px] bg-amber-300">
+              <div className="h-20 w-full flex gap-2 text-[10px]">
                 {/* Book */}
                 <div className=" w-full flex items-center border">
                   <div
@@ -124,26 +122,18 @@ export default function ActivityPanel() {
                       </p>
                     </div>
 
-
-
                     <div className="semi-details flex mb-2  bg-red-400">
-                   <p className=" border text-[6px] text-gray-400">
+                      <p className=" border text-[6px] text-gray-400">
                         {item.memberId}
                       </p>
 
                       <span
-                    className={`rounded-lg px-2 py-1 text-[6px] font-semibold ${item.badgeColor}`}
-                  >
-                    {item.membership}
-                  </span>
-                 </div>
+                        className={`rounded-lg px-2 py-1 text-[6px] font-semibold ${item.badgeColor}`}
+                      >
+                        {item.membership}
+                      </span>
+                    </div>
                   </div>
-
-                 
-
-
-
-                  
                 </div>
               </div>
 
@@ -159,9 +149,7 @@ export default function ActivityPanel() {
                       {item.member}
                     </h4>
 
-                    <p className="text-xs text-gray-400">
-                      {item.memberId}
-                    </p>
+                    <p className="text-xs text-gray-400">{item.memberId}</p>
                   </div>
 
                   <span
