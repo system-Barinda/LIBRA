@@ -16,10 +16,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Register />} />
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route element={<MainLayout />}>
-          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/inbox" element={<Inbox />} />
           <Route path="/activity" element={<LibraryActivity />} />
           <Route path="/books" element={<Books />} />
