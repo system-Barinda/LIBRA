@@ -5,34 +5,24 @@ export default function Navbar() {
     <header className="bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between">
       {/* Left Side */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">
-          Dashboard
-        </h1>
-        <p className="text-sm text-gray-500">
-          Good Morning, Noah!
-        </p>
+        <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
+        <p className="text-sm text-gray-500">Good Morning, Noah!</p>
       </div>
 
       {/* Right Side */}
       <div className="flex items-center gap-4">
         {/* Search Box */}
         <div className="hidden md:flex items-center bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 w-[300px]">
-          <Search
-            size={16}
-            className="text-gray-400 mr-2"
-          />
+          <Search size={16} className="text-gray-400 mr-2" />
 
           <input
             type="text"
             placeholder="Search anything"
-            className="bg-transparent outline-none text-sm flex-1"
+            className="bg-transparent outline-none text-sm flex-1 text-gray-800"
           />
 
           <button>
-            <SlidersHorizontal
-              size={16}
-              className="text-gray-400"
-            />
+            <SlidersHorizontal size={16} className="text-gray-400" />
           </button>
         </div>
 
@@ -52,13 +42,9 @@ export default function Navbar() {
           />
 
           <div className="hidden sm:block">
-            <h3 className="text-sm font-semibold text-gray-900">
-              Noah Tanaka
-            </h3>
+            <h3 className="text-sm font-semibold text-gray-900">Noah Tanaka</h3>
 
-            <p className="text-xs text-gray-500">
-              Admin
-            </p>
+            <p className="text-xs text-gray-500">Admin</p>
           </div>
         </div>
       </div>
