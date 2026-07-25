@@ -12,6 +12,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Supply from "./pages/SupplyAndDemand";
 import StockManagement from "./pages/StockManagement";
+import DashboardHomePage from "./pages/DashboardHomePage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route element={<SimpleLayout />}>
           <Route path="/" element={<Dashboard />} />
+          <Route path="/home" element={<DashboardHomePage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
         </Route>

@@ -4,7 +4,10 @@ import Navbar from "./Navbar";
 export default function SimpleLayout() {
   return (
     <>
-      <Navbar />
+      <div className="">
+        <Navbar />
+      </div>
+
       <Outlet />
     </>
   );
