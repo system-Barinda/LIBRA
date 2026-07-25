@@ -23,7 +23,7 @@ export const DashboardHomePage: React.FC = () => {
       <div className="flex-1 flex flex-col min-w-0">
         {/* TOP HEADER */}
         <header className="h-16 bg-white border-b border-slate-200 px-6 flex items-center justify-between">
-          <div className="relative w-96">
+          <div className=" mx-auto relative w-96">
             <Search
               className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
               size={18}
@@ -33,27 +33,6 @@ export const DashboardHomePage: React.FC = () => {
               placeholder="Search by title, author, or ISBN..."
               className="w-full pl-10 pr-4 py-2 bg-slate-100 border border-transparent rounded-lg text-sm focus:outline-none focus:bg-white focus:border-orange-500 transition"
             />
-          </div>
-
-          <div className="flex items-center gap-4">
-            <button className="relative p-2 text-slate-500 hover:text-slate-700 rounded-lg hover:bg-slate-100">
-              <Bell size={20} />
-              <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-orange-500 rounded-full"></span>
-            </button>
-            <div className="h-6 w-[1px] bg-slate-200" />
-            <div className="flex items-center gap-3 cursor-pointer">
-              <img
-                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80"
-                alt="User Avatar"
-                className="w-9 h-9 rounded-full object-cover border border-slate-200"
-              />
-              <div className="text-sm">
-                <p className="font-semibold text-slate-800 leading-none">
-                  Sarah Holmes
-                </p>
-                <p className="text-xs text-slate-400 mt-0.5">Administrator</p>
-              </div>
-            </div>
           </div>
         </header>
 
