@@ -14,6 +14,7 @@ import Supply from "./pages/SupplyAndDemand";
 import StockManagement from "./pages/StockManagement";
 import DashboardHomePage from "./pages/DashboardHomePage";
 import MediaCatalogPage from "./pages/MediaCatalogPage";
+import ContactPage from "./pages/ContactPage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/home" element={<DashboardHomePage />} />
           <Route path="/book-media" element={<MediaCatalogPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
         </Route>
