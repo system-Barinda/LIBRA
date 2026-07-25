@@ -15,6 +15,7 @@ import StockManagement from "./pages/StockManagement";
 import DashboardHomePage from "./pages/DashboardHomePage";
 import MediaCatalogPage from "./pages/MediaCatalogPage";
 import ContactPage from "./pages/ContactPage";
+import ServicesPage from "./pages/ServicesPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/home" element={<DashboardHomePage />} />
           <Route path="/book-media" element={<MediaCatalogPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/service" element={<ServicesPage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
         </Route>
