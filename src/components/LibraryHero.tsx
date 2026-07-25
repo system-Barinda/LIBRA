@@ -26,8 +26,10 @@ const LibraryHero: React.FC = () => {
             Of Books
           </h1>
           <p className="mt-4 max-w-md text-sm sm:text-base leading-relaxed text-slate-500 font-medium">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            <br className="hidden sm:inline" /> Etiam vel mattis velit.
+            Welcome to the library, your community space for learning,
+            discovery, and quiet study. We’re
+            <br className="hidden sm:inline" /> glad to have you here—let us
+            know how we can assist your visit today!
           </p>
           <button
             type="button"
