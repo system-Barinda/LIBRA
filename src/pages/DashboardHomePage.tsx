@@ -97,38 +97,6 @@ export const DashboardHomePage: React.FC = () => {
               <span className="text-xs text-slate-400">Library Portal</span>
             </div>
           </div>
-
-          {/* Navigation Links */}
-          <nav className="space-y-1">
-            <a
-              href="#"
-              className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-100 transition"
-            >
-              <LayoutDashboard size={18} />
-              Dashboard
-            </a>
-            <a
-              href="#"
-              className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium bg-orange-50 text-orange-600 font-semibold transition"
-            >
-              <BookOpen size={18} />
-              Book Collection
-            </a>
-            <a
-              href="#"
-              className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-100 transition"
-            >
-              <Users size={18} />
-              Members
-            </a>
-            <a
-              href="#"
-              className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-100 transition"
-            >
-              <TrendingUp size={18} />
-              Analytics
-            </a>
-          </nav>
         </div>
 
         {/* Bottom Settings Link */}
