@@ -2,193 +2,200 @@ import React from "react";
 
 /**
  * LibraryHero
- * A hero section replicating a "Library Full Of Books" landing page illustration.
- * Built with React + TypeScript + Tailwind CSS. No navigation/menu included.
+ * Landing page hero section matching the reference illustration.
+ * Navigation menu removed as requested.
  */
 const LibraryHero: React.FC = () => {
   return (
-    <section className="relative w-full overflow-hidden bg-gradient-to-b from-sky-50 via-sky-50 to-sky-100">
-      <div className="mx-auto flex max-w-7xl flex-col-reverse items-center gap-10 px-6 pb-0 pt-12 sm:px-10 lg:flex-row lg:gap-8 lg:px-16 lg:pt-16">
-        {/* ---------------- Illustration ---------------- */}
-        <div className="relative flex w-full flex-1 items-end justify-center lg:w-1/2">
-          <IllustrationSVG className="h-auto w-full max-w-[420px] sm:max-w-[480px] lg:max-w-[560px]" />
+    <section className="relative w-full min-h-screen overflow-hidden bg-[#e0f2fe] flex flex-col justify-between">
+      {/* Top spacing placeholder where the menu used to be */}
+      <div className="h-12 sm:h-16 w-full" />
+
+      {/* Main Content Area */}
+      <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col-reverse items-center justify-center gap-8 px-6 pb-12 lg:flex-row lg:gap-12 lg:px-12">
+        {/* Left Side: Illustration */}
+        <div className="relative flex w-full flex-1 items-center justify-center lg:w-1/2">
+          <IllustrationSVG className="h-auto w-full max-w-[480px] sm:max-w-[580px] lg:max-w-[640px]" />
         </div>
 
-        {/* ---------------- Text content ---------------- */}
-        <div className="flex w-full flex-1 flex-col items-center text-center lg:w-1/2 lg:items-start lg:text-left">
-          <h1 className="text-4xl font-bold leading-tight text-[#0b2545] sm:text-5xl lg:text-[3.25rem]">
+        {/* Right Side: Text Content */}
+        <div className="flex w-full flex-1 flex-col items-center text-center lg:w-1/2 lg:items-start lg:text-left lg:pl-8">
+          <h1 className="text-4xl font-extrabold leading-tight text-[#1e293b] sm:text-5xl lg:text-[3.5rem] tracking-tight">
             Library Full
             <br />
             Of Books
           </h1>
-          <p className="mt-5 max-w-md text-base leading-relaxed text-slate-500 sm:text-lg">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel
-            mattis velit.
+          <p className="mt-4 max-w-md text-sm sm:text-base leading-relaxed text-slate-500 font-medium">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            <br className="hidden sm:inline" /> Etiam vel mattis velit.
           </p>
           <button
             type="button"
-            className="mt-8 rounded-md bg-[#ff8a4c] px-8 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-lg shadow-orange-200 transition-transform duration-200 hover:-translate-y-0.5 hover:bg-[#ff7a30] active:translate-y-0"
+            className="mt-8 rounded-full bg-[#ff8543] px-9 py-3.5 text-xs font-bold tracking-widest text-white uppercase shadow-md shadow-orange-500/20 transition-all duration-200 hover:bg-[#f97316] hover:shadow-lg active:scale-95"
           >
             Read More
           </button>
         </div>
       </div>
 
-      {/* Bottom floor band */}
-      <div className="mt-10 h-16 w-full bg-[#bfe3fb] sm:h-20 lg:h-24" />
+      {/* Bottom Floor Band */}
+      <div className="h-16 w-full bg-[#bde0fe] sm:h-20 lg:h-24" />
     </section>
   );
 };
 
 /* ------------------------------------------------------------------ */
-/*  Illustration                                                      */
+/* Illustration SVG Component                                        */
 /* ------------------------------------------------------------------ */
 
 const IllustrationSVG: React.FC<{ className?: string }> = ({ className }) => {
   return (
     <svg
-      viewBox="0 0 620 520"
+      viewBox="0 0 700 520"
       className={className}
       xmlns="http://www.w3.org/2000/svg"
+      fill="none"
     >
-      {/* soft background blob */}
-      <ellipse cx="300" cy="260" rx="270" ry="230" fill="#e3f0fb" />
-      <ellipse
-        cx="230"
-        cy="180"
-        rx="150"
-        ry="120"
-        fill="#d7ebfa"
-        opacity="0.7"
+      {/* Background Soft Cloud Blobs */}
+      <path
+        d="M 120,280 C 80,220 120,120 220,100 C 300,80 380,120 420,100 C 480,80 580,110 600,200 C 630,280 580,380 480,410 C 380,440 220,440 150,380 C 90,330 120,280 120,280 Z"
+        fill="#f0f9ff"
+        opacity="0.95"
       />
+      <circle cx="500" cy="180" r="110" fill="#ffffff" opacity="0.6" />
+      <circle cx="160" cy="340" r="120" fill="#ffffff" opacity="0.5" />
 
-      {/* ground shadow */}
-      <ellipse cx="300" cy="470" rx="230" ry="22" fill="#cfe7fb" />
+      {/* Oval Ground Base Shadow */}
+      <ellipse cx="340" cy="455" rx="280" ry="24" fill="#bae6fd" />
 
-      {/* -------- floating decorations -------- */}
-      {/* lightbulb */}
-      <g transform="translate(55,70)">
-        <circle cx="30" cy="30" r="30" fill="#0e6fb0" opacity="0.12" />
+      {/* ---------------- FLOATING ICONS ---------------- */}
+
+      {/* 1. Lightbulb (Left Top) */}
+      <g transform="translate(115, 80)">
         <path
-          d="M30 8a20 20 0 0 0-11 36.7V52a5 5 0 0 0 5 5h12a5 5 0 0 0 5-5v-7.3A20 20 0 0 0 30 8Z"
-          fill="#1a8fd1"
+          d="M25 0C11.19 0 0 11.19 0 25c0 8.84 4.58 16.57 11.5 21l2 11h23l2-11C45.42 41.57 50 33.84 50 25 50 11.19 38.81 0 25 0z"
+          fill="#00aeef"
         />
-        <rect x="23" y="57" width="14" height="5" rx="2" fill="#0b2545" />
-        <rect x="25" y="63" width="10" height="4" rx="2" fill="#0b2545" />
+        {/* Filament / inner detail */}
+        <path
+          d="M 18,22 L 23,14 L 27,14 L 32,22 M 22,27 L 28,27"
+          stroke="#ffffff"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <rect x="16" y="59" width="18" height="6" rx="3" fill="#00aeef" />
       </g>
 
-      {/* small squiggle near bulb */}
+      {/* Orange Squiggle (near bulb) */}
       <path
-        d="M148 62c4-6 12-6 16 0s12 6 16 0"
-        stroke="#ff8a4c"
-        strokeWidth="4"
+        d="M 195,85 Q 202,75 208,85 T 220,85"
+        stroke="#ff8543"
+        strokeWidth="5"
         strokeLinecap="round"
         fill="none"
       />
 
-      {/* heart */}
-      <path
-        d="M300 70c-6-12-24-12-28 2-3 11 8 22 28 36 20-14 31-25 28-36-4-14-22-14-28-2Z"
-        fill="#ff8a4c"
-      />
-
-      {/* notebook icon */}
-      <g transform="translate(215,55) rotate(-12)">
-        <rect x="0" y="0" width="46" height="58" rx="6" fill="#1a8fd1" />
-        <rect x="8" y="10" width="30" height="6" rx="3" fill="#bfe3fb" />
-        <rect x="8" y="22" width="30" height="6" rx="3" fill="#bfe3fb" />
+      {/* 2. Floating Cyan Book (Center Top) */}
+      <g transform="translate(260, 65) rotate(-12)">
+        <rect x="0" y="0" width="54" height="72" rx="8" fill="#00aeef" />
+        <rect x="10" y="14" width="34" height="6" rx="3" fill="#e0f2fe" />
+        <path d="M 38,48 L 46,48 L 42,54 Z" fill="#e0f2fe" />
       </g>
 
-      {/* magnifying glass */}
-      <g transform="translate(430,70)">
+      {/* 3. Orange Heart */}
+      <path
+        d="M 375,80 C 375,70 360,60 348,72 C 336,60 321,70 321,80 C 321,98 348,112 348,112 C 348,112 375,98 375,80 Z"
+        fill="#ff8543"
+      />
+
+      {/* 4. Magnifying Glass (Right Top) */}
+      <g transform="translate(470, 90) rotate(15)">
         <circle
-          cx="35"
-          cy="35"
-          r="26"
-          fill="none"
-          stroke="#1a8fd1"
+          cx="28"
+          cy="28"
+          r="22"
+          stroke="#00aeef"
           strokeWidth="10"
+          fill="none"
         />
         <rect
-          x="55"
-          y="55"
-          width="16"
-          height="34"
-          rx="8"
-          transform="rotate(45 55 55)"
-          fill="#0b2545"
+          x="23"
+          y="48"
+          width="10"
+          height="32"
+          rx="5"
+          fill="#2563eb"
+          transform="rotate(-45 23 48)"
+        />
+        <path
+          d="M 20,20 A 12,12 0 0,1 32,16"
+          stroke="#ffffff"
+          strokeWidth="3"
+          strokeLinecap="round"
         />
       </g>
 
-      {/* small squiggle near magnifier */}
+      {/* Blue Squiggle (near glass) */}
       <path
-        d="M498 130c4-6 12-6 16 0s12 6 16 0"
-        stroke="#1a8fd1"
-        strokeWidth="4"
+        d="M 585,200 Q 592,190 600,200 T 612,200"
+        stroke="#2563eb"
+        strokeWidth="5"
         strokeLinecap="round"
         fill="none"
       />
 
-      {/* stars */}
-      <Star x={70} y={230} size={22} fill="#15803d" />
-      <Star x={470} y={300} size={20} fill="#1a8fd1" />
+      {/* Decorative Stars */}
+      {/* Left blue star */}
+      <polygon
+        points="105,235 108,243 117,243 110,248 112,256 105,251 98,256 100,248 93,243 102,243"
+        fill="#2563eb"
+      />
+      {/* Right light blue star */}
+      <polygon
+        points="630,305 634,315 645,315 636,321 639,331 630,325 621,331 624,321 615,315 626,315"
+        fill="#00aeef"
+      />
 
-      {/* -------- book stack -------- */}
-      {/* far-left tall dark blue book, tilted */}
-      <g transform="translate(95,215) rotate(-14)">
-        <rect x="0" y="0" width="70" height="230" rx="10" fill="#0e5fa8" />
-        <rect x="10" y="20" width="50" height="14" rx="4" fill="#62b6ea" />
-        <rect x="10" y="150" width="50" height="14" rx="4" fill="#62b6ea" />
+      {/* ---------------- BOOK STACK ---------------- */}
+
+      {/* Book 1: Dark Blue Tilted Book (Far Left) */}
+      <g transform="translate(130, 215) rotate(-14)">
+        <rect x="0" y="0" width="76" height="240" rx="18" fill="#2563eb" />
+        <rect x="12" y="22" width="52" height="14" rx="7" fill="#00aeef" />
+        <rect x="16" y="55" width="10" height="130" rx="5" fill="#00aeef" />
+        <rect x="12" y="200" width="52" height="14" rx="7" fill="#00aeef" />
       </g>
 
-      {/* cyan book */}
-      <g transform="translate(178,200)">
-        <rect x="0" y="0" width="70" height="245" rx="10" fill="#2ba8e0" />
-        <rect x="14" y="24" width="16" height="16" rx="4" fill="#0b2545" />
-        <rect x="14" y="150" width="42" height="14" rx="4" fill="#bfe3fb" />
+      {/* Book 2: Bright Cyan Book */}
+      <g transform="translate(240, 210)">
+        <rect x="0" y="0" width="68" height="245" rx="16" fill="#00aeef" />
+        <rect x="14" y="22" width="18" height="16" rx="5" fill="#0284c7" />
+        <rect x="14" y="195" width="40" height="12" rx="6" fill="#1e40af" />
       </g>
 
-      {/* orange short book */}
-      <g transform="translate(252,240)">
-        <rect x="0" y="0" width="66" height="205" rx="10" fill="#ff9d63" />
+      {/* Book 3: Short Light Orange Book */}
+      <g transform="translate(308, 250)">
+        <rect x="0" y="0" width="60" height="205" rx="14" fill="#ffb07c" />
       </g>
 
-      {/* navy tall book with cyan stripes */}
-      <g transform="translate(312,175)">
-        <rect x="0" y="0" width="66" height="270" rx="10" fill="#0b2545" />
-        <rect x="14" y="24" width="10" height="200" rx="5" fill="#2ba8e0" />
-        <rect x="40" y="24" width="10" height="200" rx="5" fill="#2ba8e0" />
+      {/* Book 4: Royal Blue Tall Book */}
+      <g transform="translate(368, 195)">
+        <rect x="0" y="0" width="64" height="260" rx="16" fill="#2563eb" />
+        <rect x="14" y="22" width="10" height="210" rx="5" fill="#00aeef" />
+        <rect x="40" y="22" width="10" height="210" rx="5" fill="#00aeef" />
       </g>
 
-      {/* front large orange book with bookmark */}
-      <g transform="translate(372,190)">
-        <rect x="0" y="0" width="150" height="255" rx="14" fill="#ff8a4c" />
-        <rect x="105" y="0" width="30" height="70" fill="#0b2545" />
-        <path d="M105 70l15-14 15 14Z" fill="#0b2545" />
-        <rect x="24" y="185" width="60" height="26" rx="6" fill="#0e6fb0" />
+      {/* Book 5: Main Orange Front Book with Bookmark */}
+      <g transform="translate(414, 220)">
+        <rect x="0" y="0" width="180" height="235" rx="16" fill="#ff8543" />
+        {/* Dark Navy Bookmark hanging from top */}
+        <path d="M 100,0 L 140,0 L 140,42 L 120,30 L 100,42 Z" fill="#1e293b" />
+        {/* Cyan accent box near bottom */}
+        <rect x="52" y="180" width="65" height="26" rx="4" fill="#00aeef" />
       </g>
     </svg>
   );
 };
-
-const Star: React.FC<{ x: number; y: number; size: number; fill: string }> = ({
-  x,
-  y,
-  size,
-  fill,
-}) => (
-  <g transform={`translate(${x},${y})`}>
-    <path
-      d={`M${size / 2} 0 L${size * 0.62} ${size * 0.38} L${size} ${
-        size * 0.38
-      } L${size * 0.68} ${size * 0.6} L${size * 0.8} ${size} L${
-        size / 2
-      } ${size * 0.75} L${size * 0.2} ${size} L${size * 0.32} ${
-        size * 0.6
-      } L0 ${size * 0.38} L${size * 0.38} ${size * 0.38} Z`}
-      fill={fill}
-    />
-  </g>
-);
 
 export default LibraryHero;
