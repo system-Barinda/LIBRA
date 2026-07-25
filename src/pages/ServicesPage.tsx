@@ -340,9 +340,9 @@ export const ServicesPage: React.FC = () => {
         </section>
 
         {/* BOTTOM MEMBERSHIP CTA BANNER */}
-        <section className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl">
+        <section className="bg-orange-500 text-white rounded-3xl p-8 sm:p-12 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl">
           <div className="space-y-3 max-w-xl text-center md:text-left z-10">
-            <span className="text-xs font-bold text-orange-400 uppercase tracking-widest">
+            <span className="text-xs font-bold text-orange-900 uppercase tracking-widest">
               Get Started Today
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
@@ -355,7 +355,7 @@ export const ServicesPage: React.FC = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-3 z-10 w-full md:w-auto">
-            <button className="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white text-xs sm:text-sm font-semibold rounded-xl transition shadow-md shadow-orange-500/30 text-center">
+            <button className="px-6 py-3 bg-white hover:bg-gray-200 text-black text-xs sm:text-sm font-semibold rounded-xl transition shadow-md shadow-orange-500/30 text-center">
               Register Digital Card
             </button>
             <button className="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs sm:text-sm font-semibold rounded-xl transition text-center border border-slate-700">
