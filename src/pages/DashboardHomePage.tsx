@@ -1,80 +1,17 @@
 import React, { useState } from "react";
 import {
-  BookOpen,
-  LayoutDashboard,
-  Users,
-  Settings,
   Search,
   Bell,
   Grid,
   List,
   Filter,
   Plus,
-  TrendingUp,
   MoreVertical,
   ChevronRight,
   Star,
 } from "lucide-react";
-
-// --- TypeScript Interfaces ---
-interface Book {
-  id: string;
-  title: string;
-  author: string;
-  category: string;
-  rating: number;
-  status: "Available" | "Borrowed" | "Reserved";
-  coverUrl: string;
-  borrowedCount: number;
-}
-
-// --- Sample Data ---
-const BOOKS_DATA: Book[] = [
-  {
-    id: "1",
-    title: "Everything Green",
-    author: "Sarah Jenkins",
-    category: "Botanical & Life",
-    rating: 4.8,
-    status: "Available",
-    coverUrl:
-      "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80",
-    borrowedCount: 142,
-  },
-  {
-    id: "2",
-    title: "Where The Flowers Bloom",
-    author: "Elena Rostova",
-    category: "Fiction / Romance",
-    rating: 4.9,
-    status: "Borrowed",
-    coverUrl:
-      "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=600&q=80",
-    borrowedCount: 389,
-  },
-  {
-    id: "3",
-    title: "Minimalist Architecture",
-    author: "David Chen",
-    category: "Design & Art",
-    rating: 4.6,
-    status: "Available",
-    coverUrl:
-      "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=600&q=80",
-    borrowedCount: 95,
-  },
-  {
-    id: "4",
-    title: "Silent Mountains",
-    author: "Marcus Vance",
-    category: "Adventure",
-    rating: 4.7,
-    status: "Reserved",
-    coverUrl:
-      "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=600&q=80",
-    borrowedCount: 210,
-  },
-];
+import { BOOKS_DATA } from "../data/Books_Data";
+import type { Book } from "../types/BookTypes";
 
 export const DashboardHomePage: React.FC = () => {
   const [selectedBook, setSelectedBook] = useState<Book>(BOOKS_DATA[0]);
@@ -82,35 +19,6 @@ export const DashboardHomePage: React.FC = () => {
 
   return (
     <div className="flex h-screen bg-slate-50 text-slate-800 font-sans overflow-hidden">
-      {/* 1. SIDEBAR NAVIGATION */}
-      <aside className="w-64 bg-white border-r border-slate-200 flex flex-col justify-between p-4">
-        <div>
-          {/* Logo */}
-          <div className="flex items-center gap-3 px-2 py-3 mb-6">
-            <div className="w-10 h-10 rounded-xl bg-orange-500 text-white flex items-center justify-center font-bold text-xl shadow-md shadow-orange-200">
-              B
-            </div>
-            <div>
-              <h1 className="font-bold text-slate-900 leading-tight">
-                Bookish
-              </h1>
-              <span className="text-xs text-slate-400">Library Portal</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Settings Link */}
-        <div className="border-t border-slate-100 pt-4">
-          <a
-            href="#"
-            className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-100 transition"
-          >
-            <Settings size={18} />
-            Settings
-          </a>
-        </div>
-      </aside>
-
       {/* MAIN CONTENT AREA */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* TOP HEADER */}
