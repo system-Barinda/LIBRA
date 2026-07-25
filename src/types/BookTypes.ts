@@ -41,3 +41,14 @@ export interface Book {
   coverUrl: string;
   borrowedCount: number;
 }
+
+export interface CoreService {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  icon: React.ElementType;
+  image: string;
+  features: string[];
+  ctaText: string;
+}
