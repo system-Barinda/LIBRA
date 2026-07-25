@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import MainLayout from "./layouts/MainLayout";
+import SimpleLayout from "./layouts/simpleLayout";
 
 import Dashboard from "./pages/Dashboard";
 import Inbox from "./pages/Inbox";
@@ -16,9 +17,12 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route element={<SimpleLayout />}>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+        </Route>
+
         <Route element={<MainLayout />}>
           <Route path="/inbox" element={<Inbox />} />
           <Route path="/activity" element={<LibraryActivity />} />
