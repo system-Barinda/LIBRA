@@ -358,7 +358,7 @@ export const ServicesPage: React.FC = () => {
             <button className="px-6 py-3 bg-white hover:bg-gray-200 text-black text-xs sm:text-sm font-semibold rounded-xl transition shadow-md shadow-orange-500/30 text-center">
               Register Digital Card
             </button>
-            <button className="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs sm:text-sm font-semibold rounded-xl transition text-center border border-slate-700">
+            <button className="px-6 py-3 bg-gray-950 hover:bg-slate-700 text-slate-200 text-xs sm:text-sm font-semibold rounded-xl transition text-center border border-slate-700">
               Visit Branch Guidelines
             </button>
           </div>
