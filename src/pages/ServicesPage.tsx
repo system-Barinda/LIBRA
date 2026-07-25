@@ -254,7 +254,7 @@ export const ServicesPage: React.FC = () => {
                 ))}
               </div>
 
-              <button className="pt-2 flex items-center gap-2 px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-semibold rounded-xl transition shadow-sm">
+              <button className="pt-2 flex items-center gap-2 px-5 py-2.5 bg-orange-700 hover:bg-orange-400 text-white text-xs sm:text-sm font-semibold rounded-xl transition shadow-sm">
                 {selectedService.ctaText} <ArrowRight size={16} />
               </button>
             </div>
