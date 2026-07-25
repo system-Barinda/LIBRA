@@ -9,10 +9,6 @@ import {
   MoreVertical,
   ChevronRight,
   Star,
-  Sparkles,
-  TrendingUp,
-  BookOpen,
-  Users,
   CheckCircle,
   X,
   SearchX,
@@ -25,11 +21,12 @@ import LibraryHero from "../components/LibraryHero";
 import HeroBanner from "../components/HeroBanner";
 
 export const DashboardHomePage: React.FC = () => {
-  const [selectedBook, setSelectedBook] = useState<Book>(BOOKS_DATA[0]);
+  const [selectedBook, setSelectedBook] = useState<Book | null>(
+    BOOKS_DATA[0] || null,
+  );
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-
-  // Search state
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   // Filtered books based on real-time user input
   const filteredBooks = useMemo(() => {
@@ -46,13 +43,15 @@ export const DashboardHomePage: React.FC = () => {
 
   // Keep selectedBook valid if search results change
   useEffect(() => {
-    if (
-      filteredBooks.length > 0 &&
-      !filteredBooks.some((b) => b.id === selectedBook.id)
-    ) {
-      setSelectedBook(filteredBooks[0]);
+    if (filteredBooks.length > 0) {
+      const exists = filteredBooks.some((b) => b.id === selectedBook?.id);
+      if (!exists) {
+        setSelectedBook(filteredBooks[0]);
+      }
+    } else {
+      setSelectedBook(null);
     }
-  }, [filteredBooks, selectedBook]);
+  }, [filteredBooks]);
 
   // GSAP Animation Refs
   const containerRef = useRef<HTMLDivElement>(null);
@@ -80,7 +79,7 @@ export const DashboardHomePage: React.FC = () => {
             opacity: 1,
             y: 0,
             duration: 0.4,
-            stagger: 0.06,
+            stagger: 0.05,
             ease: "power2.out",
           },
         );
@@ -90,29 +89,34 @@ export const DashboardHomePage: React.FC = () => {
       if (sidebarRef.current) {
         gsap.fromTo(
           sidebarRef.current,
-          { opacity: 0, x: 25 },
-          { opacity: 1, x: 0, duration: 0.6, ease: "power3.out", delay: 0.2 },
+          { opacity: 0, x: 20 },
+          { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" },
         );
       }
     }, containerRef);
 
     return () => ctx.revert();
-  }, [viewMode, searchQuery]);
+  }, [viewMode, filteredBooks]);
+
+  const handleSelectBook = (book: Book) => {
+    setSelectedBook(book);
+    setIsMobileSidebarOpen(true);
+  };
 
   return (
-    <>
+    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800 font-sans">
       <HeroBanner />
 
-      {/* below */}
+      {/* Main Container */}
       <div
         ref={containerRef}
-        className="flex h-screen bg-slate-50 text-slate-800 font-sans overflow-hidden"
+        className="flex-1 flex flex-col xl:flex-row h-full min-w-0 overflow-hidden"
       >
-        {/* MAIN CONTENT AREA */}
+        {/* MAIN WORKSPACE AREA */}
         <div className="flex-1 flex flex-col min-w-0">
           {/* TOP HEADER WITH FUNCTIONAL SEARCH */}
-          <header className="h-16 bg-white border-b border-slate-200 px-6 flex items-center justify-between z-10">
-            <div className="mx-auto relative w-72 md:w-96">
+          <header className="h-16 bg-white border-b border-slate-200 px-4 md:px-6 flex items-center justify-between z-10 sticky top-0">
+            <div className="relative w-full max-w-md">
               <Search
                 className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
                 size={18}
@@ -135,7 +139,7 @@ export const DashboardHomePage: React.FC = () => {
               )}
             </div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 md:gap-4 ml-4">
               <button className="relative p-2 text-slate-500 hover:text-slate-700 rounded-lg hover:bg-slate-100 transition">
                 <Bell size={20} />
                 <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-orange-500 rounded-full" />
@@ -143,10 +147,8 @@ export const DashboardHomePage: React.FC = () => {
             </div>
           </header>
 
-          {/* CONTENT BODY WITH DETAILS SIDEBAR */}
+          {/* CONTENT BODY */}
           <div className="flex-1 flex overflow-hidden">
-            {/* PRIMARY WORKSPACE */}
-
             <main className="flex-1 overflow-y-auto p-4 md:p-6 space-y-6">
               {/* PAGE HEADER & CONTROLS */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -165,6 +167,7 @@ export const DashboardHomePage: React.FC = () => {
                   <button className="flex items-center gap-2 px-3 py-2 bg-slate-100 border border-slate-200 text-slate-700 text-sm rounded-lg hover:bg-slate-200 transition">
                     <Filter size={16} /> Filter
                   </button>
+
                   <div className="flex items-center bg-slate-100 p-1 rounded-lg border border-slate-200">
                     <button
                       onClick={() => setViewMode("grid")}
@@ -173,6 +176,7 @@ export const DashboardHomePage: React.FC = () => {
                           ? "bg-white shadow-sm text-orange-600 font-semibold"
                           : "text-slate-500"
                       }`}
+                      aria-label="Grid view"
                     >
                       <Grid size={16} />
                     </button>
@@ -183,10 +187,12 @@ export const DashboardHomePage: React.FC = () => {
                           ? "bg-white shadow-sm text-orange-600 font-semibold"
                           : "text-slate-500"
                       }`}
+                      aria-label="List view"
                     >
                       <List size={16} />
                     </button>
                   </div>
+
                   <button className="flex items-center gap-2 px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white font-medium text-sm rounded-lg shadow-sm shadow-orange-200 transition">
                     <Plus size={16} /> Add Book
                   </button>
@@ -216,12 +222,12 @@ export const DashboardHomePage: React.FC = () => {
               ) : viewMode === "grid" ? (
                 <div
                   ref={catalogRef}
-                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
+                  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-5"
                 >
                   {filteredBooks.map((book) => (
                     <div
                       key={book.id}
-                      onClick={() => setSelectedBook(book)}
+                      onClick={() => handleSelectBook(book)}
                       className={`group bg-white rounded-xl border p-4 cursor-pointer transition-all hover:shadow-lg ${
                         selectedBook?.id === book.id
                           ? "border-orange-500 ring-2 ring-orange-500/20"
@@ -269,7 +275,7 @@ export const DashboardHomePage: React.FC = () => {
                   {filteredBooks.map((book) => (
                     <div
                       key={book.id}
-                      onClick={() => setSelectedBook(book)}
+                      onClick={() => handleSelectBook(book)}
                       className={`flex items-center justify-between bg-white rounded-xl border p-3 cursor-pointer transition-all hover:shadow-md ${
                         selectedBook?.id === book.id
                           ? "border-orange-500 ring-2 ring-orange-500/20"
@@ -316,7 +322,7 @@ export const DashboardHomePage: React.FC = () => {
                 </div>
               )}
 
-              {/* ATTRACTION FEATURE: QUICK RECENT ACTIVITY SECTION */}
+              {/* RECENT ACTIVITY SECTION */}
               <section className="bg-white rounded-2xl border border-slate-200 p-5 mt-8 shadow-sm">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="font-bold text-slate-900 flex items-center gap-2">
@@ -328,7 +334,7 @@ export const DashboardHomePage: React.FC = () => {
                   </button>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-sm">
                   <div className="p-3 bg-slate-50 rounded-xl border border-slate-100">
                     <p className="text-slate-500 text-xs">Recently Issued</p>
                     <p className="font-semibold text-slate-800 mt-1">
@@ -345,7 +351,7 @@ export const DashboardHomePage: React.FC = () => {
                     </p>
                     <span className="text-xs text-slate-400">1 hour ago</span>
                   </div>
-                  <div className="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                  <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 sm:col-span-2 md:col-span-1">
                     <p className="text-slate-500 text-xs">
                       New Collection Added
                     </p>
@@ -357,87 +363,104 @@ export const DashboardHomePage: React.FC = () => {
                 </div>
               </section>
             </main>
-
-            {/* DETAILS / METADATA PANEL */}
-            <aside
-              ref={sidebarRef}
-              className="hidden xl:flex w-80 bg-white border-l border-slate-200 p-6 flex-col justify-between overflow-y-auto"
-            >
-              {selectedBook ? (
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-bold text-slate-900">Book Details</h3>
-                    <button className="text-slate-400 hover:text-slate-600">
-                      <MoreVertical size={18} />
-                    </button>
-                  </div>
-
-                  {/* Cover Display */}
-                  <div className="aspect-[3/4] rounded-xl overflow-hidden mb-4 shadow-lg">
-                    <img
-                      src={selectedBook.coverUrl}
-                      alt={selectedBook.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-
-                  {/* Information */}
-                  <h2 className="text-xl font-bold text-slate-900 leading-tight">
-                    {selectedBook.title}
-                  </h2>
-                  <p className="text-sm text-slate-500 mb-4">
-                    {selectedBook.author}
-                  </p>
-
-                  <div className="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-100 text-sm">
-                    <div className="flex justify-between">
-                      <span className="text-slate-500">Category:</span>
-                      <span className="font-medium text-slate-800">
-                        {selectedBook.category}
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-slate-500">Status:</span>
-                      <span className="font-medium text-orange-600">
-                        {selectedBook.status}
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-slate-500">Rating:</span>
-                      <span className="font-medium text-slate-800 flex items-center gap-1">
-                        <Star
-                          size={14}
-                          className="text-amber-500"
-                          fill="currentColor"
-                        />
-                        {selectedBook.rating}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <div className="text-center text-slate-400 my-auto">
-                  No book selected
-                </div>
-              )}
-
-              {/* Actions */}
-              {selectedBook && (
-                <div className="pt-6 border-t border-slate-100 space-y-2 mt-6">
-                  <button className="w-full py-2.5 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm rounded-lg transition shadow-sm shadow-orange-200">
-                    Issue Book
-                  </button>
-                  <button className="w-full py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm rounded-lg transition flex items-center justify-center gap-2">
-                    View Full Logs <ChevronRight size={16} />
-                  </button>
-                </div>
-              )}
-            </aside>
           </div>
         </div>
+
+        {/* DETAILS / METADATA PANEL (DESKTOP SIDEBAR & MOBILE SLIDE-OVER) */}
+        <aside
+          ref={sidebarRef}
+          className={`
+            fixed xl:relative inset-y-0 right-0 z-50 w-full sm:w-80 bg-white border-l border-slate-200 p-6 flex flex-col justify-between overflow-y-auto transition-transform duration-300 ease-in-out shadow-2xl xl:shadow-none
+            ${
+              isMobileSidebarOpen
+                ? "translate-x-0"
+                : "translate-x-full xl:translate-x-0"
+            }
+          `}
+        >
+          {selectedBook ? (
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-bold text-slate-900">Book Details</h3>
+                <div className="flex items-center gap-1">
+                  <button
+                    onClick={() => setIsMobileSidebarOpen(false)}
+                    className="xl:hidden p-1.5 text-slate-400 hover:text-slate-600 rounded-lg"
+                    title="Close Details"
+                  >
+                    <X size={20} />
+                  </button>
+                  <button className="text-slate-400 hover:text-slate-600 p-1.5 rounded-lg">
+                    <MoreVertical size={18} />
+                  </button>
+                </div>
+              </div>
+
+              {/* Cover Display */}
+              <div className="aspect-[3/4] rounded-xl overflow-hidden mb-4 shadow-lg max-h-72 mx-auto">
+                <img
+                  src={selectedBook.coverUrl}
+                  alt={selectedBook.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Information */}
+              <h2 className="text-xl font-bold text-slate-900 leading-tight">
+                {selectedBook.title}
+              </h2>
+              <p className="text-sm text-slate-500 mb-4">
+                {selectedBook.author}
+              </p>
+
+              <div className="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-100 text-sm">
+                <div className="flex justify-between">
+                  <span className="text-slate-500">Category:</span>
+                  <span className="font-medium text-slate-800">
+                    {selectedBook.category}
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-500">Status:</span>
+                  <span className="font-medium text-orange-600">
+                    {selectedBook.status}
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-500">Rating:</span>
+                  <span className="font-medium text-slate-800 flex items-center gap-1">
+                    <Star
+                      size={14}
+                      className="text-amber-500"
+                      fill="currentColor"
+                    />
+                    {selectedBook.rating}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="text-center text-slate-400 my-auto">
+              No book selected
+            </div>
+          )}
+
+          {/* Actions */}
+          {selectedBook && (
+            <div className="pt-6 border-t border-slate-100 space-y-2 mt-6">
+              <button className="w-full py-2.5 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm rounded-lg transition shadow-sm shadow-orange-200">
+                Issue Book
+              </button>
+              <button className="w-full py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm rounded-lg transition flex items-center justify-center gap-2">
+                View Full Logs <ChevronRight size={16} />
+              </button>
+            </div>
+          )}
+        </aside>
       </div>
+
       <LibraryHero />
-    </>
+    </div>
   );
 };
 
