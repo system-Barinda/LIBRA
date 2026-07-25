@@ -100,6 +100,40 @@ export const DashboardHomePage: React.FC = () => {
 
   return (
     <>
+      {/* HERO ATTRACTION BANNER */}
+      <div
+        ref={heroRef}
+        className="relative overflow-hidden  bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 p-6 md:p-8 text-white shadow-lg shadow-orange-500/10"
+      >
+        <div className="relative z-10 max-w-xl space-y-3">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 text-xs font-semibold backdrop-blur-md">
+            <Sparkles size={14} /> Featured Collection
+          </span>
+          <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight">
+            Discover & Manage Your Literary World
+          </h1>
+          <p className="text-orange-100 text-sm md:text-base">
+            Track dynamic user checkouts, review active library stats, and
+            quickly manage incoming books in real-time.
+          </p>
+
+          {/* Quick Stats Badges */}
+          <div className="pt-2 flex flex-wrap gap-4 text-xs md:text-sm font-medium">
+            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20">
+              <BookOpen size={16} /> 1,240 Total Titles
+            </div>
+            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20">
+              <Users size={16} /> 312 Active Readers
+            </div>
+            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20">
+              <TrendingUp size={16} /> +18% Monthly Growth
+            </div>
+          </div>
+        </div>
+
+        {/* Decorative Background Accents */}
+        <div className="absolute -right-8 -bottom-12 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none" />
+      </div>
       <div
         ref={containerRef}
         className="flex h-screen bg-slate-50 text-slate-800 font-sans overflow-hidden"
@@ -142,42 +176,8 @@ export const DashboardHomePage: React.FC = () => {
           {/* CONTENT BODY WITH DETAILS SIDEBAR */}
           <div className="flex-1 flex overflow-hidden">
             {/* PRIMARY WORKSPACE */}
+
             <main className="flex-1 overflow-y-auto p-4 md:p-6 space-y-6">
-              {/* HERO ATTRACTION BANNER */}
-              <div
-                ref={heroRef}
-                className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 p-6 md:p-8 text-white shadow-lg shadow-orange-500/10"
-              >
-                <div className="relative z-10 max-w-xl space-y-3">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 text-xs font-semibold backdrop-blur-md">
-                    <Sparkles size={14} /> Featured Collection
-                  </span>
-                  <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight">
-                    Discover & Manage Your Literary World
-                  </h1>
-                  <p className="text-orange-100 text-sm md:text-base">
-                    Track dynamic user checkouts, review active library stats,
-                    and quickly manage incoming books in real-time.
-                  </p>
-
-                  {/* Quick Stats Badges */}
-                  <div className="pt-2 flex flex-wrap gap-4 text-xs md:text-sm font-medium">
-                    <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20">
-                      <BookOpen size={16} /> 1,240 Total Titles
-                    </div>
-                    <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20">
-                      <Users size={16} /> 312 Active Readers
-                    </div>
-                    <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20">
-                      <TrendingUp size={16} /> +18% Monthly Growth
-                    </div>
-                  </div>
-                </div>
-
-                {/* Decorative Background Accents */}
-                <div className="absolute -right-8 -bottom-12 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none" />
-              </div>
-
               {/* PAGE HEADER & CONTROLS */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
