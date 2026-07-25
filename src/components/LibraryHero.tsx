@@ -7,7 +7,7 @@ import React from "react";
  */
 const LibraryHero: React.FC = () => {
   return (
-    <section className="relative w-full min-h-screen overflow-hidden bg-[#e0f2fe] flex flex-col justify-between">
+    <section className="relative w-full min-h-1/2 overflow-hidden bg-[#e0f2fe] flex flex-col justify-between">
       {/* Top spacing placeholder where the menu used to be */}
       <div className="h-12 sm:h-16 w-full" />
 
@@ -39,7 +39,7 @@ const LibraryHero: React.FC = () => {
       </div>
 
       {/* Bottom Floor Band */}
-      <div className="h-16 w-full bg-[#bde0fe] sm:h-20 lg:h-24" />
+      <div className="  h-16 w-full bg-white sm:h-20 lg:h-24" />
     </section>
   );
 };

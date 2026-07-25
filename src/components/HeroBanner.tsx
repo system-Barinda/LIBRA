@@ -5,21 +5,22 @@ import gsap from "gsap";
 export const HeroBanner: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const borderBoxRef = useRef<HTMLDivElement>(null);
+  const glowBoxRef = useRef<HTMLDivElement>(null);
   const floatCardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // 1. Continuous Rotation Animation for the 4-Color Edge Border Box
-      if (borderBoxRef.current) {
-        gsap.to(borderBoxRef.current, {
+      // 1. Rotate the 4-Color Gradient Border & Glow
+      if (borderBoxRef.current && glowBoxRef.current) {
+        gsap.to([borderBoxRef.current, glowBoxRef.current], {
           rotate: 360,
-          duration: 6,
+          duration: 5,
           repeat: -1,
           ease: "none",
         });
       }
 
-      // 2. Smooth Floating / Hover Effect for the Hero Accent Box
+      // 2. Gentle Floating Motion for the Accent Box
       if (floatCardRef.current) {
         gsap.to(floatCardRef.current, {
           y: -10,
@@ -37,7 +38,7 @@ export const HeroBanner: React.FC = () => {
   return (
     <div
       ref={heroRef}
-      className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 p-6 md:p-8 text-white shadow-lg shadow-orange-500/10 flex flex-col lg:flex-row items-center justify-between gap-8"
+      className="relative overflow-hidden bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 p-6 md:p-8 text-white shadow-lg shadow-orange-500/10 flex flex-col lg:flex-row items-center justify-between gap-8"
     >
       {/* Left Content Area */}
       <div className="relative z-10 max-w-xl space-y-3">
@@ -66,43 +67,34 @@ export const HeroBanner: React.FC = () => {
         </div>
       </div>
 
-      {/* Right Side: GSAP 4-Color Animated Glowing Edge Box */}
+      {/* Right Side: High-Visibility 4-Color Edge Box with Book Image */}
       <div
         ref={floatCardRef}
-        className="relative z-10 w-full max-w-[280px] sm:max-w-[320px] aspect-square flex items-center justify-center p-[3px] rounded-2xl overflow-hidden shadow-2xl shadow-black/20"
+        className="relative z-10 w-full max-w-[280px] sm:max-w-[320px] aspect-square flex items-center justify-center p-[4px] rounded-2xl overflow-hidden shadow-2xl"
       >
-        {/* 4-Color Gradient Rotating Element (creates the moving edge border effect) */}
+        {/* Outer Glow (Enhances color visibility) */}
         <div
-          ref={borderBoxRef}
-          className="absolute -inset-[100%] w-[300%] h-[300%] bg-[conic-gradient(from_0deg,#ff8543,#00aeef,#2563eb,#10b981,#ff8543)]"
+          ref={glowBoxRef}
+          className="absolute -inset-[100%] w-[300%] h-[300%] bg-[conic-gradient(from_0deg,#ff0055,#00e5ff,#2563eb,#10b981,#ff0055)] blur-md opacity-80"
         />
 
-        {/* Inner Card Backdrop */}
-        <div className="relative w-full h-full bg-slate-900/90 backdrop-blur-xl rounded-[13px] p-5 flex flex-col justify-between text-white border border-white/10">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-bold tracking-wider uppercase text-amber-400 flex items-center gap-1">
-              <Sparkles size={14} /> Dynamic Engine
-            </span>
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-          </div>
+        {/* Main 4-Color Conic Gradient Border */}
+        <div
+          ref={borderBoxRef}
+          className="absolute -inset-[100%] w-[300%] h-[300%] bg-[conic-gradient(from_0deg,#ff0055,#00e5ff,#2563eb,#10b981,#ff0055)]"
+        />
 
-          <div className="space-y-2 my-auto text-center py-2">
-            <div className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-orange-400 to-sky-400">
-              Live Analytics
-            </div>
-            <p className="text-xs text-slate-300 font-medium">
-              Real-time catalog sync & automated user tracking active.
-            </p>
-          </div>
-
-          <div className="w-full bg-white/10 rounded-lg p-2.5 flex items-center justify-between text-xs font-semibold border border-white/10">
-            <span className="text-slate-300">Sync Status</span>
-            <span className="text-emerald-400 font-mono">100% Operational</span>
-          </div>
+        {/* Inner Card Container holding ONLY the Book Image */}
+        <div className="relative w-full h-full bg-slate-950 rounded-[12px] overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=800&q=80"
+            alt="Library Books Collection"
+            className="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105"
+          />
         </div>
       </div>
 
-      {/* Decorative Blur Ambient Background */}
+      {/* Decorative Background Accent */}
       <div className="absolute -right-8 -bottom-12 w-64 h-64 bg-white/10 rounded-full blur-3xl pointer-events-none" />
     </div>
   );
