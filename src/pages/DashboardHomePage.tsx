@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import {
   Search,
   Bell,
@@ -14,6 +14,8 @@ import {
   BookOpen,
   Users,
   CheckCircle,
+  X,
+  SearchX,
 } from "lucide-react";
 import gsap from "gsap";
 
@@ -23,6 +25,32 @@ import type { Book } from "../types/BookTypes";
 export const DashboardHomePage: React.FC = () => {
   const [selectedBook, setSelectedBook] = useState<Book>(BOOKS_DATA[0]);
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+
+  // Search state
+  const [searchQuery, setSearchQuery] = useState<string>("");
+
+  // Filtered books based on real-time user input
+  const filteredBooks = useMemo(() => {
+    const query = searchQuery.trim().toLowerCase();
+    if (!query) return BOOKS_DATA;
+
+    return BOOKS_DATA.filter(
+      (book) =>
+        book.title.toLowerCase().includes(query) ||
+        book.author.toLowerCase().includes(query) ||
+        (book.category && book.category.toLowerCase().includes(query)),
+    );
+  }, [searchQuery]);
+
+  // Keep selectedBook valid if search results change
+  useEffect(() => {
+    if (
+      filteredBooks.length > 0 &&
+      !filteredBooks.some((b) => b.id === selectedBook.id)
+    ) {
+      setSelectedBook(filteredBooks[0]);
+    }
+  }, [filteredBooks, selectedBook]);
 
   // GSAP Animation Refs
   const containerRef = useRef<HTMLDivElement>(null);
@@ -42,17 +70,16 @@ export const DashboardHomePage: React.FC = () => {
       }
 
       // Staggered Cards / Rows Entrance Animation
-      if (catalogRef.current) {
+      if (catalogRef.current && catalogRef.current.children.length > 0) {
         gsap.fromTo(
           catalogRef.current.children,
-          { opacity: 0, y: 20 },
+          { opacity: 0, y: 15 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.5,
-            stagger: 0.08,
+            duration: 0.4,
+            stagger: 0.06,
             ease: "power2.out",
-            delay: 0.2,
           },
         );
       }
@@ -62,13 +89,13 @@ export const DashboardHomePage: React.FC = () => {
         gsap.fromTo(
           sidebarRef.current,
           { opacity: 0, x: 25 },
-          { opacity: 1, x: 0, duration: 0.6, ease: "power3.out", delay: 0.3 },
+          { opacity: 1, x: 0, duration: 0.6, ease: "power3.out", delay: 0.2 },
         );
       }
     }, containerRef);
 
     return () => ctx.revert();
-  }, [viewMode]);
+  }, [viewMode, searchQuery]);
 
   return (
     <div
@@ -77,7 +104,7 @@ export const DashboardHomePage: React.FC = () => {
     >
       {/* MAIN CONTENT AREA */}
       <div className="flex-1 flex flex-col min-w-0">
-        {/* TOP HEADER */}
+        {/* TOP HEADER WITH FUNCTIONAL SEARCH */}
         <header className="h-16 bg-white border-b border-slate-200 px-6 flex items-center justify-between z-10">
           <div className="relative w-72 md:w-96">
             <Search
@@ -86,9 +113,20 @@ export const DashboardHomePage: React.FC = () => {
             />
             <input
               type="text"
-              placeholder="Search by title, author, or ISBN..."
-              className="w-full pl-10 pr-4 py-2 bg-slate-100 border border-transparent rounded-lg text-sm focus:outline-none focus:bg-white focus:border-orange-500 transition"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search by title, author, or category..."
+              className="w-full pl-10 pr-10 py-2 bg-slate-100 border border-transparent rounded-lg text-sm focus:outline-none focus:bg-white focus:border-orange-500 transition"
             />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery("")}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-0.5 rounded-full hover:bg-slate-200 transition"
+                title="Clear Search"
+              >
+                <X size={16} />
+              </button>
+            )}
           </div>
 
           <div className="flex items-center gap-4">
@@ -145,7 +183,9 @@ export const DashboardHomePage: React.FC = () => {
                   Book Collection
                 </h2>
                 <p className="text-sm text-slate-500">
-                  Manage and browse through your active library catalog.
+                  {searchQuery
+                    ? `Showing results for "${searchQuery}" (${filteredBooks.length} found)`
+                    : "Manage and browse through your active library catalog."}
                 </p>
               </div>
 
@@ -181,18 +221,37 @@ export const DashboardHomePage: React.FC = () => {
               </div>
             </div>
 
-            {/* BOOK CATALOG VIEW */}
-            {viewMode === "grid" ? (
+            {/* BOOK CATALOG VIEW OR NO RESULTS STATE */}
+            {filteredBooks.length === 0 ? (
+              <div className="flex flex-col items-center justify-center py-12 bg-white rounded-2xl border border-dashed border-slate-300 text-center p-6">
+                <div className="w-12 h-12 bg-orange-50 text-orange-500 rounded-full flex items-center justify-center mb-3">
+                  <SearchX size={24} />
+                </div>
+                <h3 className="text-base font-bold text-slate-800">
+                  No books found
+                </h3>
+                <p className="text-xs text-slate-500 max-w-sm mt-1 mb-4">
+                  We couldn't find any title or author matching "{searchQuery}".
+                  Try searching for another keyword.
+                </p>
+                <button
+                  onClick={() => setSearchQuery("")}
+                  className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-xs rounded-lg transition"
+                >
+                  Clear Search Filter
+                </button>
+              </div>
+            ) : viewMode === "grid" ? (
               <div
                 ref={catalogRef}
                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
               >
-                {BOOKS_DATA.map((book) => (
+                {filteredBooks.map((book) => (
                   <div
                     key={book.id}
                     onClick={() => setSelectedBook(book)}
                     className={`group bg-white rounded-xl border p-4 cursor-pointer transition-all hover:shadow-lg ${
-                      selectedBook.id === book.id
+                      selectedBook?.id === book.id
                         ? "border-orange-500 ring-2 ring-orange-500/20"
                         : "border-slate-200 hover:border-slate-300"
                     }`}
@@ -233,12 +292,12 @@ export const DashboardHomePage: React.FC = () => {
             ) : (
               /* LIST VIEW */
               <div ref={catalogRef} className="space-y-3">
-                {BOOKS_DATA.map((book) => (
+                {filteredBooks.map((book) => (
                   <div
                     key={book.id}
                     onClick={() => setSelectedBook(book)}
                     className={`flex items-center justify-between bg-white rounded-xl border p-3 cursor-pointer transition-all hover:shadow-md ${
-                      selectedBook.id === book.id
+                      selectedBook?.id === book.id
                         ? "border-orange-500 ring-2 ring-orange-500/20"
                         : "border-slate-200 hover:border-slate-300"
                     }`}
@@ -326,67 +385,75 @@ export const DashboardHomePage: React.FC = () => {
             ref={sidebarRef}
             className="hidden xl:flex w-80 bg-white border-l border-slate-200 p-6 flex-col justify-between overflow-y-auto"
           >
-            <div>
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="font-bold text-slate-900">Book Details</h3>
-                <button className="text-slate-400 hover:text-slate-600">
-                  <MoreVertical size={18} />
-                </button>
-              </div>
-
-              {/* Cover Display */}
-              <div className="aspect-[3/4] rounded-xl overflow-hidden mb-4 shadow-lg">
-                <img
-                  src={selectedBook.coverUrl}
-                  alt={selectedBook.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Information */}
-              <h2 className="text-xl font-bold text-slate-900 leading-tight">
-                {selectedBook.title}
-              </h2>
-              <p className="text-sm text-slate-500 mb-4">
-                {selectedBook.author}
-              </p>
-
-              <div className="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-100 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-slate-500">Category:</span>
-                  <span className="font-medium text-slate-800">
-                    {selectedBook.category}
-                  </span>
+            {selectedBook ? (
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="font-bold text-slate-900">Book Details</h3>
+                  <button className="text-slate-400 hover:text-slate-600">
+                    <MoreVertical size={18} />
+                  </button>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-500">Status:</span>
-                  <span className="font-medium text-orange-600">
-                    {selectedBook.status}
-                  </span>
+
+                {/* Cover Display */}
+                <div className="aspect-[3/4] rounded-xl overflow-hidden mb-4 shadow-lg">
+                  <img
+                    src={selectedBook.coverUrl}
+                    alt={selectedBook.title}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-500">Rating:</span>
-                  <span className="font-medium text-slate-800 flex items-center gap-1">
-                    <Star
-                      size={14}
-                      className="text-amber-500"
-                      fill="currentColor"
-                    />
-                    {selectedBook.rating}
-                  </span>
+
+                {/* Information */}
+                <h2 className="text-xl font-bold text-slate-900 leading-tight">
+                  {selectedBook.title}
+                </h2>
+                <p className="text-sm text-slate-500 mb-4">
+                  {selectedBook.author}
+                </p>
+
+                <div className="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-100 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Category:</span>
+                    <span className="font-medium text-slate-800">
+                      {selectedBook.category}
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Status:</span>
+                    <span className="font-medium text-orange-600">
+                      {selectedBook.status}
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Rating:</span>
+                    <span className="font-medium text-slate-800 flex items-center gap-1">
+                      <Star
+                        size={14}
+                        className="text-amber-500"
+                        fill="currentColor"
+                      />
+                      {selectedBook.rating}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
+            ) : (
+              <div className="text-center text-slate-400 my-auto">
+                No book selected
+              </div>
+            )}
 
             {/* Actions */}
-            <div className="pt-6 border-t border-slate-100 space-y-2 mt-6">
-              <button className="w-full py-2.5 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm rounded-lg transition shadow-sm shadow-orange-200">
-                Issue Book
-              </button>
-              <button className="w-full py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm rounded-lg transition flex items-center justify-center gap-2">
-                View Full Logs <ChevronRight size={16} />
-              </button>
-            </div>
+            {selectedBook && (
+              <div className="pt-6 border-t border-slate-100 space-y-2 mt-6">
+                <button className="w-full py-2.5 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm rounded-lg transition shadow-sm shadow-orange-200">
+                  Issue Book
+                </button>
+                <button className="w-full py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm rounded-lg transition flex items-center justify-center gap-2">
+                  View Full Logs <ChevronRight size={16} />
+                </button>
+              </div>
+            )}
           </aside>
         </div>
       </div>
