@@ -106,7 +106,7 @@ export const DashboardHomePage: React.FC = () => {
       <div className="flex-1 flex flex-col min-w-0">
         {/* TOP HEADER WITH FUNCTIONAL SEARCH */}
         <header className="h-16 bg-white border-b border-slate-200 px-6 flex items-center justify-between z-10">
-          <div className="relative w-72 md:w-96">
+          <div className="mx-auto relative w-72 md:w-96">
             <Search
               className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
               size={18}
