@@ -16,43 +16,10 @@ import { topAuthors } from "../data/topAuthors";
 import { topBorrowedBooks } from "../data/topBorrowedBooks";
 
 export const LandingPage: React.FC = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   return (
     <div className="border border-amber-700 min-h-screen bg-gray-50 text-gray-800 font-sans flex  lg:flex-row">
-      {/* ================= MOBILE / TABLET HEADER ================= */}
-      <div className="lg:hidden bg-white border-b border-gray-200 sticky top-0 z-30 px-4 py-3 flex items-center justify-between shadow-sm">
-        <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center text-white font-bold">
-            <BookOpen className="w-4 h-4" />
-          </div>
-          <span className="font-extrabold text-lg tracking-wider text-gray-900">
-            LIBRA
-          </span>
-        </div>
-
-        <div className="flex items-center gap-3">
-          <button className="p-2 text-gray-500 hover:bg-gray-100 rounded-lg">
-            <Bell className="w-5 h-5" />
-          </button>
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2 text-gray-700 hover:bg-gray-100 rounded-lg"
-          >
-            {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
-          </button>
-        </div>
-      </div>
-
-      {/* MOBILE DRAWER */}
-
       {/* ================= MAIN CONTENT AREA ================= */}
       <main className="flex-1 p-4 sm:p-6 lg:p-8 space-y-6 max-w-[1600px] mx-auto">
-        {/* TOP NAVBAR / HEADER ROW */}
-
         {/* 4 STATS CARDS */}
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {stats.map((stat, idx) => (
@@ -92,7 +59,7 @@ export const LandingPage: React.FC = () => {
         </section>
 
         {/* MAIN DASHBOARD GRID: LEFT HEAVY (CHARTS & TABLES), RIGHT SIDEBAR (BOOKS & ACTIVITIES) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 ">
           {/* LEFT CONTENT COL (8 COLUMNS) */}
           <div className="lg:col-span-8 space-y-6">
             {/* CHARTS ROW 1: Library Usage Trends & Revenue */}
