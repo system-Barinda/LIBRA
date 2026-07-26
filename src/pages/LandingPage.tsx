@@ -1,13 +1,5 @@
-import React, { useState } from "react";
-import {
-  BookOpen,
-  Bell,
-  TrendingUp,
-  TrendingDown,
-  Star,
-  Menu,
-  X,
-} from "lucide-react";
+import React from "react";
+import { BookOpen, TrendingUp, TrendingDown, Star } from "lucide-react";
 import { stats } from "../data/Stats";
 import { bookCategories } from "../data/bookCategories";
 import { libraryActivity } from "../data/libraryActivity";
@@ -17,7 +9,7 @@ import { topBorrowedBooks } from "../data/topBorrowedBooks";
 
 export const LandingPage: React.FC = () => {
   return (
-    <div className="border border-amber-700 min-h-screen bg-gray-50 text-gray-800 font-sans flex  lg:flex-row">
+    <div className=" min-h-screen bg-gray-50 text-gray-800 font-sans flex  lg:flex-row">
       {/* ================= MAIN CONTENT AREA ================= */}
       <main className="flex-1 p-4 sm:p-6 lg:p-8 space-y-6 max-w-[1600px] mx-auto">
         {/* 4 STATS CARDS */}
