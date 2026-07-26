@@ -1,8 +1,9 @@
+import { LogOut, Settings } from "lucide-react";
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const nav = [
-  { label: "Dashboard", path: "/" },
+  { label: "Dashboard", path: "/dashboard" },
   { label: "Inbox", path: "/inbox" },
   { label: "Library Activity", path: "/activity" },
   { label: "Books", path: "/books" },
@@ -130,6 +131,21 @@ export default function Sidebar({ closeMenu, isMobile = false }) {
             );
           })}
         </nav>
+      </div>
+
+      <div className="pt-6 mt-6 border-t border-gray-100 space-y-1">
+        {[
+          { name: "Settings", icon: Settings },
+          { name: "Logout", icon: LogOut },
+        ].map((item) => (
+          <button
+            key={item.name}
+            className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors"
+          >
+            <item.icon className="w-4 h-4" />
+            <span>{item.name}</span>
+          </button>
+        ))}
       </div>
 
       {/* Bottom Card */}

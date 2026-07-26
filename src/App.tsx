@@ -16,6 +16,7 @@ import DashboardHomePage from "./pages/DashboardHomePage";
 import MediaCatalogPage from "./pages/MediaCatalogPage";
 import ContactPage from "./pages/ContactPage";
 import ServicesPage from "./pages/ServicesPage";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         </Route>
 
         <Route element={<MainLayout />}>
+          <Route path="/dashboard" element={<LandingPage />} />
           <Route path="/inbox" element={<Inbox />} />
           <Route path="/activity" element={<LibraryActivity />} />
           <Route path="/books" element={<Books />} />

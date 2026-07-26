@@ -49,7 +49,7 @@ const LoginForm = () => {
         </div>
 
         <div className="pt-2">
-          <Link to="/inbox">
+          <Link to="/dashboard">
             {" "}
             <AuthButton type="submit">Login</AuthButton>
           </Link>
