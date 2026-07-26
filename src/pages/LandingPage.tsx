@@ -8,11 +8,15 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import { stats } from "../data/Stats";
+import { bookCategories } from "../data/bookCategories";
+import { libraryActivity } from "../data/libraryActivity";
+import { recentActivities } from "../data/recentActivities";
+import { topAuthors } from "../data/topAuthors";
+import { topBorrowedBooks } from "../data/topBorrowedBooks";
 
 export const LandingPage: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  // Sample Data matching the exact UI components in the image
-
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800 font-sans flex  lg:flex-row">
       {/* ================= MOBILE / TABLET HEADER ================= */}
