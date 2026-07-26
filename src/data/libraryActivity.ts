@@ -1,0 +1,48 @@
+import type { LibraryActivityRow } from "../types/BookTypes";
+
+export const libraryActivity: LibraryActivityRow[] = [
+  {
+    id: "1",
+    bookTitle: "Charlie's Life Story",
+    bookAuthor: "Mike Vance",
+    member: "Livia Sart",
+    memberId: "MBR-2103",
+    memberTier: "Premium",
+    borrowDueDate: "Sept 01 - Sept 15, 2026",
+    returnDate: "Sept 14, 2026",
+    status: "Returned",
+  },
+  {
+    id: "2",
+    bookTitle: "The Coffee Shop Next Door",
+    bookAuthor: "Avery Davis",
+    member: "Noah Trent",
+    memberId: "MBR-1845",
+    memberTier: "Standard",
+    borrowDueDate: "Aug 20 - Sept 10, 2026",
+    returnDate: "-",
+    status: "Borrowed",
+  },
+  {
+    id: "3",
+    bookTitle: "The Book of Prayer",
+    bookAuthor: "Elena Quinn",
+    member: "Celine Moore",
+    memberId: "MBR-3091",
+    memberTier: "Basic",
+    borrowDueDate: "Aug 20 - Sept 03, 2026",
+    returnDate: "Sept 02, 2026",
+    status: "Returned",
+  },
+  {
+    id: "4",
+    bookTitle: "Floral Dreams",
+    bookAuthor: "Claudia Hans",
+    member: "Isla Roy",
+    memberId: "MBR-0287",
+    memberTier: "Standard",
+    borrowDueDate: "Aug 20 - Sept 08, 2026",
+    returnDate: "-",
+    status: "Overdue",
+  },
+];
