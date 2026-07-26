@@ -6,6 +6,7 @@ import { recentActivities } from "../data/recentActivities";
 import { topAuthors } from "../data/topAuthors";
 import { topBorrowedBooks } from "../data/topBorrowedBooks";
 import { LibraryActivity } from "../components/LandingPage/Library_Activity";
+import { StatsCards } from "../components/LandingPage/STATS_CARDS";
 
 export const LandingPage: React.FC = () => {
   return (
@@ -13,42 +14,7 @@ export const LandingPage: React.FC = () => {
       {/* ================= MAIN CONTENT AREA ================= */}
       <main className="flex-1 p-4 sm:p-6 lg:p-8 space-y-6 max-w-[1600px] mx-auto">
         {/* 4 STATS CARDS */}
-        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {stats.map((stat, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-2xl p-4 sm:p-5 border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
-            >
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-xs font-semibold text-gray-500">
-                  {stat.title}
-                </span>
-                <div className="p-2 bg-orange-50 text-orange-500 rounded-xl">
-                  <stat.icon className="w-4 h-4" />
-                </div>
-              </div>
-
-              <div className="flex items-baseline gap-2 mb-1">
-                <span className="text-2xl sm:text-3xl font-extrabold text-gray-900">
-                  {stat.value}
-                </span>
-                <span
-                  className={`text-xs font-bold flex items-center gap-0.5 ${
-                    stat.isPositive ? "text-emerald-600" : "text-rose-500"
-                  }`}
-                >
-                  {stat.isPositive ? (
-                    <TrendingUp className="w-3 h-3" />
-                  ) : (
-                    <TrendingDown className="w-3 h-3" />
-                  )}
-                  {stat.change}
-                </span>
-              </div>
-              <p className="text-[11px] text-gray-400">{stat.subtext}</p>
-            </div>
-          ))}
-        </section>
+        <StatsCards />
 
         {/* MAIN DASHBOARD GRID: LEFT HEAVY (CHARTS & TABLES), RIGHT SIDEBAR (BOOKS & ACTIVITIES) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 ">
