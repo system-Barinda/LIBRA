@@ -4,9 +4,6 @@ import {
   Bell,
   TrendingUp,
   TrendingDown,
-  BookMarked,
-  RotateCcw,
-  UserCheck,
   Star,
   Menu,
   X,
@@ -15,54 +12,6 @@ import {
 export const LandingPage: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   // Sample Data matching the exact UI components in the image
-
-  const topBorrowedBooks: TopBook[] = [
-    {
-      id: "1",
-      title: "Everything Kimchi",
-      author: "Olivia Wilson",
-      rating: 4.8,
-      bookId: "BK-10024",
-      borrowers: 128,
-      coverBg: "bg-gradient-to-br from-amber-400 to-orange-600",
-    },
-    {
-      id: "2",
-      title: "My Story",
-      author: "Olivia Wilson",
-      rating: 4.8,
-      bookId: "BK-09875",
-      borrowers: 112,
-      coverBg: "bg-gradient-to-br from-sky-400 to-blue-600",
-    },
-  ];
-
-  const topAuthors: TopAuthor[] = [
-    {
-      id: "1",
-      name: "Ava Thornton",
-      books: 4,
-      borrowers: "265 Borrowers",
-      avatar:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
-    },
-    {
-      id: "2",
-      name: "Leo Vance",
-      books: 5,
-      borrowers: "242 Borrowers",
-      avatar:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
-    },
-    {
-      id: "3",
-      name: "Mira Ellison",
-      books: 4,
-      borrowers: "228 Borrowers",
-      avatar:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&auto=format&fit=crop&q=80",
-    },
-  ];
 
   const recentActivities: RecentActivityItem[] = [
     {
