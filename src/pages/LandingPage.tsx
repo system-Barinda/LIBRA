@@ -277,23 +277,7 @@ export const LandingPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-800 font-sans flex flex-col lg:flex-row">
-      {/* ================= SIDEBAR (DESKTOP) ================= */}
-      <aside className="hidden lg:flex flex-col w-64 bg-white border-r border-gray-200 min-h-screen sticky top-0 justify-between p-5 z-20">
-        {/* Promo Sidebar Widget */}
-        <div className="bg-gradient-to-br from-orange-500 to-amber-500 rounded-2xl p-4 text-white mt-8 shadow-lg shadow-orange-200 relative overflow-hidden">
-          <div className="absolute -right-4 -bottom-4 w-20 h-20 bg-white/10 rounded-full blur-xl pointer-events-none" />
-          <h4 className="font-bold text-sm mb-1">On-the-Go Management</h4>
-          <p className="text-xs text-orange-100 mb-3 leading-relaxed">
-            Libra Mobile lets you access books, members and stats anytime,
-            anywhere.
-          </p>
-          <button className="w-full py-2 bg-white text-orange-600 rounded-xl text-xs font-bold shadow-sm hover:bg-orange-50 transition-colors">
-            Try for Free
-          </button>
-        </div>
-      </aside>
-
+    <div className="min-h-screen bg-gray-50 text-gray-800 font-sans flex  lg:flex-row">
       {/* ================= MOBILE / TABLET HEADER ================= */}
       <div className="lg:hidden bg-white border-b border-gray-200 sticky top-0 z-30 px-4 py-3 flex items-center justify-between shadow-sm">
         <div className="flex items-center gap-2.5">
@@ -323,82 +307,10 @@ export const LandingPage: React.FC = () => {
       </div>
 
       {/* MOBILE DRAWER */}
-      {isMobileMenuOpen && (
-        <div className="lg:hidden bg-white border-b border-gray-200 px-4 py-4 space-y-2 z-20">
-          {[
-            "Dashboard",
-            "Inbox",
-            "Library Activity",
-            "Books",
-            "Management",
-            "Members",
-            "Settings",
-          ].map((item) => (
-            <button
-              key={item}
-              onClick={() => {
-                setActiveTab(item);
-                setIsMobileMenuOpen(false);
-              }}
-              className={`w-full text-left px-3 py-2 rounded-lg text-sm font-semibold ${
-                activeTab === item
-                  ? "bg-orange-500 text-white"
-                  : "text-gray-700 hover:bg-gray-100"
-              }`}
-            >
-              {item}
-            </button>
-          ))}
-        </div>
-      )}
 
       {/* ================= MAIN CONTENT AREA ================= */}
       <main className="flex-1 p-4 sm:p-6 lg:p-8 space-y-6 max-w-[1600px] mx-auto">
         {/* TOP NAVBAR / HEADER ROW */}
-        <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2">
-          <div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
-              Dashboard
-            </h1>
-            <p className="text-xs sm:text-sm text-gray-500">
-              Good Morning, Noah!
-            </p>
-          </div>
-
-          <div className="flex items-center gap-3">
-            {/* Search Input */}
-            <div className="relative flex-1 sm:w-64 md:w-80">
-              <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Search anything..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-4 py-2 bg-white border border-gray-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all shadow-sm"
-              />
-            </div>
-
-            {/* Profile Header */}
-            <div className="flex items-center gap-3 pl-2 sm:border-l border-gray-200">
-              <button className="hidden sm:flex p-2 text-gray-500 hover:bg-white hover:shadow-sm rounded-xl border border-transparent hover:border-gray-200 transition-all">
-                <Bell className="w-4 h-4" />
-              </button>
-              <div className="flex items-center gap-2.5 cursor-pointer">
-                <img
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
-                  alt="Noah Tanaka"
-                  className="w-9 h-9 rounded-full object-cover border-2 border-orange-200"
-                />
-                <div className="hidden md:block text-left">
-                  <div className="text-xs font-bold text-gray-800">
-                    Noah Tanaka
-                  </div>
-                  <div className="text-[10px] text-gray-400">Admin</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </header>
 
         {/* 4 STATS CARDS */}
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
