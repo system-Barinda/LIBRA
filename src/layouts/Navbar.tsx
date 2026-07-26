@@ -2,15 +2,9 @@ import React, { useState } from "react";
 
 export interface NavbarProps {
   onSearch?: (query: string) => void;
-  onLogin?: () => void;
-  onRegister?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({
-  onSearch,
-  onLogin,
-  onRegister,
-}) => {
+export const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>("");
 
@@ -33,7 +27,10 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20 gap-4">
           {/* Brand Logo & Name */}
-          <div className="flex items-center gap-2.5 flex-shrink-0 cursor-pointer">
+          <a
+            href="/home"
+            className="flex items-center gap-2.5 flex-shrink-0 cursor-pointer"
+          >
             <div className="w-8 h-8 sm:w-9 sm:h-9 bg-orange-500 rounded-lg flex items-center justify-center p-1.5 text-white shadow-sm hover:bg-orange-600 transition-colors">
               <svg
                 viewBox="0 0 24 24"
@@ -46,7 +43,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span className="font-extrabold text-lg sm:text-xl text-gray-900 tracking-wide">
               LIBRA
             </span>
-          </div>
+          </a>
 
           {/* Desktop Navigation Links */}
           <div className="hidden lg:flex items-center space-x-8">
@@ -91,20 +88,22 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Desktop Auth Buttons */}
           <div className="hidden sm:flex items-center gap-3">
-            <button
-              onClick={onRegister}
-              type="button"
-              className="px-5 py-2 text-sm font-semibold text-gray-600 bg-white border border-gray-300 rounded-xl hover:bg-gray-50 hover:text-gray-900 transition-all duration-150 shadow-sm"
-            >
-              Register
-            </button>
-            <button
-              onClick={onLogin}
-              type="button"
-              className="px-6 py-2 text-sm font-semibold text-white bg-orange-500 rounded-xl hover:bg-orange-600 active:bg-orange-700 transition-all duration-150 shadow-sm hover:shadow"
-            >
-              Login
-            </button>
+            <a href="/register">
+              <button
+                type="button"
+                className="px-5 py-2 text-sm font-semibold text-gray-600 bg-white border border-gray-300 rounded-xl hover:bg-gray-50 hover:text-gray-900 transition-all duration-150 shadow-sm"
+              >
+                Register
+              </button>
+            </a>
+            <a href="/login">
+              <button
+                type="button"
+                className="px-6 py-2 text-sm font-semibold text-white bg-orange-500 rounded-xl hover:bg-orange-600 active:bg-orange-700 transition-all duration-150 shadow-sm hover:shadow"
+              >
+                Login
+              </button>
+            </a>
           </div>
 
           {/* Mobile Hamburger Menu Toggle Button */}
@@ -196,26 +195,22 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Mobile Auth Buttons */}
           <div className="pt-2 flex flex-col gap-2.5">
-            <button
-              onClick={() => {
-                setIsOpen(false);
-                if (onRegister) onRegister();
-              }}
-              type="button"
-              className="w-full py-2.5 text-sm font-semibold text-gray-600 bg-white border border-gray-300 rounded-xl hover:bg-gray-100 transition-colors shadow-sm"
-            >
-              Register
-            </button>
-            <button
-              onClick={() => {
-                setIsOpen(false);
-                if (onLogin) onLogin();
-              }}
-              type="button"
-              className="w-full py-2.5 text-sm font-semibold text-white bg-orange-500 rounded-xl hover:bg-orange-600 transition-colors shadow-sm"
-            >
-              Login
-            </button>
+            <a href="/register">
+              <button
+                type="button"
+                className="w-full py-2.5 text-sm font-semibold text-gray-600 bg-white border border-gray-300 rounded-xl hover:bg-gray-100 transition-colors shadow-sm"
+              >
+                Register
+              </button>
+            </a>
+            <a href="/login">
+              <button
+                type="button"
+                className="w-full py-2.5 text-sm font-semibold text-white bg-orange-500 rounded-xl hover:bg-orange-600 transition-colors shadow-sm"
+              >
+                Login
+              </button>
+            </a>
           </div>
         </div>
       )}
