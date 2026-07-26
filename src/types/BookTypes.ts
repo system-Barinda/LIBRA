@@ -52,3 +52,52 @@ export interface CoreService {
   features: string[];
   ctaText: string;
 }
+
+// --- TYPES ---
+export interface StatCardProps {
+  title: string;
+  value: string;
+  change: string;
+  isPositive: boolean;
+  subtext: string;
+  icon: React.ElementType;
+}
+
+export interface TopBook {
+  id: string;
+  title: string;
+  author: string;
+  rating: number;
+  bookId: string;
+  borrowers: number;
+  coverBg: string;
+  coverImage?: string;
+}
+
+export interface TopAuthor {
+  id: string;
+  name: string;
+  books: number;
+  borrowers: string;
+  avatar: string;
+}
+
+export interface RecentActivityItem {
+  id: string;
+  type: "update" | "member" | "return" | "overdue";
+  title: string;
+  description: string;
+  time: string;
+}
+
+export interface LibraryActivityRow {
+  id: string;
+  bookTitle: string;
+  bookAuthor: string;
+  member: string;
+  memberId: string;
+  memberTier: string;
+  borrowDueDate: string;
+  returnDate: string;
+  status: "Returned" | "Borrowed" | "Overdue";
+}

@@ -1,82 +1,16 @@
 import React, { useState } from "react";
 import {
-  LayoutDashboard,
-  Inbox,
-  Activity,
   BookOpen,
-  Users,
-  Settings,
-  LogOut,
-  Search,
   Bell,
-  ChevronDown,
-  ChevronRight,
   TrendingUp,
   TrendingDown,
-  Plus,
-  MoreVertical,
   BookMarked,
   RotateCcw,
   UserCheck,
   Star,
-  CheckCircle2,
-  Clock,
-  AlertCircle,
   Menu,
   X,
-  Filter,
-  Download,
-  Calendar,
 } from "lucide-react";
-
-// --- TYPES ---
-interface StatCardProps {
-  title: string;
-  value: string;
-  change: string;
-  isPositive: boolean;
-  subtext: string;
-  icon: React.ElementType;
-}
-
-interface TopBook {
-  id: string;
-  title: string;
-  author: string;
-  rating: number;
-  bookId: string;
-  borrowers: number;
-  coverBg: string;
-  coverImage?: string;
-}
-
-interface TopAuthor {
-  id: string;
-  name: string;
-  books: number;
-  borrowers: string;
-  avatar: string;
-}
-
-interface RecentActivityItem {
-  id: string;
-  type: "update" | "member" | "return" | "overdue";
-  title: string;
-  description: string;
-  time: string;
-}
-
-interface LibraryActivityRow {
-  id: string;
-  bookTitle: string;
-  bookAuthor: string;
-  member: string;
-  memberId: string;
-  memberTier: string;
-  borrowDueDate: string;
-  returnDate: string;
-  status: "Returned" | "Borrowed" | "Overdue";
-}
 
 export const LandingPage: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -832,22 +766,6 @@ export const LandingPage: React.FC = () => {
             </div>
           </div>
         </div>
-
-        {/* FOOTER */}
-        <footer className="pt-6 border-t border-gray-200/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
-          <p>© 2026 Libra System. All rights reserved.</p>
-          <div className="flex items-center gap-6">
-            <a href="#" className="hover:text-gray-600 transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="hover:text-gray-600 transition-colors">
-              Terms and Conditions
-            </a>
-            <a href="#" className="hover:text-gray-600 transition-colors">
-              Contact Support
-            </a>
-          </div>
-        </footer>
       </main>
     </div>
   );
