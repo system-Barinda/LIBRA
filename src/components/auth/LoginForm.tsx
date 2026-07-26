@@ -28,10 +28,7 @@ const LoginForm = () => {
           placeholder="yourname@example.com"
         />
 
-        <PasswordInput
-          label="Password"
-          placeholder="Enter your password"
-        />
+        <PasswordInput label="Password" placeholder="Enter your password" />
 
         {/* Remember Me & Forgot Password */}
         <div className="flex items-center justify-between text-sm">
@@ -52,14 +49,17 @@ const LoginForm = () => {
         </div>
 
         <div className="pt-2">
-          <AuthButton type="submit">Login</AuthButton>
+          <Link to="/inbox">
+            {" "}
+            <AuthButton type="submit">Login</AuthButton>
+          </Link>
         </div>
       </form>
 
       <p className="mt-8 text-sm text-gray-500">
         New to Libra?{" "}
         <Link
-          to="/"
+          to="/register"
           className="font-medium text-[#FF7A3D] hover:underline"
         >
           Create an Account
