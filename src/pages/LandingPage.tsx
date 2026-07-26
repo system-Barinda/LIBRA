@@ -1,6 +1,5 @@
 import React from "react";
-import { BookOpen, TrendingUp, TrendingDown, Star } from "lucide-react";
-import { stats } from "../data/Stats";
+import { BookOpen, Star } from "lucide-react";
 import { bookCategories } from "../data/bookCategories";
 import { recentActivities } from "../data/recentActivities";
 import { topAuthors } from "../data/topAuthors";
@@ -11,18 +10,13 @@ import { StatsCards } from "../components/LandingPage/STATS_CARDS";
 export const LandingPage: React.FC = () => {
   return (
     <div className=" min-h-screen bg-gray-50 text-gray-800 font-sans flex  lg:flex-row">
-      {/* ================= MAIN CONTENT AREA ================= */}
       <main className="flex-1 p-4 sm:p-6 lg:p-8 space-y-6 max-w-[1600px] mx-auto">
         {/* 4 STATS CARDS */}
         <StatsCards />
 
-        {/* MAIN DASHBOARD GRID: LEFT HEAVY (CHARTS & TABLES), RIGHT SIDEBAR (BOOKS & ACTIVITIES) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 ">
-          {/* LEFT CONTENT COL (8 COLUMNS) */}
           <div className="lg:col-span-8 space-y-6">
-            {/* CHARTS ROW 1: Library Usage Trends & Revenue */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Library Usage Trends Chart */}
               <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm flex flex-col justify-between">
                 <div className="flex items-center justify-between mb-4">
                   <div>
