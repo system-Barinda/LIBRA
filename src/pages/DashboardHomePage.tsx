@@ -9,7 +9,6 @@ import {
   MoreVertical,
   ChevronRight,
   Star,
-  CheckCircle,
   X,
   SearchX,
 } from "lucide-react";
