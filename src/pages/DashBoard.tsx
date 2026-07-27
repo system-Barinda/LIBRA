@@ -9,7 +9,7 @@ import TopBorrowedBooks from "../components/TopBorrowedBooks";
 
 function Dashboard() {
   return (
-    <div className="flex flex-col md:flex-row gap-6 w-full min-h-screen bg-white text-slate-800">
+    <div className="flex flex-col md:flex-row gap-6 w-full lg:w-[50%] min-h-screen bg-white text-slate-800">
       <GreateBanner />
       {/* Left / Main Content Column (Takes up roughly 2/3 space on desktop) */}
       <div className="w-full md:w-2/3 flex flex-col gap-6 ">
