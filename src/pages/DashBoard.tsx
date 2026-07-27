@@ -1,5 +1,7 @@
 import ActivityPanel from "../components/ActivityPanel";
 import CategoryAndRevenueBreakdown from "../components/CategoryAndRevenueBreakdown";
+import { GreateBanner } from "../components/GreateBanner";
+
 import OverviewCards from "../components/OverviewCards";
 import TopAuthors from "../components/TopAuthors";
 import TopBar from "../components/TopBar";
@@ -8,6 +10,7 @@ import TopBorrowedBooks from "../components/TopBorrowedBooks";
 function Dashboard() {
   return (
     <div className="flex flex-col md:flex-row gap-6 w-full min-h-screen bg-white text-slate-800">
+      <GreateBanner />
       {/* Left / Main Content Column (Takes up roughly 2/3 space on desktop) */}
       <div className="w-full md:w-2/3 flex flex-col gap-6 ">
         {/* Top Section */}
