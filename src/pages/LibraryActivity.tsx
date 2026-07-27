@@ -9,9 +9,13 @@ import {
   SlidersHorizontal,
   ChevronDown,
 } from "lucide-react";
+import type { StatCardProps1 } from "../types/BookTypes";
+import { activeBorrowers } from "../data/activeBorrowers";
+import { activities } from "../data/activities";
+import { reservations } from "../data/reservations";
 
 // --- Sub-Components ---
-const StatCard: React.FC<StatCardProps> = ({
+const StatCard: React.FC<StatCardProps1> = ({
   title,
   value,
   unit,
