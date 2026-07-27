@@ -37,7 +37,7 @@ export const GreateBanner: React.FC = () => {
   return (
     <div
       ref={heroRef}
-      className="lg:w-[50%] relative overflow-hidden bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 p-6 md:p-8 text-white shadow-lg shadow-orange-500/10 flex flex-col lg:flex-row items-center justify-between gap-8"
+      className="relative overflow-hidden bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 p-6 md:p-8 text-white shadow-lg shadow-orange-500/10 flex flex-col lg:flex-row items-center justify-between gap-8"
     >
       {/* Left Content Area */}
       <div className="relative z-10 max-w-xl space-y-3">
