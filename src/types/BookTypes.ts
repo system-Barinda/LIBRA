@@ -101,3 +101,46 @@ export interface LibraryActivityRow {
   returnDate: string;
   status: "Returned" | "Borrowed" | "Overdue";
 }
+
+// --- Types & Interfaces ---
+export interface StatCardProps1 {
+  title: string;
+  value: string;
+  unit: string;
+  change: string;
+  isPositive: boolean;
+  icon: React.ReactNode;
+  iconBg: string;
+}
+
+export interface ActiveBorrower {
+  name: string;
+  id: string;
+  count: number;
+  avatar: string;
+}
+
+export interface ReservationItem {
+  title: string;
+  author: string;
+  member: string;
+  memberId: string;
+  time: string;
+  image: string;
+}
+
+export interface ActivityRow {
+  activity: "Borrow" | "Return" | "Reservation";
+  dateTime: string;
+  member: {
+    name: string;
+    id: string;
+    tier: "Premium" | "Standard" | "Basic";
+    avatar: string;
+  };
+  book: { title: string; id: string; image: string };
+  dueDate: string;
+  returnDate: string;
+  status: "Borrowed" | "Returned" | "Overdue" | "—";
+  fine: string;
+}

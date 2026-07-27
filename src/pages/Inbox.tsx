@@ -6,7 +6,6 @@ export default function Inbox() {
   return (
     // Global grid container across screens
     <div className="h-screen w-screen bg-[#f4f4f4] flex flex-col lg:flex-row overflow-hidden text-black">
-      
       {/* 1. Left Sidebar Column - Categories */}
       <div className="hidden lg:block lg:w-[20%] xl:w-[18%] h-full shrink-0">
         <Categories isMobile={false} />
@@ -21,7 +20,6 @@ export default function Inbox() {
       <div className="hidden lg:block lg:w-[48%] xl:w-[54%] h-full bg-white">
         <EmailViewer />
       </div>
-
     </div>
   );
 }
