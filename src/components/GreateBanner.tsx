@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Sparkles, BookOpen, Users, TrendingUp } from "lucide-react";
 import gsap from "gsap";
-
 export const GreateBanner: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const borderBoxRef = useRef<HTMLDivElement>(null);
@@ -43,10 +42,10 @@ export const GreateBanner: React.FC = () => {
       {/* Left Content Area */}
       <div className="relative z-10 max-w-xl space-y-3">
         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 text-xs font-semibold backdrop-blur-md">
-          <Sparkles size={14} /> Featured Collection
+          <Sparkles size={14} /> book Collection
         </span>
         <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight">
-          Discover & Manage Your Literary World
+          Discover & Get Your real World
         </h1>
         <p className="text-orange-100 text-sm md:text-base">
           Track dynamic user checkouts, review active library stats, and quickly
@@ -70,12 +69,12 @@ export const GreateBanner: React.FC = () => {
       {/* Right Side: High-Visibility 4-Color Edge Box with Book Image */}
       <div
         ref={floatCardRef}
-        className="relative z-10 w-full max-w-[280px] sm:max-w-[320px] aspect-square flex items-center justify-center p-[4px] rounded-2xl overflow-hidden shadow-2xl"
+        className="border-8 border-amber-400 relative z-10 w-full max-w-[280px] sm:max-w-[320px] aspect-square flex items-center justify-center p-[4px] rounded-2xl overflow-hidden shadow-2xl"
       >
         {/* Outer Glow (Enhances color visibility) */}
         <div
           ref={glowBoxRef}
-          className="absolute -inset-[100%] w-[300%] h-[300%] bg-[conic-gradient(from_0deg,#ff0055,#00e5ff,#2563eb,#10b981,#ff0055)] blur-md opacity-80"
+          className="absolute -inset-[100%] w-[300%] h-[300%] bg-[conic-gradient(from_0deg,#dd0055,#00e5ff,#2563eb,#10b981,#ff0055)] blur-md opacity-80"
         />
 
         {/* Main 4-Color Conic Gradient Border */}
@@ -100,4 +99,4 @@ export const GreateBanner: React.FC = () => {
   );
 };
 
-export default HeroBanner;
+export default GreateBanner;
