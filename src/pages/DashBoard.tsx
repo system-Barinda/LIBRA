@@ -1,5 +1,6 @@
 import ActivityPanel from "../components/ActivityPanel";
 import CategoryAndRevenueBreakdown from "../components/CategoryAndRevenueBreakdown";
+import DashboardHero from "../components/DashboardHero";
 import { GreateBanner } from "../components/GreateBanner";
 import OverviewCards from "../components/OverviewCards";
 import TopAuthors from "../components/TopAuthors";
@@ -8,7 +9,7 @@ import TopBorrowedBooks from "../components/TopBorrowedBooks";
 
 function Dashboard() {
   return (
-    <div className="w-full min-h-screen bg-white text-slate-800">
+    <div className="w-full min-h-screen bg-gray-200 text-slate-800">
       <div className="flex flex-col gap-6 p-4 lg:p-6">
         {/* Banner */}
         <GreateBanner />
@@ -24,6 +25,7 @@ function Dashboard() {
             <CategoryAndRevenueBreakdown />
 
             {/* <ActivityPanel /> */}
+            <DashboardHero />
           </div>
 
           {/* Right Sidebar */}

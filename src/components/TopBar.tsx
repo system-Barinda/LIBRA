@@ -48,13 +48,13 @@ const cards = [
 
 export default function OverviewCards() {
   return (
-    <section className="grid grid-cols-2 xl:grid-cols-4 gap-6">
+    <section className="shadow grid grid-cols-2 xl:grid-cols-4 gap-6">
       {cards.map((card) => {
         const Icon = card.icon;
 
         return (
           <div
-            key={card.label} 
+            key={card.label}
             className="
               bg-white
               hover:shadow-md
@@ -75,14 +75,12 @@ export default function OverviewCards() {
                   {card.label}
                 </span>
               </div>
-
-            
             </div>
-              <div className="flex px-4 py-2  items-center justify-between">
-                 {/* Value */}
-            <h2 className="text-[15px] font-bold tracking-tight text-slate-900">
-              {card.value}
-            </h2> 
+            <div className="flex px-4 py-2  items-center justify-between">
+              {/* Value */}
+              <h2 className="text-[15px] font-bold tracking-tight text-slate-900">
+                {card.value}
+              </h2>
               <span
                 className={`flex  border items-center gap-1 rounded-full  text-[8px] font-semibold ${
                   card.trend === "up"
@@ -97,16 +95,12 @@ export default function OverviewCards() {
                 )}
 
                 {card.change}
-              </span>     
-           
-
+              </span>
             </div>
 
             {/* Footer */}
             <div className="px-4  flex items-center justify-between">
-              <p className="text-slate-500 text-[11px]">
-                {card.subtitle}
-              </p>
+              <p className="text-slate-500 text-[11px]">{card.subtitle}</p>
 
               {/* <p className=" txet-sm text-slate-400">
                 {card.note}
