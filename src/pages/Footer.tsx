@@ -1,7 +1,17 @@
 import { BookOpen, Mail, MapPin, Phone, Send } from "lucide-react";
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
+  const serviceLinks = [
+    { label: "Borrow Books", href: "/borrow-books" },
+    { label: "Digital Library", href: "/digital-library" },
+    { label: "Reading Rooms", href: "/reading-rooms" },
+    { label: "Research Support", href: "/research-support" },
+    { label: "Book Reservation", href: "/book-reservation" },
+    { label: "Membership", href: "/membership" },
+  ];
+
   return (
     <footer className=" bg-white text-slate-800">
       {/* Newsletter */}
@@ -106,18 +116,15 @@ const Footer = () => {
           <h3 className="text-xl font-semibold">Library Services</h3>
 
           <ul className="mt-6 space-y-4 text-gray-600">
-            {[
-              "Borrow Books",
-              "Digital Library",
-              "Reading Rooms",
-              "Research Support",
-              "Book Reservation",
-              "Membership",
-            ].map((item) => (
-              <li key={item}>
-                <a href="#" className="transition hover:text-orange-400">
-                  {item}
-                </a>
+            {/* 2. Map over the objects */}
+            {serviceLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  to={link.href}
+                  className="transition hover:text-orange-400"
+                >
+                  {link.label}
+                </Link>
               </li>
             ))}
           </ul>
