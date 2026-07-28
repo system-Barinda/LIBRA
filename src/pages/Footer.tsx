@@ -1,10 +1,9 @@
-// import { SiFacebook, SiInstagram, SiLinkedin, SiTwitter } from "react-icons/si";
 import { BookOpen, Mail, MapPin, Phone, Send } from "lucide-react";
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="mt-24 bg-slate-950 text-white">
+    <footer className="mt-24 bg-white text-slate-800">
       {/* Newsletter */}
       <div className="border-b border-white/10">
         <div className="mx-auto max-w-7xl px-6 py-16">
@@ -27,7 +26,7 @@ const Footer = () => {
               <div className="relative flex-1">
                 <Mail
                   size={18}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"
                 />
 
                 <input
@@ -37,7 +36,7 @@ const Footer = () => {
                 />
               </div>
 
-              <button className="h-14 rounded-xl bg-orange-500 px-8 font-semibold transition hover:bg-orange-600">
+              <button className="h-14 rounded-xl text-slate-800 bg-orange-500 px-8 font-semibold transition hover:bg-orange-600">
                 Subscribe
               </button>
             </div>
@@ -56,11 +55,11 @@ const Footer = () => {
 
             <div>
               <h2 className="text-2xl font-bold">LIBRA</h2>
-              <p className="text-sm text-gray-400">Digital Library Platform</p>
+              <p className="text-sm text-gray-600">Digital Library Platform</p>
             </div>
           </div>
 
-          <p className="mt-6 leading-7 text-gray-400">
+          <p className="mt-6 leading-7 text-gray-600">
             Discover thousands of books, journals and learning resources from
             anywhere. Making knowledge accessible to everyone.
           </p>
@@ -81,7 +80,7 @@ const Footer = () => {
         <div>
           <h3 className="text-xl font-semibold">Quick Links</h3>
 
-          <ul className="mt-6 space-y-4 text-gray-400">
+          <ul className="mt-6 space-y-4 text-gray-600">
             {[
               "Home",
               "Books",
@@ -103,7 +102,7 @@ const Footer = () => {
         <div>
           <h3 className="text-xl font-semibold">Library Services</h3>
 
-          <ul className="mt-6 space-y-4 text-gray-400">
+          <ul className="mt-6 space-y-4 text-gray-600">
             {[
               "Borrow Books",
               "Digital Library",
@@ -125,7 +124,7 @@ const Footer = () => {
         <div>
           <h3 className="text-xl font-semibold">Contact Us</h3>
 
-          <div className="mt-6 space-y-5 text-gray-400">
+          <div className="mt-6 space-y-5 text-gray-600">
             <div className="flex items-start gap-3">
               <MapPin className="mt-1 text-orange-500" size={18} />
               <span>Kigali, Rwanda</span>
