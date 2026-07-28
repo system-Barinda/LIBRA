@@ -1,14 +1,43 @@
+import { Link } from "react-router-dom";
+import { ArrowRight, BookOpen, Mail, MapPin, Phone } from "lucide-react";
 import {
-  ArrowRight,
-  BookOpen,
-  Facebook,
-  Instagram,
-  Linkedin,
-  Mail,
-  MapPin,
-  Phone,
-  Twitter,
-} from "lucide-react";
+  FaFacebook,
+  FaInstagram,
+  FaLinkedin,
+  FaTwitter,
+} from "react-icons/fa6";
+
+const serviceLinks = [
+  { label: "Borrow Books", href: "/borrow-books" },
+  { label: "Digital Library", href: "/digital-library" },
+  { label: "Reading Rooms", href: "/reading-rooms" },
+  { label: "Research Support", href: "/research-support" },
+  { label: "Book Reservation", href: "/book-reservation" },
+  { label: "Membership", href: "/membership" },
+];
+
+const exploreLinks = [
+  { label: "Home", href: "/" },
+  { label: "Books", href: "/books" },
+  { label: "Authors", href: "/authors" },
+  { label: "Categories", href: "/categories" },
+  { label: "Membership", href: "/membership" },
+];
+
+const companyLinks = [
+  { label: "About", href: "/about" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/contact" },
+  { label: "Privacy", href: "/privacy" },
+  { label: "Terms", href: "/terms" },
+];
+
+const socialLinks = [
+  { icon: FaFacebook, href: "#", label: "Facebook" },
+  { icon: FaTwitter, href: "#", label: "Twitter" },
+  { icon: FaInstagram, href: "#", label: "Instagram" },
+  { icon: FaLinkedin, href: "#", label: "LinkedIn" },
+];
 
 const LibraryFooter = () => {
   return (
@@ -35,23 +64,29 @@ const LibraryFooter = () => {
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <button className="rounded-xl bg-white px-6 py-3 font-semibold text-orange-600 transition hover:scale-105">
+              <Link
+                to="/register"
+                className="rounded-xl bg-white px-6 py-3 font-semibold text-orange-600 transition hover:scale-105"
+              >
                 Register Free
-              </button>
+              </Link>
 
-              <button className="flex items-center gap-2 rounded-xl border border-white/40 px-6 py-3 font-semibold backdrop-blur transition hover:bg-white/10">
+              <Link
+                to="/books"
+                className="flex items-center gap-2 rounded-xl border border-white/40 px-6 py-3 font-semibold backdrop-blur transition hover:bg-white/10"
+              >
                 Browse Books
                 <ArrowRight size={18} />
-              </button>
+              </Link>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Footer */}
+      {/* Main Footer Container */}
       <div className="mx-auto max-w-7xl px-6 pb-8 pt-56">
         <div className="grid gap-12 lg:grid-cols-12">
-          {/* Brand */}
+          {/* Brand Column */}
           <div className="lg:col-span-4">
             <div className="flex items-center gap-3">
               <div className="rounded-xl bg-orange-500 p-3">
@@ -69,74 +104,67 @@ const LibraryFooter = () => {
               collections, and community knowledge sharing.
             </p>
 
+            {/* Social Icons using react-icons/fa6 */}
             <div className="mt-8 flex gap-4">
-              {[Facebook, Twitter, Instagram, Linkedin].map((Icon, index) => (
-                <button
-                  key={index}
-                  className="rounded-xl bg-slate-800 p-3 transition hover:bg-orange-500"
+              {socialLinks.map(({ icon: Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  className="rounded-xl bg-slate-800 p-3 text-slate-300 transition hover:bg-orange-500 hover:text-white"
                 >
                   <Icon size={18} />
-                </button>
+                </a>
               ))}
             </div>
           </div>
 
-          {/* Links */}
+          {/* Links Grid */}
           <div className="grid gap-10 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-3">
             <div>
               <h3 className="mb-5 font-semibold text-white">Explore</h3>
 
               <ul className="space-y-3 text-slate-400">
-                {["Home", "Books", "Authors", "Categories", "Membership"].map(
-                  (item) => (
-                    <li key={item}>
-                      <a href="#" className="hover:text-orange-400">
-                        {item}
-                      </a>
-                    </li>
-                  ),
-                )}
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="mb-5 font-semibold">Services</h3>
-
-              <ul className="space-y-3 text-slate-400">
-                {[
-                  "Borrow Books",
-                  "Research",
-                  "Reading Rooms",
-                  "E-Books",
-                  "Support",
-                ].map((item) => (
-                  <li key={item}>
-                    <a href="#" className="hover:text-orange-400">
-                      {item}
-                    </a>
+                {exploreLinks.map((item) => (
+                  <li key={item.href}>
+                    <Link to={item.href} className="hover:text-orange-400">
+                      {item.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
             </div>
 
             <div>
-              <h3 className="mb-5 font-semibold">Company</h3>
+              <h3 className="mb-5 font-semibold text-white">Services</h3>
 
               <ul className="space-y-3 text-slate-400">
-                {["About", "Blog", "Contact", "Privacy", "Terms"].map(
-                  (item) => (
-                    <li key={item}>
-                      <a href="#" className="hover:text-orange-400">
-                        {item}
-                      </a>
-                    </li>
-                  ),
-                )}
+                {serviceLinks.map((item) => (
+                  <li key={item.href}>
+                    <Link to={item.href} className="hover:text-orange-400">
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="mb-5 font-semibold text-white">Company</h3>
+
+              <ul className="space-y-3 text-slate-400">
+                {companyLinks.map((item) => (
+                  <li key={item.href}>
+                    <Link to={item.href} className="hover:text-orange-400">
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
 
-          {/* Newsletter */}
+          {/* Newsletter Column */}
           <div className="lg:col-span-3">
             <h3 className="font-semibold text-white">Stay Updated</h3>
 
@@ -144,7 +172,7 @@ const LibraryFooter = () => {
               Subscribe to receive new arrivals, events and library updates.
             </p>
 
-            <div className="mt-6">
+            <form onSubmit={(e) => e.preventDefault()} className="mt-6">
               <div className="relative">
                 <Mail
                   size={18}
@@ -158,10 +186,13 @@ const LibraryFooter = () => {
                 />
               </div>
 
-              <button className="mt-4 w-full rounded-xl bg-orange-500 py-3 font-semibold transition hover:bg-orange-600">
+              <button
+                type="submit"
+                className="mt-4 w-full rounded-xl bg-orange-500 py-3 font-semibold transition hover:bg-orange-600"
+              >
                 Subscribe
               </button>
-            </div>
+            </form>
 
             <div className="mt-8 space-y-4 text-sm text-slate-400">
               <div className="flex items-center gap-3">
@@ -204,17 +235,17 @@ const LibraryFooter = () => {
           </p>
 
           <div className="flex flex-wrap gap-6">
-            <a href="#" className="hover:text-orange-400">
+            <Link to="/privacy" className="hover:text-orange-400">
               Privacy Policy
-            </a>
+            </Link>
 
-            <a href="#" className="hover:text-orange-400">
+            <Link to="/terms" className="hover:text-orange-400">
               Terms of Service
-            </a>
+            </Link>
 
-            <a href="#" className="hover:text-orange-400">
+            <Link to="/cookies" className="hover:text-orange-400">
               Cookies
-            </a>
+            </Link>
           </div>
         </div>
       </div>
