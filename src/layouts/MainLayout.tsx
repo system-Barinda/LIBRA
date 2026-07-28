@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
+import LibraryFooter from "../components/LibraryFooter";
 
 export default function MainLayout() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -31,7 +32,7 @@ export default function MainLayout() {
         </div>
       )}
 
-      {/* Content Area */}
+      {/* Content + Footer Right Area */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Mobile Header */}
         <header className="lg:hidden sticky top-0 z-40 bg-white border-b px-4 py-3 flex items-center justify-between">
@@ -39,9 +40,7 @@ export default function MainLayout() {
             L
           </div>
 
-          <h1 className="text-lg font-semibold text-slate-800">
-            Dashboard
-          </h1>
+          <h1 className="text-lg font-semibold text-slate-800">Dashboard</h1>
 
           <button
             onClick={() => setShowMobileMenu(true)}
@@ -70,9 +69,12 @@ export default function MainLayout() {
         </div>
 
         {/* Page Content */}
-        <main className="flex-1 p-6 overflow-auto">
+        <main className="flex-1 p-6">
           <Outlet />
         </main>
+
+        {/* Footer placed at the bottom of the content stream */}
+        <LibraryFooter />
       </div>
     </div>
   );
