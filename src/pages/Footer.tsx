@@ -8,8 +8,8 @@ const Footer = () => {
     { label: "Digital Library", href: "/digital-library" },
     { label: "Reading Rooms", href: "/reading-rooms" },
     { label: "Research Support", href: "/research-support" },
-    { label: "Book Reservation", href: "/book-reservation" },
-    { label: "Membership", href: "/membership" },
+    { label: "Book Reservation", href: "/books" },
+    { label: "Membership", href: "/members" },
   ];
 
   return (
