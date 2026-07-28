@@ -85,12 +85,15 @@ const Footer = () => {
               "Home",
               "Books",
               "Categories",
-              "Services",
+              "service",
               "Authors",
               "About Us",
             ].map((item) => (
               <li key={item}>
-                <a href="#" className="transition hover:text-orange-400">
+                <a
+                  href={`/${item}`}
+                  className="transition hover:text-orange-400"
+                >
                   {item}
                 </a>
               </li>
