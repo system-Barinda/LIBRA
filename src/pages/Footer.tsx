@@ -1,14 +1,6 @@
-import {
-  BookOpen,
-  Facebook,
-  Instagram,
-  Linkedin,
-  Mail,
-  MapPin,
-  Phone,
-  Send,
-  Twitter,
-} from "lucide-react";
+// import { SiFacebook, SiInstagram, SiLinkedin, SiTwitter } from "react-icons/si";
+import { BookOpen, Mail, MapPin, Phone, Send } from "lucide-react";
+import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -74,7 +66,7 @@ const Footer = () => {
           </p>
 
           <div className="mt-8 flex gap-3">
-            {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
+            {[FaFacebook, FaTwitter, FaInstagram, FaLinkedin].map((Icon, i) => (
               <button
                 key={i}
                 className="rounded-xl border border-white/10 bg-white/5 p-3 transition hover:bg-orange-500"
