@@ -17,11 +17,11 @@ const serviceLinks = [
 ];
 
 const exploreLinks = [
-  { label: "Home", href: "/" },
+  { label: "Home", href: "/home" },
   { label: "Books", href: "/books" },
   { label: "Authors", href: "/authors" },
   { label: "Categories", href: "/categories" },
-  { label: "Membership", href: "/membership" },
+  { label: "Membership", href: "/members" },
 ];
 
 const companyLinks = [
@@ -41,7 +41,7 @@ const socialLinks = [
 
 const LibraryFooter = () => {
   return (
-    <footer className="relative mt-40 bg-slate-950 text-white">
+    <footer className="relative mt-40 bg-gray-300 text-slate-900">
       {/* Floating CTA */}
       <div className="absolute left-1/2 top-0 w-full max-w-6xl -translate-x-1/2 -translate-y-1/2 px-6">
         <div className="overflow-hidden rounded-3xl bg-gradient-to-r from-orange-500 via-orange-400 to-amber-400 p-8 shadow-2xl lg:p-12">
