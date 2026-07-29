@@ -122,7 +122,7 @@ const LibraryFooter = () => {
           {/* Links Grid */}
           <div className="grid gap-10 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-3">
             <div>
-              <h3 className="mb-5 font-semibold text-white">Explore</h3>
+              <h3 className="mb-5 font-semibold text-slate-800">Explore</h3>
 
               <ul className="space-y-3 text-slate-400">
                 {exploreLinks.map((item) => (
@@ -136,7 +136,7 @@ const LibraryFooter = () => {
             </div>
 
             <div>
-              <h3 className="mb-5 font-semibold text-white">Services</h3>
+              <h3 className="mb-5 font-semibold text-slate-800">Services</h3>
 
               <ul className="space-y-3 text-slate-400">
                 {serviceLinks.map((item) => (
@@ -150,7 +150,7 @@ const LibraryFooter = () => {
             </div>
 
             <div>
-              <h3 className="mb-5 font-semibold text-white">Company</h3>
+              <h3 className="mb-5 font-semibold text-slate-800">Company</h3>
 
               <ul className="space-y-3 text-slate-400">
                 {companyLinks.map((item) => (
@@ -166,7 +166,7 @@ const LibraryFooter = () => {
 
           {/* Newsletter Column */}
           <div className="lg:col-span-3">
-            <h3 className="font-semibold text-white">Stay Updated</h3>
+            <h3 className="font-semibold text-slate-800">Stay Updated</h3>
 
             <p className="mt-4 text-sm leading-6 text-slate-400">
               Subscribe to receive new arrivals, events and library updates.
@@ -182,7 +182,7 @@ const LibraryFooter = () => {
                 <input
                   type="email"
                   placeholder="Your email"
-                  className="h-12 w-full rounded-xl border border-slate-700 bg-slate-900 pl-11 pr-4 outline-none focus:border-orange-500"
+                  className="h-12 w-full rounded-xl border border-slate-700 bg-slate-100 pl-11 pr-4 outline-none focus:border-orange-500"
                 />
               </div>
 
