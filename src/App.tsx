@@ -17,6 +17,7 @@ import MediaCatalogPage from "./pages/MediaCatalogPage";
 import ContactPage from "./pages/ContactPage";
 import ServicesPage from "./pages/ServicesPage";
 import LandingPage from "./pages/LandingPage";
+import Settings from "./pages/Settings";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/service" element={<ServicesPage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Login />} />
         </Route>
 
         <Route element={<MainLayout />}>
@@ -40,6 +42,7 @@ function App() {
           <Route path="/management/supply" element={<Supply />} />
           <Route path="/management/stock" element={<StockManagement />} />
           <Route path="/members" element={<Members />} />
+          <Route path="/Settings" element={<Settings />} />
         </Route>
       </Routes>
     </BrowserRouter>

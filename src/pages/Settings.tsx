@@ -4,15 +4,11 @@ import {
   BookOpen,
   Building,
   Check,
-  Globe,
   KeyRound,
   Lock,
   Mail,
-  Palette,
   Save,
   ShieldAlert,
-  User,
-  Users,
 } from "lucide-react";
 
 // Tab types
