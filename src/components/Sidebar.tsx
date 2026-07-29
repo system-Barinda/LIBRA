@@ -1,28 +1,42 @@
-import { LogOut, Settings } from "lucide-react";
+import {
+  LayoutDashboard,
+  Inbox,
+  Activity,
+  BookOpen,
+  FolderKanban,
+  Boxes,
+  Truck,
+  Users,
+  Settings,
+  LogOut,
+} from "lucide-react";
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const nav = [
-  { label: "Dashboard", path: "/dashboard" },
-  { label: "Inbox", path: "/inbox" },
-  { label: "Library Activity", path: "/activity" },
-  { label: "Books", path: "/books" },
+  { label: "Dashboard", path: "/dashboard", icon: LayoutDashboard },
+  { label: "Inbox", path: "/inbox", icon: Inbox },
+  { label: "Library Activity", path: "/activity", icon: Activity },
+  { label: "Books", path: "/books", icon: BookOpen },
   {
     label: "Management",
+    icon: FolderKanban,
     children: [
       {
         label: "Stock Management",
         path: "/management/stock",
+        icon: Boxes,
       },
       {
         label: "Supply & Acquisition",
         path: "/management/supply",
+        icon: Truck,
       },
     ],
   },
-  { label: "Members", path: "/members" },
-  { label: "Settings", path: "/settings" },
-  { label: "Logout", path: "/logout" },
+  { label: "Members", path: "/members", icon: Users },
+  { label: "Settings", path: "/settings", icon: Settings },
+  { label: "Logout", path: "/logout", icon: LogOut },
 ];
 
 export default function Sidebar({ closeMenu, isMobile = false }) {
@@ -61,6 +75,8 @@ export default function Sidebar({ closeMenu, isMobile = false }) {
         {/* Navigation */}
         <nav className="space-y-1">
           {nav.map((item) => {
+            const Icon = item.icon;
+
             if (item.children) {
               return (
                 <div key={item.label}>
@@ -69,7 +85,10 @@ export default function Sidebar({ closeMenu, isMobile = false }) {
                     onClick={() => setOpenManagement(!openManagement)}
                     className="w-full flex items-center justify-between px-4 py-3 rounded-2xl text-slate-600 hover:bg-slate-200 hover:text-slate-900 transition font-semibold"
                   >
-                    <span>{item.label}</span>
+                    <div className="flex items-center gap-3">
+                      {Icon && <Icon className="w-5 h-5 shrink-0" />}
+                      <span>{item.label}</span>
+                    </div>
 
                     {/* Animated Dropdown Arrow Icon */}
                     <svg
@@ -92,22 +111,28 @@ export default function Sidebar({ closeMenu, isMobile = false }) {
                   {/* Sub-items (Dropdown Content) */}
                   {openManagement && (
                     <div className="ml-4 mt-1 border-l-2 border-gray-200 pl-3 space-y-1">
-                      {item.children.map((child) => (
-                        <NavLink
-                          key={child.label}
-                          to={child.path}
-                          onClick={isMobile ? closeMenu : undefined}
-                          className={({ isActive }) =>
-                            `block rounded-xl px-4 py-2.5 text-sm transition-colors duration-150 ${
-                              isActive
-                                ? "bg-orange-500 text-white font-medium shadow-sm"
-                                : "text-slate-500 hover:bg-gray-200 hover:text-slate-800"
-                            }`
-                          }
-                        >
-                          {child.label}
-                        </NavLink>
-                      ))}
+                      {item.children.map((child) => {
+                        const ChildIcon = child.icon;
+                        return (
+                          <NavLink
+                            key={child.label}
+                            to={child.path}
+                            onClick={isMobile ? closeMenu : undefined}
+                            className={({ isActive }) =>
+                              `flex items-center gap-2.5 rounded-xl px-4 py-2.5 text-sm transition-colors duration-150 ${
+                                isActive
+                                  ? "bg-orange-500 text-white font-medium shadow-sm"
+                                  : "text-slate-500 hover:bg-gray-200 hover:text-slate-800"
+                              }`
+                            }
+                          >
+                            {ChildIcon && (
+                              <ChildIcon className="w-4 h-4 shrink-0" />
+                            )}
+                            <span>{child.label}</span>
+                          </NavLink>
+                        );
+                      })}
                     </div>
                   )}
                 </div>
@@ -120,14 +145,15 @@ export default function Sidebar({ closeMenu, isMobile = false }) {
                 to={item.path}
                 onClick={isMobile ? closeMenu : undefined}
                 className={({ isActive }) =>
-                  `block rounded-2xl px-4 py-3 text-sm font-semibold transition duration-150 ${
+                  `flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-semibold transition duration-150 ${
                     isActive
                       ? "bg-slate-800 text-white shadow-md"
                       : "text-slate-600 hover:bg-slate-200 hover:text-slate-900"
                   }`
                 }
               >
-                {item.label}
+                {Icon && <Icon className="w-5 h-5 shrink-0" />}
+                <span>{item.label}</span>
               </NavLink>
             );
           })}
